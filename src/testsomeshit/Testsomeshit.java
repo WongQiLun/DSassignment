@@ -19,6 +19,8 @@ import java.util.*;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import Class.User;
+import Class.UserList;
+import Class.UserListInterface;
 
 /**
  *
@@ -29,43 +31,41 @@ public class Testsomeshit {
     /**
      * @param args the command line arguments
      */
-    
-    public static ArrayList<User> userdata = new ArrayList<>();
-    
-    
-    public static void main(String[] args) throws FileNotFoundException, IOException {
-        
-        
-        
-        
-         JFileChooser chooser = new JFileChooser();
+    public static UserListInterface<User> userdata = new UserList<>();
 
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("Text file", "txt");
-        chooser.setFileFilter(filter);
-        int returnVal = chooser.showOpenDialog(null);
-        File file = chooser.getSelectedFile();
-        BufferedReader in1 = new BufferedReader(new FileReader(file));  //Read the selected file content
-        String line1;
-        
-        while ((line1 = in1.readLine()) != null) {
-            System.out.println(line1);
-            
-        }
-        
-        
-    
-         
-        
-        
-        
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+
+//        JFileChooser chooser = new JFileChooser();
+//
+//        FileNameExtensionFilter filter = new FileNameExtensionFilter("Text file", "txt");
+//        chooser.setFileFilter(filter);
+//        int returnVal = chooser.showOpenDialog(null);
+//        File file = chooser.getSelectedFile();
+//        BufferedReader in1 = new BufferedReader(new FileReader(file));  //Read the selected file content
+//        String line1;
+//
+//        while ((line1 = in1.readLine()) != null) {
+//            System.out.println(line1);
+//        }
+//        
+        addData();
+        Login_UI l = new Login_UI();
+        l.setVisible(true);
+
     }
-    
-    public void addData(){
-        User u = new User("user","123");
-        User u1 = new User("user1","123");
-        
+
+    public static void addData() {
+        User u = new User("user", "123","Member");
+        User u1 = new User("user1", "123","Member");
+        User u2 = new User("user2", "123","Member");
+        User p = new User("publisher","123","Publisher");
+
         userdata.add(u);
         userdata.add(u1);
+        userdata.add(u2);
+        userdata.add(p);
+
+        
     }
-    
+
 }

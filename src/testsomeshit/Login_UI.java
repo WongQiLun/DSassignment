@@ -9,8 +9,6 @@ import Class.User;
 import javax.swing.JOptionPane;
 import static testsomeshit.Testsomeshit.userdata;
 
-
-
 /**
  *
  * @author ongchunheng
@@ -52,8 +50,7 @@ public class Login_UI extends javax.swing.JFrame {
 
         txtUsername.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
 
-        btnLogin.setBackground(new java.awt.Color(0, 204, 102));
-        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogin.setBackground(new java.awt.Color(102, 255, 0));
         btnLogin.setText("LOGIN");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,41 +119,61 @@ public class Login_UI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        Testsomeshit t = new Testsomeshit();
-        t.addData();
-        
+
         String username = txtUsername.getText();
         String password = txtPassword.getText();
         
-        for(User u: userdata){
-            if(u.getUsername().equals(username))
-            {
-                if(u.getPassword().equals(password))
-                {
+        check(username,password);
+
+
+
+    }//GEN-LAST:event_btnLoginActionPerformed
+
+    public void check(String username, String password) {
+        boolean correct = true;
+        
+        for (int i = 0; i < userdata.size(); i++) {
+            
+            if (username.equals(userdata.get(i).getUsername()) && password.equals(userdata.get(i).getPassword())) {
+
+                if (userdata.get(i).getRole().equals("Member")) {
                     GUI g = new GUI();
                     this.setVisible(false);
                     g.setVisible(true);
-                    JOptionPane.showMessageDialog(null,"Successfully logged in!");
+                    JOptionPane.showMessageDialog(null, "Successfully logged in!");
+                    
+                    correct = true;
                     break;
-                }
-                
-                else
-                {
-                    JOptionPane.showMessageDialog(null,"Invalid username or password!");
+                    
+                } else if (userdata.get(i).getRole().equals("Publisher")) {
+                    
+                    GUI_Publisher gp = new GUI_Publisher();
+                    this.setVisible(false);
+                    gp.setVisible(true);
+                    JOptionPane.showMessageDialog(null, "Successfully logged in!");
+                    
+                    correct = true;
                     break;
-                }
-            }
-            
-            else
-            {
-                JOptionPane.showMessageDialog(null,"Invalid username or password!");
-                break;
-            }
-            
-        }
+                    
+                } else if (userdata.get(i).getRole().equals("Admin")) {
+                    
+                    correct = true;
+                    break;
+                } else {
 
+                }
+
+            } else {
+                correct = false;
+                
+            }
+        }
         
-    }//GEN-LAST:event_btnLoginActionPerformed
+        if(correct == false){
+            JOptionPane.showMessageDialog(null, "Invalid username or password!");
+        }
+    }
+
 
     private void lblRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegisterMouseClicked
         // TODO add your handling code here:
@@ -169,8 +186,7 @@ public class Login_UI extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
-        
+
         //test test one two three
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

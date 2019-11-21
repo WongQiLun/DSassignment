@@ -123,7 +123,7 @@ public class Registration_UI extends javax.swing.JFrame {
         String username = txtUsername.getText();
         String password = txtPassword.getText();
        
-       User u = new User(username,password);
+        User u = new User(username,password,"Member");
         
         userdata.add(u);
         
