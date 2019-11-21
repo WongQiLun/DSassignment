@@ -5,6 +5,7 @@
  */
 package testsomeshit;
 
+import testsomeshit.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -32,6 +33,9 @@ public class GUI extends javax.swing.JFrame {
     /**
      * Creates new form GUI
      */
+    
+    public static GUI g = new GUI();
+    
     public GUI() {
         this.setTitle("String Sorter");
         initComponents();
@@ -53,7 +57,7 @@ public class GUI extends javax.swing.JFrame {
         jtpFileName = new javax.swing.JTextPane();
         jbOpen = new javax.swing.JButton();
         jbSaveFile = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnFilter = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMFile = new javax.swing.JMenu();
@@ -87,7 +91,12 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("jButton3");
+        btnFilter.setText("Filter Search");
+        btnFilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFilterActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("jButton4");
 
@@ -134,7 +143,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jbSaveFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jbOpen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnFilter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(48, 48, 48))
         );
@@ -148,15 +157,17 @@ public class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(22, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jbOpen)
                         .addGap(18, 18, 18)
                         .addComponent(jbSaveFile)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnFilter)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton4))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                        .addComponent(jButton4)
+                        .addGap(89, 89, 89))))
         );
 
         pack();
@@ -183,6 +194,18 @@ public class GUI extends javax.swing.JFrame {
         SaveOutput();
         // TODO add your handling code here:
     }//GEN-LAST:event_jbSaveFileActionPerformed
+
+    private void btnFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilterActionPerformed
+        
+        FilterSearch_UI fs = new FilterSearch_UI();
+ 
+        fs.txtContent.setText(jtpContent.getText());
+        fs.setVisible(true);
+        
+
+
+        
+    }//GEN-LAST:event_btnFilterActionPerformed
     private void OpenFile() {
         // TODO add your handling code here:
         JFileChooser chooser = new JFileChooser("NetBeansProjects");
@@ -308,7 +331,7 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnFilter;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMFile;
