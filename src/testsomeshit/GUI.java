@@ -202,8 +202,6 @@ public class GUI extends javax.swing.JFrame {
         fs.txtContent.setText(jtpContent.getText());
         fs.setVisible(true);
         
-
-
         
     }//GEN-LAST:event_btnFilterActionPerformed
     private void OpenFile() {

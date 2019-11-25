@@ -58,6 +58,11 @@ public class GUI_Publisher extends javax.swing.JFrame {
         txtTitle.setPreferredSize(new java.awt.Dimension(10, 30));
 
         btnEdit.setText("Edit File");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnAdd.setText("Add new File");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -145,6 +150,12 @@ public class GUI_Publisher extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+        Edit_UI e = new Edit_UI();
+        e.setVisible(true);
+    }//GEN-LAST:event_btnEditActionPerformed
 
     /**
      * @param args the command line arguments
