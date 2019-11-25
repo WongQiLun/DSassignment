@@ -95,6 +95,12 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jtpTitle">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtpTitleActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -102,6 +108,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jtpContent">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtpContentActionPerformed"/>
       </Events>

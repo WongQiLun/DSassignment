@@ -57,8 +57,16 @@ public class Edit_UI extends javax.swing.JFrame {
 
         jLabel4.setText("Title");
 
+        jtpTitle.setEditable(false);
+        jtpTitle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtpTitleActionPerformed(evt);
+            }
+        });
+
         jLabel2.setText("Content");
 
+        jtpContent.setEditable(false);
         jtpContent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtpContentActionPerformed(evt);
@@ -73,7 +81,6 @@ public class Edit_UI extends javax.swing.JFrame {
         });
 
         btnUpdate.setText("Update");
-        btnUpdate.setActionCommand("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
@@ -171,7 +178,13 @@ public class Edit_UI extends javax.swing.JFrame {
     private void jtpOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtpOpenActionPerformed
         
         OpenFile();
+        jtpTitle.setEditable(true);
+        jtpContent.setEditable(true);
     }//GEN-LAST:event_jtpOpenActionPerformed
+
+    private void jtpTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtpTitleActionPerformed
+        //jtpTitle.setEditable(false);
+    }//GEN-LAST:event_jtpTitleActionPerformed
 
     private void OpenFile() {
         // TODO add your handling code here:
