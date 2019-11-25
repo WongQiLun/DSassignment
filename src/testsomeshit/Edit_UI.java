@@ -139,18 +139,26 @@ public class Edit_UI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-        this.hide();
-        GUI_Publisher gui = new GUI_Publisher();
-        this.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         
-        String filename = jtpTitle.getText() + ".txt";
+        String filename = jtpTitle.getText();
         
         File file = new File(filename);
         FileWriter fr;
+        
+        try {
+            fr = new FileWriter(file, false);
+            fr.write(jtpContent.getText());
+            fr.close();
+            
+            JOptionPane.showMessageDialog(null, "File successfully updated!");
+        } catch (IOException ex) {
+            Logger.getLogger(GUI_Publisher.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         
     }//GEN-LAST:event_btnUpdateActionPerformed
 
