@@ -55,10 +55,10 @@ public class Testsomeshit {
     }
 
     public static void addData() {
-        User u = new User("user", "123","Member");
-        User u1 = new User("user1", "123","Member");
-        User u2 = new User("user2", "123","Member");
-        User p = new User("publisher","123","Publisher");
+        User u = new User("user", "123","Member","Active");
+        User u1 = new User("user1", "123","Member","Active");
+        User u2 = new User("user2", "123","Member","Active");
+        User p = new User("publisher","123","Publisher","Active");
 
         userdata.add(u);
         userdata.add(u1);

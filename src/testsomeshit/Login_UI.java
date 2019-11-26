@@ -15,9 +15,8 @@ import static testsomeshit.Testsomeshit.userdata;
  */
 public class Login_UI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login_UI
-     */
+    public static User user;
+    
     public Login_UI() {
         initComponents();
     }
@@ -130,44 +129,51 @@ public class Login_UI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginActionPerformed
 
     public void check(String username, String password) {
-        boolean correct = true;
+        boolean correct = false;
         
-        for (int i = 0; i < userdata.size(); i++) {
-            
-            if (username.equals(userdata.get(i).getUsername()) && password.equals(userdata.get(i).getPassword())) {
+        try {
+            for (int i = 0; i < userdata.size(); i++) {
 
-                if (userdata.get(i).getRole().equals("Member")) {
-                    GUI g = new GUI();
-                    this.setVisible(false);
-                    g.setVisible(true);
-                    JOptionPane.showMessageDialog(null, "Successfully logged in!");
-                    
+                if (username.equals(userdata.get(i).getUsername()) && password.equals(userdata.get(i).getPassword())) {
+
+                    if (userdata.get(i).getRole().equals("Member")) {
+                        user = userdata.get(i);
+                        GUI g = new GUI();
+                        this.setVisible(false);
+                        g.setVisible(true);
+                        JOptionPane.showMessageDialog(null, "Successfully logged in!");
+
+                        correct = true;
+                        break;
+
+                    } else if (userdata.get(i).getRole().equals("Publisher")) {
+                        user = userdata.get(i);
+                        GUI_Publisher gp = new GUI_Publisher();
+                        this.setVisible(false);
+                        gp.setVisible(true);
+                        JOptionPane.showMessageDialog(null, "Successfully logged in!");
+
                     correct = true;
-                    break;
-                    
-                } else if (userdata.get(i).getRole().equals("Publisher")) {
-                    
-                    GUI_Publisher gp = new GUI_Publisher();
-                    this.setVisible(false);
-                    gp.setVisible(true);
-                    JOptionPane.showMessageDialog(null, "Successfully logged in!");
-                    
-                    correct = true;
-                    break;
-                    
-                } else if (userdata.get(i).getRole().equals("Admin")) {
-                    
-                    correct = true;
-                    break;
+                        break;
+
+                    } else if (userdata.get(i).getRole().equals("Admin")) {
+                        user = userdata.get(i);
+                        correct = true;
+                        break;
+                    } else {
+
+                    }
+
                 } else {
+                    correct = false;
 
                 }
-
-            } else {
-                correct = false;
-                
             }
         }
+        catch(NullPointerException e){
+            
+        }
+        
         
         if(correct == false){
             JOptionPane.showMessageDialog(null, "Invalid username or password!");

@@ -13,13 +13,15 @@ public class User {
     private String username;
     private String password;
     private String role;
+    private String status;
     
     public User(){}
 
-    public User(String username, String password, String role) {
+    public User(String username, String password, String role, String status) {
         this.username = username;
         this.password = password;
         this.role = role;
+        this.status = status;
     }
     
     public String getUsername() {
@@ -44,6 +46,14 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
     
     

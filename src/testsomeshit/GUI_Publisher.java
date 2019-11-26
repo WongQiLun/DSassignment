@@ -10,7 +10,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import testsomeshit.Login_UI.*;
+
 
 /**
  *
@@ -133,21 +136,74 @@ public class GUI_Publisher extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        
-        String filename = txtTitle.getText() + ".txt";
-        
-        File file = new File(filename);
-        FileWriter fr;
-        
-        try {
-            fr = new FileWriter(file, true);
-            fr.write(txtContent.getText());
-            fr.close();
-            
-            JOptionPane.showMessageDialog(null, "File successfully created!");
-        } catch (IOException ex) {
-            Logger.getLogger(GUI_Publisher.class.getName()).log(Level.SEVERE, null, ex);
+
+        if(txtTitle.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Please enter title of the text file!");
         }
+        
+        else {
+            
+            if (txtContent.getText().equals("")) {
+                
+                JOptionPane.showMessageDialog(null, "Please enter content of the text file!");
+                
+            } else {
+                
+                if(Login_UI.user.getStatus().equals("Blocked")){
+                    
+                    JOptionPane.showMessageDialog(null, "Account blocked from publishing, please contact admin!");
+                    
+                }
+                
+                else {
+                    int count=0;
+                    String input = txtContent.getText();
+                    
+                    for (int i = 0; i < input.length(); i++) {
+                        if (input.charAt(i) == ' ') {
+                            
+                        }
+                        else{
+                            count++;
+                        }
+                    }
+                    
+                    if (count < 50) {
+                        JOptionPane.showMessageDialog(null, "The minimum word doesn't met. Please enter more than 50 words!");
+                    } else {
+                        
+                        Pattern regex = Pattern.compile("[$&+,:;=\\\\?@#|/'<>.^*()%!-]");
+                        
+                        if(regex.matcher(txtTitle.getText()).find()){
+                            JOptionPane.showMessageDialog(null, "Title cannot contains special characters!");
+                        }
+                        
+                        else {
+                            String filename = txtTitle.getText() + ".txt";
+
+                            File file = new File(filename);
+                            FileWriter fr;
+
+                            try {
+                                fr = new FileWriter(file, true);
+                                fr.write(txtContent.getText());
+                                fr.close();
+
+                                JOptionPane.showMessageDialog(null, "File successfully created!");
+                            } catch (IOException ex) {
+
+                                Logger.getLogger(GUI_Publisher.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+                        
+                    }
+
+                }
+
+            }
+
+        }
+        
         
     }//GEN-LAST:event_btnAddActionPerformed
 
