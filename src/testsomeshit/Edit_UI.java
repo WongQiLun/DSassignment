@@ -153,20 +153,37 @@ public class Edit_UI extends javax.swing.JFrame {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         
-        String filename = jtpTitle.getText();
-        
-        File file = new File(filename);
-        FileWriter fr;
-        
-        try {
-            fr = new FileWriter(file, false);
-            fr.write(jtpContent.getText());
-            fr.close();
-            
-            JOptionPane.showMessageDialog(null, "File successfully updated!");
-        } catch (IOException ex) {
-            Logger.getLogger(GUI_Publisher.class.getName()).log(Level.SEVERE, null, ex);
+        int count = 0;
+        String input = jtpContent.getText();
+
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == ' ') {
+
+            } else {
+                count++;
+            }
         }
+
+        if (count < 50) {
+            JOptionPane.showMessageDialog(null, "The minimum word doesn't met. Please enter more than 50 words!");
+        } else {
+            String filename = jtpTitle.getText();
+
+            File file = new File(filename);
+            FileWriter fr;
+
+            try {
+                fr = new FileWriter(file, false);
+                fr.write(jtpContent.getText());
+                fr.close();
+
+                JOptionPane.showMessageDialog(null, "File successfully updated!");
+            } catch (IOException ex) {
+                Logger.getLogger(GUI_Publisher.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+
         
         
     }//GEN-LAST:event_btnUpdateActionPerformed
