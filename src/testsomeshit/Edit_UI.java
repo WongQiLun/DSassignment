@@ -53,6 +53,7 @@ public class Edit_UI extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtpContent = new javax.swing.JTextPane();
+        btnSort = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -102,6 +103,14 @@ public class Edit_UI extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(jtpContent);
 
+        btnSort.setText("Sort");
+        btnSort.setToolTipText("");
+        btnSort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSortActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -123,10 +132,12 @@ public class Edit_UI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(84, 84, 84)
                         .addComponent(jtpOpen)
-                        .addGap(88, 88, 88)
+                        .addGap(38, 38, 38)
                         .addComponent(btnUpdate)
-                        .addGap(83, 83, 83)
-                        .addComponent(btnDelete)))
+                        .addGap(30, 30, 30)
+                        .addComponent(btnDelete)
+                        .addGap(39, 39, 39)
+                        .addComponent(btnSort)))
                 .addContainerGap(72, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -148,7 +159,8 @@ public class Edit_UI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdate)
                     .addComponent(jtpOpen)
-                    .addComponent(btnDelete))
+                    .addComponent(btnDelete)
+                    .addComponent(btnSort))
                 .addGap(23, 23, 23))
         );
 
@@ -231,6 +243,10 @@ public class Edit_UI extends javax.swing.JFrame {
 
         dispose();
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSortActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSortActionPerformed
 
     private void OpenFile() {
         // TODO add your handling code here:
@@ -331,6 +347,7 @@ public class Edit_UI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnSort;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
