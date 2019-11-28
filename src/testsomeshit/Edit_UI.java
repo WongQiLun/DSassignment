@@ -234,7 +234,7 @@ public class Edit_UI extends javax.swing.JFrame {
 
     private void OpenFile() {
         // TODO add your handling code here:
-        JFileChooser chooser = new JFileChooser("NetBeansProjects");
+        JFileChooser chooser = new JFileChooser("C:\\Users\\user\\Documents\\NetBeansProjects\\DSAssignment\\DSassignment");
 
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Text file", "txt");
         chooser.setFileFilter(filter);
