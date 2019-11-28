@@ -23,7 +23,7 @@ import static testsomeshit.GUI.infoBox;
  * @author ACER
  */
 public class Edit_UI extends javax.swing.JFrame {
-
+     File file = null;
     /**
      * Creates new form Edit_UI
      */
@@ -48,6 +48,7 @@ public class Edit_UI extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         jtpOpen = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -94,6 +95,14 @@ public class Edit_UI extends javax.swing.JFrame {
             }
         });
 
+        btnDelete.setText("Delete");
+        btnDelete.setToolTipText("");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -113,10 +122,12 @@ public class Edit_UI extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jtpContent, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(146, 146, 146)
+                        .addGap(84, 84, 84)
                         .addComponent(jtpOpen)
-                        .addGap(78, 78, 78)
-                        .addComponent(btnUpdate)))
+                        .addGap(88, 88, 88)
+                        .addComponent(btnUpdate)
+                        .addGap(83, 83, 83)
+                        .addComponent(btnDelete)))
                 .addContainerGap(72, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -137,7 +148,8 @@ public class Edit_UI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdate)
-                    .addComponent(jtpOpen))
+                    .addComponent(jtpOpen)
+                    .addComponent(btnDelete))
                 .addGap(23, 23, 23))
         );
 
@@ -203,6 +215,11 @@ public class Edit_UI extends javax.swing.JFrame {
         //jtpTitle.setEditable(false);
     }//GEN-LAST:event_jtpTitleActionPerformed
 
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        file.delete();
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
     private void OpenFile() {
         // TODO add your handling code here:
         JFileChooser chooser = new JFileChooser("NetBeansProjects");
@@ -211,7 +228,7 @@ public class Edit_UI extends javax.swing.JFrame {
         chooser.setFileFilter(filter);
         chooser.setDialogTitle("Open");
         int returnVal = chooser.showOpenDialog(null);
-        File file = null;
+         file = null;
         try {
             file = chooser.getSelectedFile();
             jtpTitle.setText(file.getName());
@@ -281,6 +298,7 @@ public class Edit_UI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
