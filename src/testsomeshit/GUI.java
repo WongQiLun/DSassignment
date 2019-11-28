@@ -27,7 +27,7 @@ import javax.swing.filechooser.FileSystemView;
  * @author user
  */
 public class GUI extends javax.swing.JFrame {
-
+    File file = null;
     static ArrayList<String> stringArray = new ArrayList<>();
     //replace this arrayList with custom arry list
     /**
@@ -212,7 +212,7 @@ public class GUI extends javax.swing.JFrame {
         chooser.setFileFilter(filter);
         chooser.setDialogTitle("Open");
         int returnVal = chooser.showOpenDialog(null);
-        File file = null;
+         file = null;
         try {
             file = chooser.getSelectedFile();
             jtpFileName.setText(file.getName());
@@ -254,7 +254,7 @@ public class GUI extends javax.swing.JFrame {
         chooser.setFileFilter(filter);
         chooser.setDialogTitle("Save output as");
         int returnVal = chooser.showOpenDialog(null);
-        File file = null;
+        file = null;
         try {
 
             file = chooser.getSelectedFile();
