@@ -99,6 +99,11 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         btnSave.setText("Save Output");
 
         btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         jCheckBox1.setText("Search from Up to Down");
 
@@ -237,6 +242,10 @@ public class FilterSearch_UI extends javax.swing.JFrame {
     private void chk3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chk3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chk3ActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     /**
      * @param args the command line arguments

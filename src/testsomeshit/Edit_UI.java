@@ -226,12 +226,15 @@ public class Edit_UI extends javax.swing.JFrame {
         System.gc();
         {
             try {
-                          //file to be delete  
-                if (   file.delete()) //returns Boolean value  
+                //file to be delete  
+                if (file.delete()) //returns Boolean value  
                 {
+                    JOptionPane.showMessageDialog(null, "File Deleted");
                     System.out.println(file.getName() + " deleted");   //getting and printing the file name  
+                    dispose();
                 } else {
                     System.out.println("failed");
+                    JOptionPane.showMessageDialog(null, "File not Deleted");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -239,9 +242,6 @@ public class Edit_UI extends javax.swing.JFrame {
 
         }
 
-     
-
-        dispose();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSortActionPerformed
