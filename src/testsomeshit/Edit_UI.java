@@ -219,6 +219,7 @@ public class Edit_UI extends javax.swing.JFrame {
 
     private void jtpTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtpTitleActionPerformed
         //jtpTitle.setEditable(false);
+        //abcde
     }//GEN-LAST:event_jtpTitleActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
