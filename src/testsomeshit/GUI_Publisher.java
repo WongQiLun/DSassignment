@@ -143,13 +143,13 @@ public class GUI_Publisher extends javax.swing.JFrame {
         
         else {
             
-            if (txtContent.getText().equals("")) {
+            if (txtContent.getText().equals("")) {  //Check null
                 
                 JOptionPane.showMessageDialog(null, "Please enter content of the text file!");
                 
             } else {
                 
-                if(Login_UI.user.getStatus().equals("Blocked")){
+                if(Login_UI.user.getStatus().equals("Blocked")){  //Check if account is blocked.
                     
                     JOptionPane.showMessageDialog(null, "Account blocked from publishing, please contact admin!");
                     
@@ -168,7 +168,7 @@ public class GUI_Publisher extends javax.swing.JFrame {
                         }
                     }
                     
-                    if (count < 50) {
+                    if (count < 50) {  // Check if words are less than 50
                         JOptionPane.showMessageDialog(null, "The minimum word doesn't met. Please enter more than 50 words!");
                     } else {
                         
