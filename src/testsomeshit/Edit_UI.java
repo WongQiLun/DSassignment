@@ -212,9 +212,24 @@ public class Edit_UI extends javax.swing.JFrame {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         System.gc();
-        
-        file.delete();
-       dispose();
+        {
+            try {
+                          //file to be delete  
+                if (   file.delete()) //returns Boolean value  
+                {
+                    System.out.println(file.getName() + " deleted");   //getting and printing the file name  
+                } else {
+                    System.out.println("failed");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+
+     
+
+        dispose();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void OpenFile() {
@@ -237,16 +252,18 @@ public class Edit_UI extends javax.swing.JFrame {
         Scanner s = null;
         try {
             s = new Scanner(file); //Read the selected file content
+
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GUI.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         String line = "";
         while (s.hasNextLine()) {
 
             line += s.nextLine() + "\n";
-            
+
         }
-       
+
         jtpContent.setText(line);
         line = line.replaceAll("\\W", " ");//replaces all nonwords into blanks
         String[] x = line.split("(\\b)");//split by non word characters and word boundries
@@ -254,22 +271,24 @@ public class Edit_UI extends javax.swing.JFrame {
         for (int y = 0; y < x.length; y++) {
             x[y] = x[y].trim();
         }
-        
 
-       //put in search arrays 
+        //put in search arrays 
     }
+
     public String getReasonForFileDeletionFailureInPlainEnglish(File file) {
-    try {
-        if (!file.exists())
-            return "It doesn't exist in the first place.";
-        else if (file.isDirectory() && file.list().length > 0)
-            return "It's a directory and it's not empty.";
-        else
-            return "Somebody else has it open, we don't have write permissions, or somebody stole my disk.";
-    } catch (SecurityException e) {
-        return "We're sandboxed and don't have filesystem access.";
+        try {
+            if (!file.exists()) {
+                return "It doesn't exist in the first place.";
+            } else if (file.isDirectory() && file.list().length > 0) {
+                return "It's a directory and it's not empty.";
+            } else {
+                return "Somebody else has it open, we don't have write permissions, or somebody stole my disk.";
+            }
+        } catch (SecurityException e) {
+            return "We're sandboxed and don't have filesystem access.";
+        }
     }
-}
+
     /**
      * @param args the command line arguments
      */
@@ -284,16 +303,21 @@ public class Edit_UI extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Edit_UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Edit_UI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Edit_UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Edit_UI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Edit_UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Edit_UI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Edit_UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Edit_UI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
