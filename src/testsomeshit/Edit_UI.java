@@ -234,7 +234,7 @@ public class Edit_UI extends javax.swing.JFrame {
                     dispose();
                 } else {
                     System.out.println("failed");
-                    JOptionPane.showMessageDialog(null, "File not Deleted");
+                    JOptionPane.showMessageDialog(null, "File not Deleted"+"\n"+getReasonForFileDeletionFailureInPlainEnglish(file));
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -294,11 +294,11 @@ public class Edit_UI extends javax.swing.JFrame {
     public String getReasonForFileDeletionFailureInPlainEnglish(File file) {
         try {
             if (!file.exists()) {
-                return "It doesn't exist in the first place.";
+                return "file doesn't exist";
             } else if (file.isDirectory() && file.list().length > 0) {
-                return "It's a directory and it's not empty.";
+                return "file a directory and it's not empty.";
             } else {
-                return "Somebody else has it open, we don't have write permissions, or somebody stole my disk.";
+                return "Somebody else has it open, we don't have write permissions.";
             }
         } catch (SecurityException e) {
             return "We're sandboxed and don't have filesystem access.";
