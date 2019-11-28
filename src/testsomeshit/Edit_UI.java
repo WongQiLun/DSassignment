@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package testsomeshit;
+
 import testsomeshit.GUI;
 
 import java.io.File;
@@ -23,7 +24,9 @@ import static testsomeshit.GUI.infoBox;
  * @author ACER
  */
 public class Edit_UI extends javax.swing.JFrame {
-     File file = null;
+
+    File file = null;
+
     /**
      * Creates new form Edit_UI
      */
@@ -44,11 +47,12 @@ public class Edit_UI extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jtpTitle = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jtpContent = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         jtpOpen = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtpContent = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -66,13 +70,6 @@ public class Edit_UI extends javax.swing.JFrame {
         });
 
         jLabel2.setText("Content");
-
-        jtpContent.setEditable(false);
-        jtpContent.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtpContentActionPerformed(evt);
-            }
-        });
 
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +100,8 @@ public class Edit_UI extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane2.setViewportView(jtpContent);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -116,11 +115,11 @@ public class Edit_UI extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(59, 59, 59)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
-                            .addComponent(jtpTitle)
+                            .addComponent(jtpTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
-                            .addComponent(jtpContent, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(84, 84, 84)
                         .addComponent(jtpOpen)
@@ -144,8 +143,8 @@ public class Edit_UI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtpContent, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdate)
                     .addComponent(jtpOpen)
@@ -164,7 +163,7 @@ public class Edit_UI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        
+
         int count = 0;
         String input = jtpContent.getText();
 
@@ -181,7 +180,7 @@ public class Edit_UI extends javax.swing.JFrame {
         } else {
             String filename = jtpTitle.getText();
 
-            File file = new File(filename);
+            file = new File(filename);
             FileWriter fr;
 
             try {
@@ -196,16 +195,11 @@ public class Edit_UI extends javax.swing.JFrame {
 
         }
 
-        
-        
+
     }//GEN-LAST:event_btnUpdateActionPerformed
 
-    private void jtpContentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtpContentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtpContentActionPerformed
-
     private void jtpOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtpOpenActionPerformed
-        
+
         OpenFile();
         jtpTitle.setEditable(true);
         jtpContent.setEditable(true);
@@ -217,7 +211,10 @@ public class Edit_UI extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        System.gc();
+        
         file.delete();
+       dispose();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void OpenFile() {
@@ -228,7 +225,7 @@ public class Edit_UI extends javax.swing.JFrame {
         chooser.setFileFilter(filter);
         chooser.setDialogTitle("Open");
         int returnVal = chooser.showOpenDialog(null);
-         file = null;
+        file = null;
         try {
             file = chooser.getSelectedFile();
             jtpTitle.setText(file.getName());
@@ -247,10 +244,9 @@ public class Edit_UI extends javax.swing.JFrame {
         while (s.hasNextLine()) {
 
             line += s.nextLine() + "\n";
+            
         }
-
-        
-
+       
         jtpContent.setText(line);
         line = line.replaceAll("\\W", " ");//replaces all nonwords into blanks
         String[] x = line.split("(\\b)");//split by non word characters and word boundries
@@ -259,9 +255,21 @@ public class Edit_UI extends javax.swing.JFrame {
             x[y] = x[y].trim();
         }
         
-       //put in search arrays 
 
+       //put in search arrays 
     }
+    public String getReasonForFileDeletionFailureInPlainEnglish(File file) {
+    try {
+        if (!file.exists())
+            return "It doesn't exist in the first place.";
+        else if (file.isDirectory() && file.list().length > 0)
+            return "It's a directory and it's not empty.";
+        else
+            return "Somebody else has it open, we don't have write permissions, or somebody stole my disk.";
+    } catch (SecurityException e) {
+        return "We're sandboxed and don't have filesystem access.";
+    }
+}
     /**
      * @param args the command line arguments
      */
@@ -304,7 +312,8 @@ public class Edit_UI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jtpContent;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextPane jtpContent;
     private javax.swing.JButton jtpOpen;
     private javax.swing.JTextField jtpTitle;
     // End of variables declaration//GEN-END:variables
