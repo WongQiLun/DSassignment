@@ -16,7 +16,7 @@ public class Search_UI extends javax.swing.JFrame {
      */
     public Search_UI() {
         initComponents();
-        
+        //
     }
 
     /**
