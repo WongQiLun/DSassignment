@@ -29,6 +29,7 @@ import javax.swing.filechooser.FileSystemView;
 public class GUI extends javax.swing.JFrame {
     File file = null;
     static ArrayList<String> stringArray = new ArrayList<>();
+    
     //replace this arrayList with custom arry list
     /**
      * Creates new form GUI
@@ -59,6 +60,7 @@ public class GUI extends javax.swing.JFrame {
         jbSaveFile = new javax.swing.JButton();
         btnFilter = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jbtnSearch = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMFile = new javax.swing.JMenu();
         jSaveContent = new javax.swing.JMenuItem();
@@ -99,6 +101,13 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jButton4.setText("jButton4");
+
+        jbtnSearch.setText("Search");
+        jbtnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnSearchActionPerformed(evt);
+            }
+        });
 
         jMFile.setText("File");
 
@@ -144,7 +153,8 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jbSaveFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jbOpen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnFilter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbtnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(48, 48, 48))
         );
         layout.setVerticalGroup(
@@ -158,11 +168,13 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(22, Short.MAX_VALUE))
+                        .addContainerGap(26, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jbOpen)
                         .addGap(18, 18, 18)
                         .addComponent(jbSaveFile)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbtnSearch)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnFilter)
                         .addGap(18, 18, 18)
@@ -204,6 +216,18 @@ public class GUI extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnFilterActionPerformed
+
+    private void jbtnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSearchActionPerformed
+        // TODO add your handling code here:
+        Search();
+    }//GEN-LAST:event_jbtnSearchActionPerformed
+    
+    private void Search() {
+        Search_UI searchUI = new Search_UI();
+        searchUI.setVisible(true);
+        this.setVisible(false);
+    }
+    
     private void OpenFile() {
         // TODO add your handling code here:
         JFileChooser chooser = new JFileChooser("C:\\Users\\user\\Documents\\NetBeansProjects\\DSAssignment\\DSassignment");
@@ -340,6 +364,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jbOpen;
     private javax.swing.JButton jbSaveFile;
+    private javax.swing.JButton jbtnSearch;
     private javax.swing.JTextPane jtpContent;
     private javax.swing.JTextPane jtpFileName;
     // End of variables declaration//GEN-END:variables

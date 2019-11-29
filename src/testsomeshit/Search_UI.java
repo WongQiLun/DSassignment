@@ -5,12 +5,23 @@
  */
 package testsomeshit;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import static testsomeshit.GUI.infoBox;
+
 /**
  *
  * @author alan0
  */
 public class Search_UI extends javax.swing.JFrame {
-
+    File file = null;
+    static ArrayList<String> stringArray = new ArrayList<>();
     /**
      * Creates new form Search_UI
      */
@@ -29,10 +40,30 @@ public class Search_UI extends javax.swing.JFrame {
     private void initComponents() {
 
         txtSearch = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtSearchText = new javax.swing.JTextPane();
+        btnSearch = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Search");
 
         txtSearch.setToolTipText("Search");
+        txtSearch.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtSearchFocusGained(evt);
+            }
+        });
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
+
+        txtSearchText.setEditable(false);
+        txtSearchText.setName("jpContent"); // NOI18N
+        jScrollPane1.setViewportView(txtSearchText);
+
+        btnSearch.setText("Search");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -40,19 +71,41 @@ public class Search_UI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                    .addComponent(txtSearch))
+                .addGap(18, 18, 18)
+                .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(265, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtSearchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSearchFocusGained
+        // TODO add your handling code here:
+        if(txtSearch.getText().equals("")) {
+            OpenFile();
+            txtSearch.hasFocus();
+        }else {
+            //
+        }
+    }//GEN-LAST:event_txtSearchFocusGained
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -89,8 +142,54 @@ public class Search_UI extends javax.swing.JFrame {
             }
         });
     }
+    
+    private void OpenFile() {
+        // TODO add your handling code here:
+        JFileChooser chooser = new JFileChooser("C:\\Users\\user\\Documents\\NetBeansProjects\\DSAssignment\\DSassignment");
+
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Text file", "txt");
+        chooser.setFileFilter(filter);
+        chooser.setDialogTitle("Open");
+        int returnVal = chooser.showOpenDialog(null);
+         file = null;
+        try {
+            file = chooser.getSelectedFile();
+            txtSearch.setText(file.getName());
+        } catch (Exception e) {
+
+            infoBox("error: file not found \n Please select a file to read from ", "File not found");
+        }
+
+        Scanner s = null;
+        try {
+            s = new Scanner(file); //Read the selected file content
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String line = "";
+        while (s.hasNextLine()) {
+
+            line += s.nextLine() + "\n";
+        }
+
+        txtSearchText.setContentType("text/plain");
+
+        txtSearchText.setText(line);
+        line = line.replaceAll("\\W", " ");//replaces all nonwords into blanks
+        String[] x = line.split("(\\b)");//split by non word characters and word boundries
+
+        for (int y = 0; y < x.length; y++) {
+            x[y] = x[y].trim();
+        }
+        
+       //put in search arrays 
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtSearch;
+    private javax.swing.JTextPane txtSearchText;
     // End of variables declaration//GEN-END:variables
 }
