@@ -16,6 +16,7 @@ public class Search_UI extends javax.swing.JFrame {
      */
     public Search_UI() {
         initComponents();
+        
     }
 
     /**
@@ -84,6 +85,7 @@ public class Search_UI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Search_UI().setVisible(true);
+                //
             }
         });
     }
