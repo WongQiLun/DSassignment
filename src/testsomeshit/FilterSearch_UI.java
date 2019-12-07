@@ -282,21 +282,49 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(txtSearch.getText() != ""){
             
+            Integer[] intArray = new Integer[100];
+            Integer[] intSearch = new Integer[100];
+            int count = 0;
+            int count1 = 0;
+            String result;
+
             String search = txtSearch.getText();
 
             if (btnInt.isSelected()) {
                 
                 try{
                     int search1 = Integer.parseInt(search);
-                    for(String in: x){
-                        
+                    
+                    for (int i = 0; i < x.length; i++) {
+                        if (tryConvert(x[i])) {
+                            intArray[count] = Integer.parseInt(x[i]);  //put line number which 
+                            count++;
+                        } else {
+
+                        }
                     }
+                   
+                    result = "Search Results : \n";
+                    for(int i = 0; i < count ; i++){
+                        if(search1 == intArray[i]){
+                            result += search1; 
+                        }
+                    }
+                    
+                    txtResult.setText(result);
+                    
+//                    for (int j = 0; j < count; j++) {
+//                        System.out.println(intArray[j]);
+//                    }
+                    
+                    
                 }
+                
                 catch(NumberFormatException e){                    
                     JOptionPane.showMessageDialog(null,"Please enter only digits!");
                 }
                 
-            } else {
+            } else {          //btnString.isSelected
 
             }
         }
@@ -414,4 +442,17 @@ public class FilterSearch_UI extends javax.swing.JFrame {
     public javax.swing.JTextPane txtResult;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
+    public static boolean tryConvert(String a) {
+        boolean result = false;
+
+        try {
+            Integer.parseInt(a);
+            result = true;
+        } catch (NumberFormatException e) {
+            result = false;
+        }
+
+        return result;
+    }
+
 }
