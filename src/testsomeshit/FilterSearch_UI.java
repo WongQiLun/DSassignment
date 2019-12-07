@@ -4,13 +4,24 @@
  * and open the template in the editor.
  */
 package testsomeshit;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import testsomeshit.GUI;
+import static testsomeshit.GUI.infoBox;
 
 /**
  *
  * @author ongchunheng
  */
 public class FilterSearch_UI extends javax.swing.JFrame {
+    File file = null;
+    String[] x;
 
     /**
      * Creates new form FilterSearch_UI
@@ -50,6 +61,9 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         jCheckBox2 = new javax.swing.JCheckBox();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtContent = new javax.swing.JTextPane();
+        btnOpen = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jtpFileName = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,6 +91,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         chk1.setText("Match whole words");
 
         buttonGroup1.add(btnString);
+        btnString.setSelected(true);
         btnString.setText("String");
 
         buttonGroup1.add(btnInt);
@@ -86,7 +101,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel3.setText("           Filter Search");
+        jLabel3.setText("         Search Engine");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         chk3.setText("Contains");
@@ -111,6 +126,16 @@ public class FilterSearch_UI extends javax.swing.JFrame {
 
         txtContent.setEditable(false);
         jScrollPane2.setViewportView(txtContent);
+
+        btnOpen.setText("Open");
+        btnOpen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpenActionPerformed(evt);
+            }
+        });
+
+        jtpFileName.setEditable(false);
+        jScrollPane3.setViewportView(jtpFileName);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -142,7 +167,6 @@ public class FilterSearch_UI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(46, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 647, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,7 +189,11 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                             .addComponent(txtSearch)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(btnSearch)
-                            .addGap(27, 27, 27)))))
+                            .addGap(27, 27, 27)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnOpen)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(222, 222, 222)
@@ -175,10 +203,17 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(btnBack)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(btnBack))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnOpen)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addGap(2, 2, 2)
@@ -211,7 +246,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                     .addComponent(btnSave))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(39, 39, 39)
@@ -245,7 +280,77 @@ public class FilterSearch_UI extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
+        if(txtSearch.getText() != ""){
+            
+            String search = txtSearch.getText();
+
+            if (btnInt.isSelected()) {
+                
+                try{
+                    int search1 = Integer.parseInt(search);
+                    for(String in: x){
+                        
+                    }
+                }
+                catch(NumberFormatException e){                    
+                    JOptionPane.showMessageDialog(null,"Please enter only digits!");
+                }
+                
+            } else {
+
+            }
+        }
+        
+        else{
+            JOptionPane.showMessageDialog(null,"No words were entered!");
+        }
+        
+        
+        
+        
+        
     }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
+        // TODO add your handling code here:
+        JFileChooser chooser = new JFileChooser("C:\\Users\\user\\Documents\\NetBeansProjects\\DSAssignment\\DSassignment");
+
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Text file", "txt");
+        chooser.setFileFilter(filter);
+        chooser.setDialogTitle("Open");
+        int returnVal = chooser.showOpenDialog(null);
+         file = null;
+        try {
+            file = chooser.getSelectedFile();
+            jtpFileName.setText(file.getName());
+        } catch (Exception e) {
+
+            infoBox("error: file not found \n Please select a file to read from ", "File not found");
+        }
+
+        Scanner s = null;
+        try {
+            s = new Scanner(file); //Read the selected file content
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String line = "";
+        while (s.hasNextLine()) {
+
+            line += s.nextLine() + "\n";
+        }
+
+        txtContent.setContentType("text/plain");
+
+        txtContent.setText(line);
+        line = line.replaceAll("\\W", " ");//replaces all nonwords into blanks
+        x = line.split("(\\b)");//split by non word characters and word boundries
+
+        for (int y = 0; y < x.length; y++) {
+            x[y] = x[y].trim();
+        }
+        
+    }//GEN-LAST:event_btnOpenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,6 +390,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JRadioButton btnInt;
+    private javax.swing.JButton btnOpen;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnSearch;
     private javax.swing.JRadioButton btnString;
@@ -301,7 +407,9 @@ public class FilterSearch_UI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextPane jtpFileName;
     public javax.swing.JTextPane txtContent;
     public javax.swing.JTextPane txtResult;
     private javax.swing.JTextField txtSearch;

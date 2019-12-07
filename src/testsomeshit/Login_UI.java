@@ -138,7 +138,7 @@ public class Login_UI extends javax.swing.JFrame {
 
                     if (userdata.get(i).getRole().equals("Member")) {
                         user = userdata.get(i);
-                        GUI g = new GUI();
+                        FilterSearch_UI g = new FilterSearch_UI();
                         this.setVisible(false);
                         g.setVisible(true);
                         JOptionPane.showMessageDialog(null, "Successfully logged in!");
