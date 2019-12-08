@@ -9,13 +9,13 @@ package Class;
  *
  * @author user
  */
-public class WordDoublyLinkedList <T> implements DoublyLinkedListADT<T>{
-    
+public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
+
     Node firstNode;
     Node lastNode;
-    int nodeNumber= 0;
+    int nodeNumber = 0;
 
-   @Override
+    @Override
     public void append(T data) {
         Node x = new Node(data);
         if (firstNode == null) {
@@ -42,7 +42,7 @@ public class WordDoublyLinkedList <T> implements DoublyLinkedListADT<T>{
             nodeNumber++;
         } else {
             firstNode.previous = x;
-            x.next= firstNode;
+            x.next = firstNode;
             firstNode = x;
             nodeNumber++;
         }
@@ -98,57 +98,59 @@ public class WordDoublyLinkedList <T> implements DoublyLinkedListADT<T>{
     public void clear() {
         firstNode = null;
         lastNode = null;
-        nodeNumber =0;
+        nodeNumber = 0;
     }
 
     @Override
     public T remove(int i) {
-          Node nodeToBeRemoved = firstNode;
-                for (int x = 1; x < i; x++) {
+        Node nodeToBeRemoved = firstNode;
+        for (int x = 1; x < i; x++) {
             nodeToBeRemoved = nodeToBeRemoved.next;
         }
-        if (i  == 1){
+        if (i == 1) {
             return removeFirst();
-        }else if ( i == nodeNumber )
-        {
+        } else if (i == nodeNumber) {
             return removeLast();
-        }else{
+        } else {
             nodeToBeRemoved.previous.next = nodeToBeRemoved.next;
-        nodeToBeRemoved.next.previous = nodeToBeRemoved.previous;
-       nodeNumber--;
-                return (T) nodeToBeRemoved.current;
+            nodeToBeRemoved.next.previous = nodeToBeRemoved.previous;
+            nodeNumber--;
+            return (T) nodeToBeRemoved.current;
         }
 
-        
     }
 
     @Override
     public boolean isEmpty() {
-        if (nodeNumber == 0)
+        if (nodeNumber == 0) {
             return true;
+        }
         return false;
-    
+
     }
-    public void sort(){
-        if (nodeNumber ==1 ){
+
+    public void sort() {
+        if (nodeNumber == 1) {
             return;
         }
     }
- 
-    
+
 }
- class Node<T>{
+
+class Node<T> {
 
     public Node(T current) {
         this.current = current;
     }
-     Node previous;
-     Node next;
-     T current;
-     //replace the value of the node and return the T value
-     public T replace(T data){
-         T item = null;
-         return item;
-     }
-     
- }
+    Node previous;
+    Node next;
+    T current;
+
+    //replace the value of the node and return the T value
+
+    public T replace(T data) {
+        T item = null;
+        return item;
+    }
+
+}
