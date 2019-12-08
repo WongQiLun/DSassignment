@@ -307,8 +307,6 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                 try{
                     int search1 = Integer.parseInt(search);
                     
-                    
-                    
                     for (int i = 0; i < wArray.size(); i++) {                        
                         if (tryConvert(wArray.get(i).getData().trim())) {
                             //System.out.println("YES!");
@@ -332,8 +330,6 @@ public class FilterSearch_UI extends javax.swing.JFrame {
 //                    for (int j = 0; j < count; j++) {
 //                        System.out.println(intArray[j]);
 //                    }
-                    
-                    
                 }
                 
                 catch(NumberFormatException e){                    
@@ -343,10 +339,12 @@ public class FilterSearch_UI extends javax.swing.JFrame {
             } else {          //btnString.isSelected
                
                 boolean found = false;
+                int count = 0;
                 
                 for(int i = 0 ; i < wArray.size() ; i++){
                     
                     if(search.equals(wArray.get(i).getData())){
+                        count++;
                         found = true;
                         int para = wArray.get(i).getParagraph();
                         
@@ -372,9 +370,11 @@ public class FilterSearch_UI extends javax.swing.JFrame {
 
                 if (found == false) {
                     JOptionPane.showMessageDialog(null, "No words found!");
+                    txtResult.setText("");
                 }
                 
                 else{
+                    JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
                     txtResult.setText(stringresult);
                 }
             }//end else
