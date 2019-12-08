@@ -295,6 +295,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
         if(txtSearch.getText() != ""){
+            stringresult = "";
 
             String result;
             WordListADT<Word> intArray = new WordList();
@@ -349,26 +350,32 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                         found = true;
                         int para = wArray.get(i).getParagraph();
                         
-                        stringresult += "\nParagraph " + wArray.get(i).getParagraph() + ": ";
+                        stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
                         
                         for (int j = 0; j < wArray.size(); j++) {
 
                             if (wArray.get(j).getParagraph() == para) {
                                 if (wArray.get(j).getData().equals(search)) {
-
+                                     stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
                                 }
-                                stringresult += wArray.get(j).getData() + " ";
-
+                                else{
+                                    stringresult += wArray.get(j).getData() + " ";
+                                }
+                                
                             }
+                             
+                            
                         }
                     }
-
-                    txtResult.setText(stringresult);
-
+                    
                 } // end for
 
                 if (found == false) {
                     JOptionPane.showMessageDialog(null, "No words found!");
+                }
+                
+                else{
+                    txtResult.setText(stringresult);
                 }
             }//end else
         }
@@ -438,8 +445,9 @@ public class FilterSearch_UI extends javax.swing.JFrame {
 
 
         txtContent.setContentType("text/plain");
-
+        txtResult.setContentType("text/html");
         txtContent.setText(line.trim());
+       
         line = line.replaceAll("\\W", " ");//replaces all nonwords into blanks
         x = line.split("(\\b)");//split by non word characters and word boundries
 
