@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static testsomeshit.Testsomeshit.*;
 
 /**
  *
@@ -19,7 +20,7 @@ import static org.junit.Assert.*;
  */
 public class Login_UITest {
     
-    private User u;
+    //private User u;
     
     public Login_UITest() {
     }
@@ -37,7 +38,8 @@ public class Login_UITest {
     @Before
     public void setUp() {
         System.out.println("* Login_UITest: @Test Method Started" );
-        u = new User("user","123","Member","Active");        
+        
+        //u = new User("user","123","Member","Active");        
     }
     
     @After
@@ -50,13 +52,18 @@ public class Login_UITest {
      */
     @Test
     public void testCheck() {
+        addData();
         System.out.println("\nCheck Login");
         String username = "user";
         String password = "123";
         
-        assertEquals(u.getUsername(),username);
-        assertEquals(u.getPassword(),password);
-        assertEquals(u.getStatus(),"Active");
+//        assertEquals(u.getUsername(),username);
+//        assertEquals(u.getPassword(),password);
+//        assertEquals(u.getStatus(),"Active");
+
+        assertEquals(userdata.get(0).getUsername(),username);
+        assertEquals(userdata.get(0).getPassword(),password);
+        assertEquals(userdata.get(0).getStatus(),"Active");
         
         System.out.print("\n");
         
