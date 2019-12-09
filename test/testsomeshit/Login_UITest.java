@@ -31,7 +31,7 @@ public class Login_UITest {
     
     @AfterClass
     public static void tearDownClass() {
-        System.out.println("* Login_UITest: @ATest Class Ended" );
+        System.out.println("* Login_UITest: @Test Class Ended" );
     }
     
     @Before
