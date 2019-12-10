@@ -15,6 +15,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import testsomeshit.GUI;
 import static testsomeshit.GUI.infoBox;
 import Class.Word;
+import Class.WordDoublyLinkedList;
 import Class.WordList;
 import Class.WordListADT;
 import java.awt.Color;
@@ -35,6 +36,8 @@ public class FilterSearch_UI extends javax.swing.JFrame {
     File file = null;
     String[] x;
     WordListADT<Word> wArray = new WordList();
+   
+    WordDoublyLinkedList<Word> wDLL= new WordDoublyLinkedList();
     String stringresult = "";
 
     /**
@@ -161,6 +164,11 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         });
 
         jButton1.setText("Test Sort");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -438,22 +446,30 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         }
         
         String[] stringArray = line.split(" ");
-        
+        Word[] items=null; 
+        int xxx = 0;
         int paragraph=1;
         
         for(String e : stringArray){        //Insert into WordList ADT
              if(e.contains("\n")){
+                 
                  paragraph++;
                  Word w = new Word(e.substring(1),paragraph,paragraph);
                  //System.out.println(e);
                  wArray.add(w);
+                 items[xxx] = w;
+                 xxx++;
                  
              }
              else{
                  Word w = new Word(e.trim(),paragraph,paragraph);
                  //System.out.println(e);
                  wArray.add(w);
+                  items[xxx] = w;
+                  xxx ++ ;
+                 
              }
+             wDLL.add(items);
         }             
         
 //        System.out.print((wArray));
@@ -477,6 +493,11 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_jbtnSortActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
