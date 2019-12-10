@@ -150,6 +150,13 @@ public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
         nodeInThatLocation.previous.next = data;
         nodeInThatLocation.previous =data; 
     }
+    public void swap(int i , int b ){
+        Node<T> nodeInThatLocation  = getNode(i);
+        Node<T> node = getNode(b);
+        T buffer= nodeInThatLocation.current;
+        T buffer2= node.replace(buffer);
+        nodeInThatLocation.replace(buffer2);
+    }
     
     public void sort() {
         if(isEmpty()){
