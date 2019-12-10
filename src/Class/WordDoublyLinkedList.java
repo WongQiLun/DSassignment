@@ -11,8 +11,20 @@ package Class;
  */
 public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
 
-    Node firstNode;
-    Node lastNode;
+    public Node getFirstNode() {
+        return firstNode;
+    }
+
+    public Node getLastNode() {
+        return lastNode;
+    }
+
+    public int getNodeNumber() {
+        return nodeNumber;
+    }
+
+    Node firstNode=null;
+    Node lastNode=null;
     int nodeNumber = 0;
 
     @Override
@@ -87,16 +99,21 @@ public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
     @Override
     public T getItem(int i) {
         Node y = firstNode;
+        if(i != 1){
         for (int x = 1; x < i; x++) {
             y = y.next;
+        }
         }
         return (T) y.current;
 
     }
     public Node getNode(int i) {
         Node y = firstNode;
+        if(i != 1){
+        
         for (int x = 1; x < i; x++) {
             y = y.next;
+        }
         }
         return y;
 
@@ -157,7 +174,7 @@ public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
         T buffer2= node.replace(buffer);
         nodeInThatLocation.replace(buffer2);
     }
-    
+
     public void sort() {
         if(isEmpty()){
             return;
@@ -173,20 +190,3 @@ public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
 
 }
 
-class Node<T> {
-
-    public Node(T current) {
-        this.current = current;
-    }
-    Node previous;
-    Node next;
-    T current;
-
-    //replace the value of the node and return the T value
-
-    public T replace(T data) {
-        T item = null;
-        return item;
-    }
-
-}

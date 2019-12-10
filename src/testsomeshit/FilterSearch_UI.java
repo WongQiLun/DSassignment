@@ -6,6 +6,7 @@
 package testsomeshit;
 
 import Class.DoublyLinkedListADT;
+import Class.Node;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -40,8 +41,8 @@ public class FilterSearch_UI extends javax.swing.JFrame {
     String[] x;
     WordListADT<Word> wArray = new WordList();
 
-    DoublyLinkedListADT<Word> wDLL = new WordDoublyLinkedList();
-    
+    WordDoublyLinkedList<Word> wDLL = new WordDoublyLinkedList();
+
     String stringresult = "";
 
     /**
@@ -86,7 +87,6 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jtpFileName = new javax.swing.JTextPane();
         jbtnSort = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -167,13 +167,6 @@ public class FilterSearch_UI extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Test Sort");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -193,14 +186,9 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                         .addGap(170, 170, 170)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(135, 135, 135))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jbtnSort)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jbtnSort)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(58, 58, 58)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -280,9 +268,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                         .addGap(3, 3, 3)
                         .addComponent(jCheckBox2)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chk1)
-                    .addComponent(jButton1))
+                .addComponent(chk1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -291,7 +277,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                         .addComponent(jbtnSort)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -440,7 +426,8 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         Word[] items = new Word[1000];
         int xxx = 0;
         int paragraph = 1;
-        wArray =  new WordList();
+        wArray = new WordList();
+        wDLL = new WordDoublyLinkedList();
         for (String e : stringArray) {        //Insert into WordList ADT
             if (e.contains("\n")) {
 
@@ -451,17 +438,19 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                 items[xxx] = w;
                 xxx++;
                 wDLL.append(w);
+                 System.out.println(w);
             } else {
                 Word w = new Word(e.trim(), paragraph, paragraph);
                 //System.out.println(e);
                 wArray.add(w);
                 items[xxx] = w;
                 xxx++;
-                 wDLL.append(w);
+                wDLL.append(w);
+                System.out.println(w);
 
             }
            
-            
+
         }
 
 //        System.out.print((wArray));
@@ -481,13 +470,16 @@ public class FilterSearch_UI extends javax.swing.JFrame {
 
     private void jbtnSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSortActionPerformed
         // TODO add your handling code here:
-
+        WordDoublyLinkedList<Word> wDLL2= wDLL;
+        sort(wDLL2, 1, wDLL2.getNodeNumber());
+        String y= "";
+        Node<Word> currentNode = wDLL2.getFirstNode();
+        for(int x = 1; x < wDLL2.getNodeNumber(); x++){
+            y += wDLL2.getItem(x).getData()+"<br />";
+            
+        }
+        txtResult.setText(y);
     }//GEN-LAST:event_jbtnSortActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -536,7 +528,6 @@ public class FilterSearch_UI extends javax.swing.JFrame {
     private javax.swing.JCheckBox chk1;
     private javax.swing.JCheckBox chk2;
     private javax.swing.JCheckBox chk3;
-    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
@@ -567,4 +558,29 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         return result;
     }
 
+    private void sort(WordDoublyLinkedList<Word> arr , int low, int high ) {
+       if (high>low){
+           int pi= partition(arr, low, high);
+           sort(arr, low, pi -1);
+           sort(arr, pi+1,high);
+       }
+     
+    }
+
+    private int partition(WordDoublyLinkedList<Word> arr, int low, int high) {
+        Word pivot = arr.getItem(high);
+        int i = (low -1);
+        for (int j=low; j<high; j++) 
+        {
+            if(pivot.isLowerThan(arr.getItem(j))){
+                i++;
+                arr.swap(i, j);
+                
+            }
+        }
+        arr.swap(i+1, high);
+        return i+1;       
+    }
+  
+    
 }

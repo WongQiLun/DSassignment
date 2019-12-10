@@ -51,9 +51,13 @@ public class Word {
         
         return s;
     }
-    public boolean isHigher(Word x ){
+    public boolean isLowerThan(Word x ){
         boolean higher =false;
         //todo is higher
+        
+        if(this.data.compareToIgnoreCase(x.data)> 0){
+            higher= true;
+        }
        return higher; 
     }
     
