@@ -51,6 +51,10 @@ public class Word {
         
         return s;
     }
-    
+    public boolean isHigher(Word x ){
+        boolean higher =false;
+        //todo is higher
+       return higher; 
+    }
     
 }
