@@ -128,9 +128,21 @@ public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
         return false;
 
     }
+    public void add(T[] strArray){
+        for(T x: strArray){
+            this.append(x);
+        }
+    }
 
     public void sort() {
+        if(isEmpty()){
+            return;
+        }
         if (nodeNumber == 1) {
+            return;
+        }
+        else{
+            //todo sorting 
             return;
         }
     }
