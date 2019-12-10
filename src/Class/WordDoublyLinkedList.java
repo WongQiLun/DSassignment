@@ -11,6 +11,10 @@ package Class;
  */
 public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
 
+    Node firstNode = null;
+    Node lastNode = null;
+    int nodeNumber = 0;
+    
     public Node getFirstNode() {
         return firstNode;
     }
@@ -22,10 +26,6 @@ public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
     public int getNodeNumber() {
         return nodeNumber;
     }
-
-    Node firstNode=null;
-    Node lastNode=null;
-    int nodeNumber = 0;
 
     @Override
     public void append(T data) {
@@ -98,24 +98,35 @@ public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
 
     @Override
     public T getItem(int i) {
-        Node y = firstNode;
-        if(i != 1){
-        for (int x = 1; x < i; x++) {
-            y = y.next;
-        }
-        }
+        Node y = getNode(i);
         return (T) y.current;
 
     }
+
     public Node getNode(int i) {
-        Node y = firstNode;
-        if(i != 1){
         
-        for (int x = 1; x < i; x++) {
-            y = y.next;
+        if (i < nodeNumber / 2) {
+            Node y = firstNode;
+            if (i != 1) {
+
+                for (int x = 1; x < i; x++) {
+                    y = y.next;
+                }
+            }
+              return y;
         }
+        else{
+                        Node y = lastNode;
+            if (i != 1) {
+
+                for (int x = 1; x < (nodeNumber -i); x++) {
+                    y = y.previous;
+                }
+            }
+              return y;
         }
-        return y;
+
+      
 
     }
 
@@ -153,40 +164,30 @@ public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
         return false;
 
     }
-    public void add(T[] strArray){
-        for(T x: strArray){
+
+    public void add(T[] strArray) {
+        for (T x : strArray) {
             this.append(x);
         }
     }
-    public void insertAt(int i , T item){
-        Node<T> data = new Node<T> (item);
-        Node<T> nodeInThatLocation  = getNode(i);
+
+    public void insertAt(int i, T item) {
+        Node<T> data = new Node<T>(item);
+        Node<T> nodeInThatLocation = getNode(i);
         nodeNumber++;
         data.previous = nodeInThatLocation.previous;
         data.next = nodeInThatLocation;
         nodeInThatLocation.previous.next = data;
-        nodeInThatLocation.previous =data; 
+        nodeInThatLocation.previous = data;
     }
-    public void swap(int i , int b ){
-        Node<T> nodeInThatLocation  = getNode(i);
+
+    public void swap(int i, int b) {
+        Node<T> nodeInThatLocation = getNode(i);
         Node<T> node = getNode(b);
-        T buffer= nodeInThatLocation.current;
-        T buffer2= node.replace(buffer);
+        T buffer = nodeInThatLocation.current;
+        T buffer2 = node.replace(buffer);
         nodeInThatLocation.replace(buffer2);
     }
 
-    public void sort() {
-        if(isEmpty()){
-            return;
-        }
-        if (nodeNumber == 1) {
-            return;
-        }
-        else{
-            //todo sorting 
-            return;
-        }
-    }
 
 }
-
