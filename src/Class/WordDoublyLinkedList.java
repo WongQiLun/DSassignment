@@ -116,7 +116,7 @@ public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
               return y;
         }
         else{
-                        Node y = lastNode;
+            Node y = lastNode;
             if (i != 1) {
 
                 for (int x = 1; x < (nodeNumber -i); x++) {
@@ -139,10 +139,7 @@ public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
 
     @Override
     public T remove(int i) {
-        Node nodeToBeRemoved = firstNode;
-        for (int x = 1; x < i; x++) {
-            nodeToBeRemoved = nodeToBeRemoved.next;
-        }
+        Node nodeToBeRemoved = getNode(i);
         if (i == 1) {
             return removeFirst();
         } else if (i == nodeNumber) {
