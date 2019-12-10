@@ -93,6 +93,14 @@ public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
         return (T) y.current;
 
     }
+        public Node getNode(int i) {
+        Node y = firstNode;
+        for (int x = 1; x < i; x++) {
+            y = y.next;
+        }
+        return y;
+
+    }
 
     @Override
     public void clear() {
@@ -133,7 +141,16 @@ public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
             this.append(x);
         }
     }
-
+    public void insertAt(int i , T item){
+        Node<T> data = new Node<T> (item);
+        Node<T> nodeInThatLocation  = getNode(i);
+        nodeNumber++;
+        data.previous = nodeInThatLocation.previous;
+        data.next = nodeInThatLocation;
+        nodeInThatLocation.previous.next = data;
+        nodeInThatLocation.previous =data; 
+    }
+    
     public void sort() {
         if(isEmpty()){
             return;
