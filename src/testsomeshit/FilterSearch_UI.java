@@ -429,27 +429,28 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         wArray = new WordList();
         wDLL = new WordDoublyLinkedList();
         for (String e : stringArray) {        //Insert into WordList ADT
-            if (e.contains("\n")) {
-
+            if (e.contains("\n") && !e.isEmpty()) {
                 paragraph++;
                 Word w = new Word(e.substring(1), paragraph, paragraph);
                 //System.out.println(e);
-                wArray.add(w);
-                items[xxx] = w;
-                xxx++;
-                wDLL.append(w);
-                 System.out.println(w);
+                if (!w.getData().isEmpty()) {
+                    wArray.add(w);
+                    items[xxx] = w;
+                    xxx++;
+                    wDLL.append(w);
+                    System.out.println(w);
+                }
             } else {
                 Word w = new Word(e.trim(), paragraph, paragraph);
                 //System.out.println(e);
-                wArray.add(w);
-                items[xxx] = w;
-                xxx++;
-                wDLL.append(w);
-                System.out.println(w);
-
+                if (!w.getData().isEmpty()) {
+                    wArray.add(w);
+                    items[xxx] = w;
+                    xxx++;
+                    wDLL.append(w);
+                    System.out.println(w);
+                }
             }
-           
 
         }
 
@@ -470,13 +471,13 @@ public class FilterSearch_UI extends javax.swing.JFrame {
 
     private void jbtnSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSortActionPerformed
         // TODO add your handling code here:
-        WordDoublyLinkedList<Word> wDLL2= wDLL;
+        WordDoublyLinkedList<Word> wDLL2 = wDLL;
         sort(wDLL2, 1, wDLL2.getNodeNumber());
-        String y= "";
+        String y = "";
         Node<Word> currentNode = wDLL2.getFirstNode();
-        for(int x = 1; x < wDLL2.getNodeNumber(); x++){
-            y += wDLL2.getItem(x).getData()+"<br />";
-            
+        for (int x = 1; x < wDLL2.getNodeNumber(); x++) {
+            y += wDLL2.getItem(x).getData() + "<br />";
+
         }
         txtResult.setText(y);
     }//GEN-LAST:event_jbtnSortActionPerformed
@@ -558,29 +559,27 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         return result;
     }
 
-    private void sort(WordDoublyLinkedList<Word> arr , int low, int high ) {
-       if (high>low){
-           int pi= partition(arr, low, high);
-           sort(arr, low, pi -1);
-           sort(arr, pi+1,high);
-       }
-     
+    private void sort(WordDoublyLinkedList<Word> arr, int low, int high) {
+        if (high > low) {
+            int pi = partition(arr, low, high);
+            sort(arr, low, pi - 1);
+            sort(arr, pi + 1, high);
+        }
+
     }
 
     private int partition(WordDoublyLinkedList<Word> arr, int low, int high) {
         Word pivot = arr.getItem(high);
-        int i = (low -1);
-        for (int j=low; j<high; j++) 
-        {
-            if(pivot.isLowerThan(arr.getItem(j))){
+        int i = (low - 1);
+        for (int j = low; j < high; j++) {
+            if (pivot.isLowerThan(arr.getItem(j))) {
                 i++;
                 arr.swap(i, j);
-                
+
             }
         }
-        arr.swap(i+1, high);
-        return i+1;       
+        arr.swap(i + 1, high);
+        return i + 1;
     }
-  
-    
+
 }
