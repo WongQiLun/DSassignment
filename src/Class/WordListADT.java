@@ -21,4 +21,5 @@ public interface WordListADT<T> {
     public boolean isEmpty();
     
     public int size();
+   
 }

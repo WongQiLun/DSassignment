@@ -57,6 +57,8 @@ public interface DoublyLinkedListADT<T> {
 
     
     public boolean isEmpty();
+
+    public void add(T[] items);
     
 
   

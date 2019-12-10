@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package testsomeshit;
+
+import Class.DoublyLinkedListADT;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -33,11 +35,13 @@ import javax.swing.text.StyledDocument;
  * @author ongchunheng
  */
 public class FilterSearch_UI extends javax.swing.JFrame {
+
     File file = null;
     String[] x;
     WordListADT<Word> wArray = new WordList();
-   
-    WordDoublyLinkedList<Word> wDLL= new WordDoublyLinkedList();
+
+    DoublyLinkedListADT<Word> wDLL = new WordDoublyLinkedList();
+    
     String stringresult = "";
 
     /**
@@ -309,7 +313,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        
+
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void chk3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chk3ActionPerformed
@@ -318,7 +322,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-        if(txtSearch.getText() != ""){
+        if (txtSearch.getText() != "") {
             stringresult = "";
 
             String result;
@@ -327,87 +331,79 @@ public class FilterSearch_UI extends javax.swing.JFrame {
             String search = txtSearch.getText();
 
             if (btnInt.isSelected()) {
-                
-                try{
+
+                try {
                     int search1 = Integer.parseInt(search);
-                    
-                    for (int i = 0; i < wArray.size(); i++) {                        
+
+                    for (int i = 0; i < wArray.size(); i++) {
                         if (tryConvert(wArray.get(i).getData().trim())) {
                             //System.out.println("YES!");
-                            Word w = new Word(wArray.get(i).getData(),wArray.get(i).getParagraph(),wArray.get(i).getRow());
+                            Word w = new Word(wArray.get(i).getData(), wArray.get(i).getParagraph(), wArray.get(i).getRow());
                             intArray.add(w);
 
                         } else {
 
                         }
                     }
-                   
+
                     result = "";
-                    for(int i = 0; i < intArray.size() ; i++){
-                        if(search1 == Integer.parseInt(intArray.get(i).getData())){
-                            result += "\nParagraph " + intArray.get(i).getParagraph() + ": " + search1; 
+                    for (int i = 0; i < intArray.size(); i++) {
+                        if (search1 == Integer.parseInt(intArray.get(i).getData())) {
+                            result += "\nParagraph " + intArray.get(i).getParagraph() + ": " + search1;
                         }
                     }
-                    
+
                     txtResult.setText(result);
-                    
+
 //                    for (int j = 0; j < count; j++) {
 //                        System.out.println(intArray[j]);
 //                    }
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Please enter only digits!");
                 }
-                
-                catch(NumberFormatException e){                    
-                    JOptionPane.showMessageDialog(null,"Please enter only digits!");
-                }
-                
+
             } else {          //btnString.isSelected
-               
+
                 boolean found = false;
                 int count = 0;
-                
-                for(int i = 0 ; i < wArray.size() ; i++){
-                    
-                    if(search.equals(wArray.get(i).getData())){
+
+                for (int i = 0; i < wArray.size(); i++) {
+
+                    if (search.equals(wArray.get(i).getData())) {
                         count++;
                         found = true;
                         int para = wArray.get(i).getParagraph();
-                        
+
                         stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
-                        
+
                         for (int j = 0; j < wArray.size(); j++) {
 
                             if (wArray.get(j).getParagraph() == para) {
                                 if (wArray.get(j).getData().equals(search)) {
-                                     stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
-                                }
-                                else{
+                                    stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
+                                } else {
                                     stringresult += wArray.get(j).getData() + " ";
                                 }
-                                
+
                             }
-                             
-                            
+
                         }
                     }
-                    
+
                 } // end for
 
                 if (found == false) {
                     JOptionPane.showMessageDialog(null, "No words found!");
                     txtResult.setText("");
-                }
-                
-                else{
+                } else {
                     JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
                     txtResult.setText(stringresult);
                 }
             }//end else
+        } else {
+            JOptionPane.showMessageDialog(null, "No words were entered!");
         }
-        
-        else{
-            JOptionPane.showMessageDialog(null,"No words were entered!");
-        }
-        
+
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
@@ -418,7 +414,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         chooser.setFileFilter(filter);
         chooser.setDialogTitle("Open");
         int returnVal = chooser.showOpenDialog(null);
-         file = null;
+        file = null;
         try {
             file = chooser.getSelectedFile();
             jtpFileName.setText(file.getName());
@@ -434,69 +430,63 @@ public class FilterSearch_UI extends javax.swing.JFrame {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
         String line = "";
-        
+
         while (s.hasNextLine()) {
             line += s.nextLine() + " \n";
+
+        }
+
+        String[] stringArray = line.split(" ");
+        Word[] items = new Word[1000];
+        int xxx = 0;
+        int paragraph = 1;
+        wArray =  new WordList();
+        for (String e : stringArray) {        //Insert into WordList ADT
+            if (e.contains("\n")) {
+
+                paragraph++;
+                Word w = new Word(e.substring(1), paragraph, paragraph);
+                //System.out.println(e);
+                wArray.add(w);
+                items[xxx] = w;
+                xxx++;
+                wDLL.append(w);
+            } else {
+                Word w = new Word(e.trim(), paragraph, paragraph);
+                //System.out.println(e);
+                wArray.add(w);
+                items[xxx] = w;
+                xxx++;
+                 wDLL.append(w);
+
+            }
+           
             
         }
-        
-        String[] line1 = line.split("\\r?\\n");
-        for(String e1 : line1){ 
-            //System.out.print(e1);
-        }
-        
-        String[] stringArray = line.split(" ");
-        Word[] items=null; 
-        int xxx = 0;
-        int paragraph=1;
-        
-        for(String e : stringArray){        //Insert into WordList ADT
-             if(e.contains("\n")){
-                 
-                 paragraph++;
-                 Word w = new Word(e.substring(1),paragraph,paragraph);
-                 //System.out.println(e);
-                 wArray.add(w);
-                 items[xxx] = w;
-                 xxx++;
-                 
-             }
-             else{
-                 Word w = new Word(e.trim(),paragraph,paragraph);
-                 //System.out.println(e);
-                 wArray.add(w);
-                  items[xxx] = w;
-                  xxx ++ ;
-                 
-             }
-             wDLL.add(items);
-        }             
-        
+
 //        System.out.print((wArray));
 //        System.out.print((paragraph));
-
-
         txtContent.setContentType("text/plain");
         txtResult.setContentType("text/html");
         txtContent.setText(line.trim());
-       
+
         line = line.replaceAll("\\W", " ");//replaces all nonwords into blanks
         x = line.split("(\\b)");//split by non word characters and word boundries
 
         for (int y = 0; y < x.length; y++) {
             x[y] = x[y].trim();
         }
-        
+
     }//GEN-LAST:event_btnOpenActionPerformed
 
     private void jbtnSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSortActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jbtnSortActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -563,7 +553,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
     public javax.swing.JTextPane txtResult;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
-    
+
     public static boolean tryConvert(String a) {
         boolean result = false;
 

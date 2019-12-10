@@ -93,7 +93,7 @@ public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
         return (T) y.current;
 
     }
-        public Node getNode(int i) {
+    public Node getNode(int i) {
         Node y = firstNode;
         for (int x = 1; x < i; x++) {
             y = y.next;
