@@ -62,6 +62,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         btnBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -69,24 +70,22 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         txtResult = new javax.swing.JTextPane();
         txtSearch = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        chk = new javax.swing.JCheckBox();
-        chk1 = new javax.swing.JCheckBox();
         btnString = new javax.swing.JRadioButton();
         btnInt = new javax.swing.JRadioButton();
-        chk2 = new javax.swing.JCheckBox();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
-        chk3 = new javax.swing.JCheckBox();
         btnSave = new javax.swing.JButton();
         btnSearch = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtContent = new javax.swing.JTextPane();
         btnOpen = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jtpFileName = new javax.swing.JTextPane();
         jbtnSort = new javax.swing.JButton();
+        btnWhole = new javax.swing.JRadioButton();
+        btnContains = new javax.swing.JRadioButton();
+        btnStart = new javax.swing.JRadioButton();
+        btnEnd = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,10 +108,6 @@ public class FilterSearch_UI extends javax.swing.JFrame {
 
         jLabel2.setText("Enter the words you want to search.");
 
-        chk.setText("Starts with");
-
-        chk1.setText("Match whole words");
-
         buttonGroup1.add(btnString);
         btnString.setSelected(true);
         btnString.setText("String");
@@ -120,19 +115,10 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         buttonGroup1.add(btnInt);
         btnInt.setText("Integer");
 
-        chk2.setText("Ends with");
-
         jLabel3.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel3.setText("         Search Engine");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        chk3.setText("Contains");
-        chk3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chk3ActionPerformed(evt);
-            }
-        });
 
         btnSave.setText("Save Output");
 
@@ -142,10 +128,6 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                 btnSearchActionPerformed(evt);
             }
         });
-
-        jCheckBox1.setText("Search from Up to Down");
-
-        jCheckBox2.setText("Search from Down to Up");
 
         txtContent.setEditable(false);
         jScrollPane2.setViewportView(txtContent);
@@ -167,65 +149,70 @@ public class FilterSearch_UI extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup2.add(btnWhole);
+        btnWhole.setSelected(true);
+        btnWhole.setText("Match whole word");
+
+        buttonGroup2.add(btnContains);
+        btnContains.setText("Contains");
+
+        buttonGroup2.add(btnStart);
+        btnStart.setText("Starts with");
+
+        buttonGroup2.add(btnEnd);
+        btnEnd.setText("Ends with");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator1))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
+                        .addGap(36, 36, 36)
                         .addComponent(btnString)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnInt)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
+                        .addGap(155, 155, 155)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbtnSort)
                         .addGap(18, 18, 18)
                         .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(58, 58, 58)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(btnSearch)
-                            .addGap(78, 78, 78))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(58, 58, 58))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(chk2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jCheckBox2))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(chk)
-                                        .addGap(100, 100, 100)
-                                        .addComponent(chk3)
-                                        .addGap(139, 139, 139)
-                                        .addComponent(jCheckBox1)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btnSearch)
+                                    .addGap(63, 63, 63))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(btnWhole)
+                                        .addComponent(btnContains))
+                                    .addGap(43, 43, 43)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(btnEnd)
+                                        .addComponent(btnStart)))
                                 .addComponent(jLabel2)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(chk1))
-                            .addContainerGap()))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(btnBack)
-                            .addGap(130, 130, 130)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
-                            .addComponent(btnOpen))
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING))))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(btnBack)
+                                    .addGap(130, 130, 130)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnOpen))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 669, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,19 +244,13 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chk)
-                    .addComponent(chk3)
-                    .addComponent(jCheckBox1))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(chk2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jCheckBox2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chk1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(btnWhole)
+                    .addComponent(btnStart))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnContains)
+                    .addComponent(btnEnd))
+                .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -285,8 +266,8 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 703, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 35, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,10 +282,6 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         this.setVisible(false);
 
     }//GEN-LAST:event_btnBackActionPerformed
-
-    private void chk3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chk3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chk3ActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
@@ -349,42 +326,163 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                 }
 
             } else {          //btnString.isSelected
+                
+                if (btnWhole.isSelected()) {
+                    boolean found = false;
+                    int count = 0;
 
-                boolean found = false;
-                int count = 0;
+                    for (int i = 0; i < wArray.size(); i++) {
 
-                for (int i = 0; i < wArray.size(); i++) {
+                        if (search.equals(wArray.get(i).getData())) {
+                            count++;
+                            found = true;
+                            int para = wArray.get(i).getParagraph();
 
-                    if (search.equals(wArray.get(i).getData())) {
-                        count++;
-                        found = true;
-                        int para = wArray.get(i).getParagraph();
+                            stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
 
-                        stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
+                            for (int j = 0; j < wArray.size(); j++) {
 
-                        for (int j = 0; j < wArray.size(); j++) {
+                                if (wArray.get(j).getParagraph() == para) {
+                                    if (wArray.get(j).getData().equals(search)) {
+                                        stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
+                                    } else {
+                                        stringresult += wArray.get(j).getData() + " ";
+                                    }
 
-                            if (wArray.get(j).getParagraph() == para) {
-                                if (wArray.get(j).getData().equals(search)) {
-                                    stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
-                                } else {
-                                    stringresult += wArray.get(j).getData() + " ";
                                 }
 
                             }
-
                         }
+
+                    } // end for
+
+                    if (found == false) {
+                        JOptionPane.showMessageDialog(null, "No words found!");
+                        txtResult.setText("");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
+                        txtResult.setText(stringresult);
                     }
-
-                } // end for
-
-                if (found == false) {
-                    JOptionPane.showMessageDialog(null, "No words found!");
-                    txtResult.setText("");
-                } else {
-                    JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
-                    txtResult.setText(stringresult);
                 }
+                else if(btnContains.isSelected()){    //btnContains
+                    boolean found = false;
+                    int count = 0;
+
+                    for (int i = 0; i < wArray.size(); i++) {
+
+                        if (wArray.get(i).getData().contains(search)) {
+                            count++;
+                            found = true;
+                            int para = wArray.get(i).getParagraph();
+
+                            stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
+
+                            for (int j = 0; j < wArray.size(); j++) {
+
+                                if (wArray.get(j).getParagraph() == para) {
+                                    if (wArray.get(j).getData().contains(search)) {
+                                        stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
+                                    } else {
+                                        stringresult += wArray.get(j).getData() + " ";
+                                    }
+
+                                }
+
+                            }
+                        }
+
+                    } // end for
+
+                    if (found == false) {
+                        JOptionPane.showMessageDialog(null, "No words found!");
+                        txtResult.setText("");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
+                        txtResult.setText(stringresult);
+                    }
+                    
+                }
+                else if(btnStart.isSelected()){
+                    boolean found = false;
+                    int count = 0;
+
+                    System.out.println(wArray.get(0).getData().charAt(0));
+                    System.out.println(search.charAt(0));
+                    for (int i = 0; i < wArray.size(); i++) {
+
+                        if (wArray.get(i).getData().charAt(0) == search.charAt(0)) {
+                            count++;
+                            found = true;
+                            int para = wArray.get(i).getParagraph();
+
+                            stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
+
+                            for (int j = 0; j < wArray.size(); j++) {
+
+                                if (wArray.get(j).getParagraph() == para) {
+                                    if (wArray.get(j).getData().charAt(0) == search.charAt(0)) {
+                                        stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
+                                    } else {
+                                        stringresult += wArray.get(j).getData() + " ";
+                                    }
+
+                                }
+
+                            }
+                        }
+
+                    } // end for
+
+                    if (found == false) {
+                        JOptionPane.showMessageDialog(null, "No words found!");
+                        txtResult.setText("");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
+                        txtResult.setText(stringresult);
+                    }
+                }
+                else{
+                    boolean found = false;
+                    int count = 0;
+
+                    System.out.println(wArray.get(1).getData().charAt(wArray.get(1).getData().length()-1));
+                    System.out.println(search.charAt(0));
+                    for (int i = 0; i < wArray.size(); i++) {
+
+                        if (wArray.get(i).getData().charAt(wArray.get(i).getData().length()-1) == search.charAt(0)) {
+                            count++;
+                            found = true;
+                            int para = wArray.get(i).getParagraph();
+
+                            stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
+
+                            for (int j = 0; j < wArray.size(); j++) {
+
+                                if (wArray.get(j).getParagraph() == para) {
+                                    if (wArray.get(j).getData().charAt(wArray.get(j).getData().length()-1) == search.charAt(0)) {
+                                        stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
+                                    } else {
+                                        stringresult += wArray.get(j).getData() + " ";
+                                    }
+
+                                }
+
+                            }
+                        }
+
+                    } // end for
+
+                    if (found == false) {
+                        JOptionPane.showMessageDialog(null, "No words found!");
+                        txtResult.setText("");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
+                        txtResult.setText(stringresult);
+                    }
+                    
+                }
+
+                
             }//end else
         } else {
             JOptionPane.showMessageDialog(null, "No words were entered!");
@@ -519,18 +617,17 @@ public class FilterSearch_UI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JRadioButton btnContains;
+    private javax.swing.JRadioButton btnEnd;
     private javax.swing.JRadioButton btnInt;
     private javax.swing.JButton btnOpen;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JRadioButton btnStart;
     private javax.swing.JRadioButton btnString;
+    private javax.swing.JRadioButton btnWhole;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JCheckBox chk;
-    private javax.swing.JCheckBox chk1;
-    private javax.swing.JCheckBox chk2;
-    private javax.swing.JCheckBox chk3;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
