@@ -7,6 +7,7 @@ package testsomeshit;
 
 import Class.DoublyLinkedListADT;
 import Class.Node;
+import Class.QuickSort;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -570,7 +571,8 @@ public class FilterSearch_UI extends javax.swing.JFrame {
     private void jbtnSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSortActionPerformed
         // TODO add your handling code here:
         WordDoublyLinkedList<Word> wDLL2 = wDLL;
-        sort(wDLL2, 1, wDLL2.getNodeNumber());
+        QuickSort qs = new QuickSort();
+        qs.sort(wDLL2, 1, wDLL2.getNodeNumber());
         String y = "";
         Node<Word> currentNode = wDLL2.getFirstNode();
         for (int x = 1; x < wDLL2.getNodeNumber(); x++) {
@@ -656,27 +658,6 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         return result;
     }
 
-    private void sort(WordDoublyLinkedList<Word> arr, int low, int high) {
-        if (high > low) {
-            int pi = partition(arr, low, high);
-            sort(arr, low, pi - 1);
-            sort(arr, pi + 1, high);
-        }
 
-    }
-
-    private int partition(WordDoublyLinkedList<Word> arr, int low, int high) {
-        Word pivot = arr.getItem(high);
-        int i = (low - 1);
-        for (int j = low; j < high; j++) {
-            if (pivot.isLowerThan(arr.getItem(j))) {
-                i++;
-                arr.swap(i, j);
-
-            }
-        }
-        arr.swap(i + 1, high);
-        return i + 1;
-    }
 
 }
