@@ -596,6 +596,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
 
     private void btnDuplicateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDuplicateActionPerformed
         // TODO add your handling code here:
+        //
         String search = txtSearch.getText();
         boolean found = false;
         int count = 0;
