@@ -327,7 +327,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                 }
 
             } else {          //btnString.isSelected
-                
+
                 if (btnWhole.isSelected()) {
                     boolean found = false;
                     int count = 0;
@@ -364,8 +364,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
                         txtResult.setText(stringresult);
                     }
-                }
-                else if(btnContains.isSelected()){    //btnContains
+                } else if (btnContains.isSelected()) {    //btnContains
                     boolean found = false;
                     int count = 0;
 
@@ -401,9 +400,8 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
                         txtResult.setText(stringresult);
                     }
-                    
-                }
-                else if(btnStart.isSelected()){
+
+                } else if (btnStart.isSelected()) {
                     boolean found = false;
                     int count = 0;
 
@@ -441,16 +439,15 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
                         txtResult.setText(stringresult);
                     }
-                }
-                else{
+                } else {
                     boolean found = false;
                     int count = 0;
 
-                    System.out.println(wArray.get(1).getData().charAt(wArray.get(1).getData().length()-1));
+                    System.out.println(wArray.get(1).getData().charAt(wArray.get(1).getData().length() - 1));
                     System.out.println(search.charAt(0));
                     for (int i = 0; i < wArray.size(); i++) {
 
-                        if (wArray.get(i).getData().charAt(wArray.get(i).getData().length()-1) == search.charAt(0)) {
+                        if (wArray.get(i).getData().charAt(wArray.get(i).getData().length() - 1) == search.charAt(0)) {
                             count++;
                             found = true;
                             int para = wArray.get(i).getParagraph();
@@ -460,7 +457,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                             for (int j = 0; j < wArray.size(); j++) {
 
                                 if (wArray.get(j).getParagraph() == para) {
-                                    if (wArray.get(j).getData().charAt(wArray.get(j).getData().length()-1) == search.charAt(0)) {
+                                    if (wArray.get(j).getData().charAt(wArray.get(j).getData().length() - 1) == search.charAt(0)) {
                                         stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
                                     } else {
                                         stringresult += wArray.get(j).getData() + " ";
@@ -480,10 +477,9 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
                         txtResult.setText(stringresult);
                     }
-                    
+
                 }
 
-                
             }//end else
         } else {
             JOptionPane.showMessageDialog(null, "No words were entered!");
@@ -573,6 +569,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         WordDoublyLinkedList<Word> wDLL2 = wDLL;
         QuickSort qs = new QuickSort();
         qs.sort(wDLL2, 1, wDLL2.getNodeNumber());
+        JOptionPane.showMessageDialog(null, "Sort Completed");
         String y = "";
         Node<Word> currentNode = wDLL2.getFirstNode();
         for (int x = 1; x < wDLL2.getNodeNumber(); x++) {
@@ -647,7 +644,6 @@ public class FilterSearch_UI extends javax.swing.JFrame {
 
     public static boolean tryConvert(String a) {
         boolean result = false;
-
         try {
             Integer.parseInt(a.trim());
             result = true;
@@ -657,7 +653,4 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         //System.out.println(result);
         return result;
     }
-
-
-
 }
