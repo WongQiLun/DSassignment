@@ -596,43 +596,44 @@ public class FilterSearch_UI extends javax.swing.JFrame {
 
     private void btnDuplicateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDuplicateActionPerformed
         // TODO add your handling code here:
-//        String search = txtSearch.getText();
-//        boolean found = false;
-//        int count = 0;
-//
-//        for (int i = 0; i < wArray.size(); i++) {
-//
-//            if (wArray.get(i).getData().contains(search)) {
-//                count++;
-//                found = true;
-//                int para = wArray.get(i).getParagraph();
-//
-//                stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
-//
-//                for (int j = 0; j < wArray.size(); j++) {
-//
-//                    if (wArray.get(j).getParagraph() == para) {
-//                        if (wArray.get(j).getData().contains(search)) {
-//                            stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
-//                        } else {
-//                            stringresult += wArray.get(j).getData() + " ";
-//                        }
-//
-//                    }
-//
-//                }
-//            }
-//
-//        } // end for
-//
-//        if (found == false) {
-//            JOptionPane.showMessageDialog(null, "No words found!");
-//            txtResult.setText("");
-//        } else {
-//            stringresult += "<br /> <br/>Total number of duplicate : " + count;
-//            JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
-//            txtResult.setText(stringresult);
-//        }
+        //
+        String search = txtSearch.getText();
+        boolean found = false;
+        int count = 0;
+
+        for (int i = 0; i < wArray.size(); i++) {
+
+           if (wArray.get(i).getData().contains(search)) {
+                count++;
+                found = true;
+                int para = wArray.get(i).getParagraph();
+
+                stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
+
+                for (int j = 0; j < wArray.size(); j++) {
+
+                    if (wArray.get(j).getParagraph() == para) {
+                        if (wArray.get(j).getData().contains(search)) {
+                            stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
+                        } else {
+                            stringresult += wArray.get(j).getData() + " ";
+                        }
+
+                    }
+
+                }
+            }
+
+        } // end for
+
+        if (found == false) {
+            JOptionPane.showMessageDialog(null, "No words found!");
+            txtResult.setText("");
+        } else {
+            stringresult += "<br /> <br/>Total number of duplicate : " + count;
+            JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
+            txtResult.setText(stringresult);
+        }
     }//GEN-LAST:event_btnDuplicateActionPerformed
 
     /**
