@@ -569,7 +569,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         WordDoublyLinkedList<Word> wDLL2 = wDLL;
         QuickSort qs = new QuickSort();
         qs.sort(wDLL2, 1, wDLL2.getNodeNumber());
-        JOptionPane.showMessageDialog(null, "Sort Completed");
+       wDLL2.displaySwapCount();
         String y = "";
         Node<Word> currentNode = wDLL2.getFirstNode();
         for (int x = 1; x < wDLL2.getNodeNumber(); x++) {

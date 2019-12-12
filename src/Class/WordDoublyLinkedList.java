@@ -5,6 +5,8 @@
  */
 package Class;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author user
@@ -14,6 +16,7 @@ public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
     Node firstNode = null;
     Node lastNode = null;
     int nodeNumber = 0;
+    int swapCounter = 0;
     
     public Node getFirstNode() {
         return firstNode;
@@ -184,6 +187,11 @@ public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
         T buffer = nodeInThatLocation.current;
         T buffer2 = node.replace(buffer);
         nodeInThatLocation.replace(buffer2);
+        swapCounter ++;
+    }
+    public void displaySwapCount(){
+         JOptionPane.showMessageDialog(null, "Sort Completed with "+ swapCounter + "swaps");
+         swapCounter =0;
     }
 
 
