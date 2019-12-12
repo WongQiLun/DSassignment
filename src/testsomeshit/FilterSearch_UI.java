@@ -87,6 +87,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         btnContains = new javax.swing.JRadioButton();
         btnStart = new javax.swing.JRadioButton();
         btnEnd = new javax.swing.JRadioButton();
+        btnDuplicate = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -163,6 +164,13 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         buttonGroup2.add(btnEnd);
         btnEnd.setText("Ends with");
 
+        btnDuplicate.setText("Check Duplicate");
+        btnDuplicate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDuplicateActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -177,14 +185,6 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnInt)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(155, 155, 155)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jbtnSort)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(58, 58, 58))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,7 +212,20 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnOpen))
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 669, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 669, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnDuplicate))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(155, 155, 155)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jbtnSort)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(58, 58, 58)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -251,7 +264,9 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnContains)
                     .addComponent(btnEnd))
-                .addGap(42, 42, 42)
+                .addGap(1, 1, 1)
+                .addComponent(btnDuplicate)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -579,6 +594,47 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         txtResult.setText(y);
     }//GEN-LAST:event_jbtnSortActionPerformed
 
+    private void btnDuplicateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDuplicateActionPerformed
+        // TODO add your handling code here:
+//        String search = txtSearch.getText();
+//        boolean found = false;
+//        int count = 0;
+//
+//        for (int i = 0; i < wArray.size(); i++) {
+//
+//            if (wArray.get(i).getData().contains(search)) {
+//                count++;
+//                found = true;
+//                int para = wArray.get(i).getParagraph();
+//
+//                stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
+//
+//                for (int j = 0; j < wArray.size(); j++) {
+//
+//                    if (wArray.get(j).getParagraph() == para) {
+//                        if (wArray.get(j).getData().contains(search)) {
+//                            stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
+//                        } else {
+//                            stringresult += wArray.get(j).getData() + " ";
+//                        }
+//
+//                    }
+//
+//                }
+//            }
+//
+//        } // end for
+//
+//        if (found == false) {
+//            JOptionPane.showMessageDialog(null, "No words found!");
+//            txtResult.setText("");
+//        } else {
+//            stringresult += "<br /> <br/>Total number of duplicate : " + count;
+//            JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
+//            txtResult.setText(stringresult);
+//        }
+    }//GEN-LAST:event_btnDuplicateActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -617,6 +673,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JRadioButton btnContains;
+    private javax.swing.JButton btnDuplicate;
     private javax.swing.JRadioButton btnEnd;
     private javax.swing.JRadioButton btnInt;
     private javax.swing.JButton btnOpen;
