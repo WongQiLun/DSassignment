@@ -107,28 +107,12 @@ public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
     }
 
     public Node getNode(int i) {
-        
-        if (i < nodeNumber / 2) {
-            Node y = firstNode;
-            if (i != 1) {
-
-                for (int x = 1; x < i; x++) {
+     Node y = firstNode;
+        for (int x = 1; x < i; x++) {
                     y = y.next;
-                }
-            }
-              return y;
         }
-        else{
-            Node y = lastNode;
-            if (i != 1) {
-
-                for (int x = 1; x < (nodeNumber -i); x++) {
-                    y = y.previous;
-                }
-            }
               return y;
-        }
-
+       
       
 
     }
@@ -184,9 +168,9 @@ public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
     public void swap(int i, int b) {
         Node<T> nodeInThatLocation = getNode(i);
         Node<T> node = getNode(b);
-        T buffer = nodeInThatLocation.current;
-        T buffer2 = node.replace(buffer);
-        nodeInThatLocation.replace(buffer2);
+        T buffer =getItem(i);
+         nodeInThatLocation.current = getItem(b);
+        node.current =buffer;
         swapCounter ++;
     }
     public void displaySwapCount(){

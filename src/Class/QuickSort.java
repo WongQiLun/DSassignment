@@ -30,6 +30,6 @@ public class QuickSort {
             }
         }
         arr.swap(i + 1, high);
-        return i + 1;
+        return( i + 1);
     }
 }

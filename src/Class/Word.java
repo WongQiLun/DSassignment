@@ -55,7 +55,7 @@ public class Word {
         boolean higher =false;
         //todo is higher
         
-        if(this.data.compareToIgnoreCase(x.data)> 0){
+        if(this.data.compareToIgnoreCase(x.data)>= 0){
             higher= true;
         }
        return higher; 
