@@ -177,7 +177,12 @@ public class Delete_UI extends javax.swing.JFrame {
                     jtxtContent.setText("");
                     jtxtFileName.enable();
                     jtxtFileName.hasFocus();
-                    System.exit(0);
+                    
+                    //System.exit(0);
+                    this.dispose();
+                    //new Delete_UI().setVisible(false);
+                    new GUI_Publisher().setVisible(true);
+                    
                 } catch (IOException ex) {
                     Logger.getLogger(Delete_UI.class.getName()).log(Level.SEVERE, null, ex);
                 }
