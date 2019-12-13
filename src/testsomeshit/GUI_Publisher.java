@@ -207,18 +207,6 @@ public class GUI_Publisher extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnAddActionPerformed
 
-    public boolean checkCount(int count){
-        boolean result = false;
-        if(count < 50)
-            result = false;
-        
-        else
-            result = true;
-        
-        return result;
-        
-    }
-    
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
         Edit_UI e = new Edit_UI();
