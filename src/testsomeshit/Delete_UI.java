@@ -284,6 +284,7 @@ public class Delete_UI extends javax.swing.JFrame {
     		file.delete();
     		System.out.println("File is deleted : " + file.getAbsolutePath());
                 infoBox("File is deleted : " + file.getAbsolutePath(), "File deleted");
+                System.exit(0);
     	}
     }
 
