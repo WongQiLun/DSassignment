@@ -140,7 +140,8 @@ public class Delete_UI extends javax.swing.JFrame {
     }//GEN-LAST:event_jtxtFileNameFocusGained
 
     
-    String defaultFilePath = "C:\\Users\\user\\Documents\\NetBeansProjects\\DSAssignment\\DSassignment";
+    //String defaultFilePath = "C:\\Users\\user\\Documents\\NetBeansProjects\\DSAssignment";
+    String defaultFilePath = System.getProperty("user.dir");
     File file = new File(defaultFilePath);
     String fileOpened = "";
     String pathOpened = "";
@@ -168,7 +169,6 @@ public class Delete_UI extends javax.swing.JFrame {
                 //File filePath = new File(defaultFilePath + "\\" +fileOpened);
                 File filePath = new File(pathOpened);
 
-
                 try {
                     delete(filePath);
 
@@ -177,6 +177,12 @@ public class Delete_UI extends javax.swing.JFrame {
                     jtxtContent.setText("");
                     jtxtFileName.enable();
                     jtxtFileName.hasFocus();
+                    
+                    //System.exit(0);
+                    this.dispose();
+                    //new Delete_UI().setVisible(false);
+                    new GUI_Publisher().setVisible(true);
+                    
                 } catch (IOException ex) {
                     Logger.getLogger(Delete_UI.class.getName()).log(Level.SEVERE, null, ex);
                 }
