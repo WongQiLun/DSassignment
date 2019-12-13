@@ -140,7 +140,8 @@ public class Delete_UI extends javax.swing.JFrame {
     }//GEN-LAST:event_jtxtFileNameFocusGained
 
     
-    String defaultFilePath = "C:\\Users\\user\\Documents\\NetBeansProjects\\DSAssignment\\DSassignment";
+    //String defaultFilePath = "C:\\Users\\user\\Documents\\NetBeansProjects\\DSAssignment";
+    String defaultFilePath = System.getProperty("user.dir");
     File file = new File(defaultFilePath);
     String fileOpened = "";
     String pathOpened = "";
