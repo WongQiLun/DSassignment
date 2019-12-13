@@ -168,7 +168,6 @@ public class Delete_UI extends javax.swing.JFrame {
                 //File filePath = new File(defaultFilePath + "\\" +fileOpened);
                 File filePath = new File(pathOpened);
 
-
                 try {
                     delete(filePath);
 
@@ -177,6 +176,7 @@ public class Delete_UI extends javax.swing.JFrame {
                     jtxtContent.setText("");
                     jtxtFileName.enable();
                     jtxtFileName.hasFocus();
+                    System.exit(0);
                 } catch (IOException ex) {
                     Logger.getLogger(Delete_UI.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -284,7 +284,6 @@ public class Delete_UI extends javax.swing.JFrame {
     		file.delete();
     		System.out.println("File is deleted : " + file.getAbsolutePath());
                 infoBox("File is deleted : " + file.getAbsolutePath(), "File deleted");
-                System.exit(0);
     	}
     }
 
