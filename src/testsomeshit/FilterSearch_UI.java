@@ -23,6 +23,8 @@ import Class.WordDoublyLinkedList;
 import Class.WordList;
 import Class.WordListADT;
 import java.awt.Color;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 /*from  w  w  w  .  ja v  a 2  s  .  c om*/
@@ -31,6 +33,7 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
+import static testsomeshit.GUI.infoBox;
 
 /**
  *
@@ -123,6 +126,11 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         btnSave.setText("Save Output");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -282,7 +290,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -589,8 +597,8 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         String y = "";
         Node<Word> currentNode = wDLL2.getFirstNode();
         int nodeNumber = wDLL2.getNodeNumber();
-        for (int x = 1; x <= nodeNumber; x++) {
-            y += wDLL2.getItem(x).getData() + "<br />";
+        for (int counter = 1; counter <= nodeNumber; counter++) {
+            y += wDLL2.getItem(counter).getData() + "<br />";
 
         }
         txtResult.setText(y);
@@ -637,6 +645,11 @@ public class FilterSearch_UI extends javax.swing.JFrame {
             txtResult.setText(stringresult);
         }
     }//GEN-LAST:event_btnDuplicateActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        SaveOutput();
+    }//GEN-LAST:event_btnSaveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -713,4 +726,46 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         //System.out.println(result);
         return result;
     }
+
+
+   private void SaveOutput() {
+        JFileChooser chooser = new JFileChooser();
+
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Text file", "txt");
+        chooser.setFileFilter(filter);
+        chooser.setDialogTitle("Save output as");
+        int returnVal = chooser.showOpenDialog(null);
+        file = null;
+        try {
+
+            file = chooser.getSelectedFile();
+
+        } catch (Exception e) {
+            infoBox("error: file not found \n Please select a file to write to", "File not found");
+        }
+        String line = txtResult.getText();
+        if (!file.getName().contains(".txt")) {
+            file = new File(chooser.getSelectedFile() + ".txt");
+        }
+        FileWriter x = null;
+        System.out.print(line);
+        try {
+            x = new FileWriter(file);
+        } catch (IOException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                x.close();
+            } catch (IOException ex) {
+                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        try {
+            x.write(line);
+        } catch (IOException ex) {
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+   }
 }
