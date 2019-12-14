@@ -591,8 +591,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         // TODO add your handling code here:
         WordDoublyLinkedList<Word> wDLL2 = wDLL;
         QuickSort qs = new QuickSort();
-        qs.sort(wDLL2,1,wDLL2.getNodeNumber());
-      
+        qs.quickSort(wDLL2.getFirstNode(),wDLL2);
        wDLL2.displaySwapCount();
         String y = "";
         Node<Word> currentNode = wDLL2.getFirstNode();

@@ -32,7 +32,7 @@ public class QuickSort {
         arr.swap(i + 1, high);
         return( i + 1);
     }
-    Node partition(Node<Word> l,Node<Word> h) 
+    Node partition(Node<Word> l,Node<Word> h,WordDoublyLinkedList<Word> DoublyLinked) 
     { 
        // set pivot as h element 
         Word x = h.current; 
@@ -50,21 +50,23 @@ public class QuickSort {
                 Word temp = i.current; 
                 i.current = j.current; 
                 j.current = temp; 
+                DoublyLinked.swapCounter++;
             } 
         } 
         i = (i==null) ? l : i.next;  // Similar to i++ 
         Word temp = i.current; 
         i.current= h.current; 
         h.current = temp; 
+        DoublyLinked.swapCounter++;
         return i; 
     } 
         /* A recursive implementation of quicksort for linked list */
-    void _quickSort(Node l,Node h) 
+    void _quickSort(Node l,Node h,WordDoublyLinkedList<Word> wDLL) 
     { 
         if(h!=null && l!=h && l!=h.next){ 
-            Node temp = partition(l,h); 
-            _quickSort(l,temp.previous); 
-            _quickSort(temp.next,h); 
+            Node temp = partition(l,h, wDLL); 
+            _quickSort(l,temp.previous,wDLL); 
+            _quickSort(temp.next,h,wDLL); 
         } 
     } 
       
@@ -75,6 +77,6 @@ public class QuickSort {
         Node head = wDLL.getLastNode(); 
           
         // Call the recursive QuickSort 
-        _quickSort(node,head); 
+        _quickSort(node,head,wDLL); 
     } 
 }
