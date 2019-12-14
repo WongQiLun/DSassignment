@@ -10,6 +10,7 @@ flower
 invention
 level
 mine
+nugget
 pan
 prick
 protective
@@ -17,9 +18,9 @@ quaint
 rigid
 sleet
 spurious
+tearful
 unnatural
 upset
-tearful
 vague
 violet
 worried

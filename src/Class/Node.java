@@ -10,6 +10,10 @@ package Class;
  * @author user
  */
 public class Node<T> {
+
+    public T getCurrent() {
+        return current;
+    }
     
     public Node(T current) {
         this.current = current;

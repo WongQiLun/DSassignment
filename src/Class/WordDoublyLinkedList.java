@@ -17,7 +17,7 @@ public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
     Node lastNode = null;
     int nodeNumber = 0;
     int swapCounter = 0;
-    
+
     public Node getFirstNode() {
         return firstNode;
     }
@@ -34,7 +34,6 @@ public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
     public void append(T data) {
         Node x = new Node(data);
         if (firstNode == null) {
-
             firstNode = x;
             lastNode = x;
             nodeNumber++;
@@ -107,25 +106,58 @@ public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
     }
 
     public Node getNode(int i) {
-     Node y = firstNode;
-        for (int x = 1; x < i; x++) {
-                    y = y.next;
+        if(i ==1){
+            return getFirstNode();
         }
-              return y;
-       
-      
+        if(i ==nodeNumber){
+            return getLastNode();
+        }
+        Node y= firstNode;
+        if (nodeNumber % 2 == 0) {
+            if (i <= nodeNumber && i > 1) {
+                if (i < nodeNumber / 2) {
+                       y = firstNode;
+                    for (int x = 1; x < i; x++) {
+                        y = y.next;
+                    }
+                } else {
+                     y= lastNode;
+                    for (int x = 0; x < nodeNumber - i; x++) {
+                        y = y.previous;
+                    }
+                }
+            }
+        } else {
+            if (i <= nodeNumber && i > 1) {
+                if (i < (nodeNumber / 2) + 1) {
+                        y = firstNode;
+                    for (int x = 1; x < i; x++) {
+                        y = y.next;
+                    }
+                } else {
+                     y= lastNode;
+                    for (int x = 0; x < nodeNumber - i; x++) {
+                        y = y.previous;
+                    }
+                }
+            }
+        }
 
-    }
+    
+    return y ;
 
-    @Override
-    public void clear() {
+}
+
+@Override
+        public void clear() {
         firstNode = null;
         lastNode = null;
         nodeNumber = 0;
     }
 
     @Override
-    public T remove(int i) {
+        public T remove(int i
+    ) {
         Node nodeToBeRemoved = getNode(i);
         if (i == 1) {
             return removeFirst();
@@ -141,7 +173,7 @@ public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
     }
 
     @Override
-    public boolean isEmpty() {
+        public boolean isEmpty() {
         if (nodeNumber == 0) {
             return true;
         }
@@ -168,15 +200,15 @@ public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
     public void swap(int i, int b) {
         Node<T> nodeInThatLocation = getNode(i);
         Node<T> node = getNode(b);
-        T buffer =getItem(i);
-         nodeInThatLocation.current = getItem(b);
-        node.current =buffer;
-        swapCounter ++;
-    }
-    public void displaySwapCount(){
-         JOptionPane.showMessageDialog(null, "Sort Completed with "+ swapCounter + "swaps");
-         swapCounter =0;
+        T buffer = getItem(i);
+        nodeInThatLocation.current = getItem(b);
+        node.current = buffer;
+        swapCounter++;
     }
 
+    public void displaySwapCount() {
+        JOptionPane.showMessageDialog(null, "Sort Completed with " + swapCounter + "swaps");
+        swapCounter = 0;
+    }
 
 }

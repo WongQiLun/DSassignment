@@ -79,7 +79,7 @@
 //
 //    public boolean equals(WordDoublyLinkedList<Word> x, WordDoublyLinkedList<Word> t) {
 //
-//        for (int y = 1; y < x.nodeNumber; y++) {
+//        for (int y = 1; y <= x.nodeNumber; y++) {
 //            System.out.println(x.getItem(y).getData() + t.getItem(y).getData());
 //            if (x.getItem(y).getData().compareTo(t.getItem(y).getData()) != 0) {
 //                
