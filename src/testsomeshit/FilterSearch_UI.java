@@ -354,6 +354,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                 if (btnWhole.isSelected()) {
                     boolean found = false;
                     int count = 0;
+                    int lastpara = 0;
 
                     for (int i = 0; i < wArray.size(); i++) {
 
@@ -362,20 +363,29 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                             found = true;
                             int para = wArray.get(i).getParagraph();
 
-                            stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
+                            if(lastpara == para){
+                                
+                            }
+                            
+                            else{
+                                lastpara = para;
+                                
+                                stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
 
-                            for (int j = 0; j < wArray.size(); j++) {
+                                for (int j = 0; j < wArray.size(); j++) {
 
-                                if (wArray.get(j).getParagraph() == para) {
-                                    if (wArray.get(j).getData().equals(search)) {
-                                        stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
-                                    } else {
-                                        stringresult += wArray.get(j).getData() + " ";
+                                    if (wArray.get(j).getParagraph() == para) {
+                                        if (wArray.get(j).getData().equals(search)) {
+                                            stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
+                                        } else {
+                                            stringresult += wArray.get(j).getData() + " ";
+                                        }
+
                                     }
 
                                 }
-
                             }
+                            
                         }
 
                     } // end for
@@ -390,6 +400,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                 } else if (btnContains.isSelected()) {    //btnContains
                     boolean found = false;
                     int count = 0;
+                    int lastpara = 0;
 
                     for (int i = 0; i < wArray.size(); i++) {
 
@@ -397,21 +408,29 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                             count++;
                             found = true;
                             int para = wArray.get(i).getParagraph();
+                            
+                            if(lastpara == para){
+                                
+                            }
+                            else{
+                                lastpara = para;
 
-                            stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
+                                stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
 
-                            for (int j = 0; j < wArray.size(); j++) {
+                                for (int j = 0; j < wArray.size(); j++) {
 
-                                if (wArray.get(j).getParagraph() == para) {
-                                    if (wArray.get(j).getData().contains(search)) {
-                                        stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
-                                    } else {
-                                        stringresult += wArray.get(j).getData() + " ";
+                                    if (wArray.get(j).getParagraph() == para) {
+                                        if (wArray.get(j).getData().contains(search)) {
+                                            stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
+                                        } else {
+                                            stringresult += wArray.get(j).getData() + " ";
+                                        }
+
                                     }
 
                                 }
-
                             }
+                            
                         }
 
                     } // end for
@@ -427,6 +446,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                 } else if (btnStart.isSelected()) {
                     boolean found = false;
                     int count = 0;
+                    int lastpara = 0;
 
                     System.out.println(wArray.get(0).getData().charAt(0));
                     System.out.println(search.charAt(0));
@@ -436,21 +456,30 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                             count++;
                             found = true;
                             int para = wArray.get(i).getParagraph();
+                            
+                            if(lastpara == para){
+                                
+                            }
+                            
+                            else{
+                                lastpara = para;
+                                stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
 
-                            stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
+                                for (int j = 0; j < wArray.size(); j++) {
 
-                            for (int j = 0; j < wArray.size(); j++) {
+                                    if (wArray.get(j).getParagraph() == para) {
+                                        if (wArray.get(j).getData().charAt(0) == search.charAt(0)) {
+                                            stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
+                                        } else {
+                                            stringresult += wArray.get(j).getData() + " ";
+                                        }
 
-                                if (wArray.get(j).getParagraph() == para) {
-                                    if (wArray.get(j).getData().charAt(0) == search.charAt(0)) {
-                                        stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
-                                    } else {
-                                        stringresult += wArray.get(j).getData() + " ";
                                     }
 
                                 }
-
                             }
+
+                            
                         }
 
                     } // end for
@@ -465,6 +494,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                 } else {
                     boolean found = false;
                     int count = 0;
+                    int lastpara = 0;
 
                     System.out.println(wArray.get(1).getData().charAt(wArray.get(1).getData().length() - 1));
                     System.out.println(search.charAt(0));
@@ -474,20 +504,27 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                             count++;
                             found = true;
                             int para = wArray.get(i).getParagraph();
+                            
+                            if(lastpara == para){
+                                
+                            }
+                            
+                            else{
+                                lastpara = para;
+                                stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
 
-                            stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
+                                for (int j = 0; j < wArray.size(); j++) {
 
-                            for (int j = 0; j < wArray.size(); j++) {
+                                    if (wArray.get(j).getParagraph() == para) {
+                                        if (wArray.get(j).getData().charAt(wArray.get(j).getData().length() - 1) == search.charAt(0)) {
+                                            stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
+                                        } else {
+                                            stringresult += wArray.get(j).getData() + " ";
+                                        }
 
-                                if (wArray.get(j).getParagraph() == para) {
-                                    if (wArray.get(j).getData().charAt(wArray.get(j).getData().length() - 1) == search.charAt(0)) {
-                                        stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
-                                    } else {
-                                        stringresult += wArray.get(j).getData() + " ";
                                     }
 
                                 }
-
                             }
                         }
 
