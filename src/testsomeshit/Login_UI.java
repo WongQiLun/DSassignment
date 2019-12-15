@@ -134,7 +134,7 @@ public class Login_UI extends javax.swing.JFrame {
         try {
             for (int i = 0; i < userdata.size(); i++) {
 
-                if (username.equals(userdata.get(i).getUsername()) && password.equals(userdata.get(i).getPassword())) {
+                if (checkUsername(username,userdata.get(i).getUsername()) && checkPassword(password,userdata.get(i).getPassword())) {
 
                     if (userdata.get(i).getRole().equals("Member")) {
                         user = userdata.get(i);
@@ -223,6 +223,28 @@ public class Login_UI extends javax.swing.JFrame {
                 new Login_UI().setVisible(true);
             }
         });
+    }
+    
+    public boolean checkUsername(String username,String usernamedata){
+        boolean result = false;
+        
+        if(username.equals(usernamedata))
+            result = true;
+        else
+            result = false;
+        
+        return result;
+    }
+    
+    public boolean checkPassword(String password,String passdata){
+        boolean result = false;
+        
+        if(password.equals(passdata))
+            result = true;
+        else
+            result = false;
+        
+        return result;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
