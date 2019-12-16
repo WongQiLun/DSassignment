@@ -7,24 +7,30 @@ package testsomeshit;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-//import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-//import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import static testsomeshit.GUI.infoBox;
+import static Class.FileFunction.*;
 
 /**
  *
- * @author alan0
+ * @author ymhomer
  */
 public class Delete_UI extends javax.swing.JFrame {
 
+    //Global valuable
+    //String defaultFilePath = "C:\\Users\\user\\Documents\\NetBeansProjects\\DSAssignment";
+    String defaultFilePath = System.getProperty("user.dir");
+    File file = new File(defaultFilePath);
+    String fileOpened = "";
+    String pathOpened = "";
+    //File fullpath = new File(defaultFilePath + fileOpened);
+    
     /**
      * Creates new form Delete_UI
      */
@@ -43,14 +49,17 @@ public class Delete_UI extends javax.swing.JFrame {
 
         jtxtFileName = new javax.swing.JTextField();
         jbtBrowse = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jlblFileName = new javax.swing.JLabel();
         jlbTitle = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jlblContent = new javax.swing.JLabel();
         jbtDelete = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtxtContent = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Remove File");
+        setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        setName("RemoveFile"); // NOI18N
 
         jtxtFileName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -67,12 +76,12 @@ public class Delete_UI extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("File opened : ");
+        jlblFileName.setText("File opened : ");
 
         jlbTitle.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jlbTitle.setText("Remove file");
 
-        jLabel2.setText("Content : ");
+        jlblContent.setText("Content : ");
 
         jbtDelete.setMnemonic('D');
         jbtDelete.setText("Delete");
@@ -98,8 +107,8 @@ public class Delete_UI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
+                            .addComponent(jlblFileName)
+                            .addComponent(jlblContent)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jtxtFileName, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -116,7 +125,7 @@ public class Delete_UI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jlbTitle)
                 .addGap(17, 17, 17)
-                .addComponent(jLabel1)
+                .addComponent(jlblFileName)
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtxtFileName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -124,7 +133,7 @@ public class Delete_UI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(jlblContent)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jbtDelete))
@@ -135,38 +144,22 @@ public class Delete_UI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtxtFileNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxtFileNameFocusGained
-        // TODO add your handling code here:
-        checkFile();
+        onBrowse();
     }//GEN-LAST:event_jtxtFileNameFocusGained
-
-    
-    //String defaultFilePath = "C:\\Users\\user\\Documents\\NetBeansProjects\\DSAssignment";
-    String defaultFilePath = System.getProperty("user.dir");
-    File file = new File(defaultFilePath);
-    String fileOpened = "";
-    String pathOpened = "";
-    //File fullpath = new File(defaultFilePath + fileOpened);
     
     private void jbtBrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtBrowseActionPerformed
-        // TODO add your handling code here:
-        checkFile();
-        //fileContent();
+        onBrowse();//fileContent();
     }//GEN-LAST:event_jbtBrowseActionPerformed
 
     private void jbtDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtDeleteActionPerformed
-        // TODO add your handling code here:
-        
-        if (jtxtFileName.getText().equals("")){
-            infoBox("Please open a file to continue.", "Delete file");
-            fileContent();
-        }
-        else{
+        if (checkField(jtxtFileName.getText())){
             int dialogButton = JOptionPane.YES_NO_OPTION;
             int dialogResult = JOptionPane.showConfirmDialog (null, "Are you sure to delete the file below?\n" + fileOpened,"Delete file",dialogButton);
 
             if (dialogResult == JOptionPane.YES_OPTION) {
                 //infoBox(pathOpened, "Delete file");
                 //File filePath = new File(defaultFilePath + "\\" +fileOpened);
+                
                 File filePath = new File(pathOpened);
 
                 try {
@@ -178,12 +171,10 @@ public class Delete_UI extends javax.swing.JFrame {
                     jtxtFileName.enable();
                     jtxtFileName.hasFocus();
                     
-                    //System.exit(0);
                     this.dispose();
-                    //new Delete_UI().setVisible(false);
                     new GUI_Publisher().setVisible(true);
                     
-                } catch (IOException ex) {
+                } catch (Exception ex) {
                     Logger.getLogger(Delete_UI.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
@@ -192,21 +183,24 @@ public class Delete_UI extends javax.swing.JFrame {
                 //Do nothing
             }
         }
+        else{
+            infoBox("Please open a file to continue.", "Delete file");
+            openFile();
+        }
     }//GEN-LAST:event_jbtDeleteActionPerformed
-
-    private void checkFile() {
-        if(jtxtFileName.getText().equals("")) {
-            infoBox("No file is selected.\n Please select a file to continue. ", "No file selected");
-            fileContent();
-            jtxtFileName.hasFocus();
-        }else {
-            //
+    
+    private void onBrowse(){
+        if(checkField(jtxtFileName.getText())){
             jtxtFileName.disable();
+        }
+        else{
+            infoBox("No file is selected.\n Please select a file to continue. ", "No file selected");
+            openFile();
+            jtxtFileName.hasFocus();
         }
     }
     
-    private void fileContent() {
-        // TODO add your handling code here:
+    private void openFile() {
         JFileChooser chooser = new JFileChooser(defaultFilePath);
 
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Text file", "txt");
@@ -248,49 +242,7 @@ public class Delete_UI extends javax.swing.JFrame {
         for (int y = 0; y < x.length; y++) {
             x[y] = x[y].trim();
         }
-        
-       //put in search arrays 
-
-    }
-    
-    /**
-     * @param args the command line arguments
-     */
-    
-    public static void delete(File file)
-    	throws IOException{
- 
-    	if(file.isDirectory()){
-    		//directory is empty, then delete it
-    		if(file.list().length==0){
-    			
-    		   file.delete();
-    		   System.out.println("Directory is deleted : " + file.getAbsolutePath());
-    			
-    		}else{
-    		   //list all the directory contents
-        	   String files[] = file.list();
-     
-        	   for (String temp : files) {
-        	      //construct the file structure
-        	      File fileDelete = new File(file, temp);
-        		 
-        	      //recursive delete
-        	     delete(fileDelete);
-        	   }
-        		
-        	   //check the directory again, if empty then delete it
-        	   if(file.list().length==0){
-           	     file.delete();
-        	     System.out.println("Directory is deleted : " + file.getAbsolutePath());
-        	   }
-    		}
-    		
-    	}else{
-    		file.delete();
-    		System.out.println("File is deleted : " + file.getAbsolutePath());
-                infoBox("File is deleted : " + file.getAbsolutePath(), "File deleted");
-    	}
+       //put in search arrays
     }
 
     public static void main(String args[]) {
@@ -326,12 +278,12 @@ public class Delete_UI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbtBrowse;
     private javax.swing.JButton jbtDelete;
     private javax.swing.JLabel jlbTitle;
+    private javax.swing.JLabel jlblContent;
+    private javax.swing.JLabel jlblFileName;
     private javax.swing.JTextPane jtxtContent;
     private javax.swing.JTextField jtxtFileName;
     // End of variables declaration//GEN-END:variables
