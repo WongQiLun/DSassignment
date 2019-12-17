@@ -217,8 +217,7 @@ public class Delete_UI extends javax.swing.JFrame {
             pathOpened = file.getPath();
             
         } catch (Exception e) {
-
-            infoBox("error: " + e + "file not found \n Please select a file to read from ", "File not found");
+            infoBox("error: " + e + "\nfile not found \n Please select a file to read from ", "File not found");
         }
 
         Scanner s = null;
