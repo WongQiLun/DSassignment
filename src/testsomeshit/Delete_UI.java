@@ -2,6 +2,9 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
+ * 
+ *
+ * As an admin, I want to delete a specific text file so that the specific text file can be removed from the server.
  */
 package testsomeshit;
 
@@ -241,6 +244,7 @@ public class Delete_UI extends javax.swing.JFrame {
         for (int y = 0; y < x.length; y++) {
             x[y] = x[y].trim();
         }
+        s.close();
        //put in search arrays
     }
 
