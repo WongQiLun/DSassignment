@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  *
  * @author user
  */
-public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
+public class WordDoublyLinkedList<T extends Comparable<? super T>>  implements DoublyLinkedListADT<T> {
 
     Node firstNode = null;
     Node lastNode = null;
@@ -210,5 +210,53 @@ public class WordDoublyLinkedList<T> implements DoublyLinkedListADT<T> {
         JOptionPane.showMessageDialog(null, "Sort Completed with " + swapCounter + "swaps");
         swapCounter = 0;
     }
+    
+        Node partition(Node<T> l,Node<T> h) 
+    { 
+       // set pivot as h element 
+        T x = h.current; 
+          
+        // similar to i = l-1 for array implementation 
+        Node<T> i = l.previous; 
+          
+        // Similar to "for (int j = l; j <= h- 1; j++)" 
+        for(Node<T> j=l; j!=h; j=j.next) 
+        { 
+            if(x.compareTo(j.getCurrent())<0) 
+            { 
+                // Similar to i++ for array 
+                i = (i==null) ? l : i.next; 
+                T temp = i.current; 
+                i.current = j.current; 
+                j.current = temp; 
+                swapCounter++;
+            } 
+        } 
+        i = (i==null) ? l : i.next;  // Similar to i++ 
+        T temp = i.current; 
+        i.current= h.current; 
+        h.current = temp; 
+        swapCounter++;
+        return i; 
+    } 
+        /* A recursive implementation of quicksort for linked list */
+    void _quickSort(Node l,Node h) 
+    { 
+        if(h!=null && l!=h && l!=h.next){ 
+            Node temp = partition(l,h); 
+            _quickSort(l,temp.previous); 
+            _quickSort(temp.next,h); 
+        } 
+    } 
+      
+    // The main function to sort a linked list. It mainly calls _quickSort() 
+    public void quickSort() 
+    { 
+        // Find last node 
+        Node head = getLastNode(); 
+        Node node = getFirstNode();
+        // Call the recursive QuickSort 
+        _quickSort(node,head); 
+    } 
 
 }

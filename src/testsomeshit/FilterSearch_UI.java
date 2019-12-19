@@ -44,7 +44,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
     String[] x;
     WordListADT<Word> wArray = new WordList();
 
-    WordDoublyLinkedList<Word> wDLL = new WordDoublyLinkedList();
+    DoublyLinkedListADT<Word> wDLL = new WordDoublyLinkedList();
 
     String stringresult = "";
 
@@ -624,10 +624,10 @@ public class FilterSearch_UI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOpenActionPerformed
 
     private void jbtnSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSortActionPerformed
-        // TODO add your handling code here:
-        WordDoublyLinkedList<Word> wDLL2 = wDLL;
-        QuickSort qs = new QuickSort();
-        qs.quickSort(wDLL2.getFirstNode(),wDLL2);
+        DoublyLinkedListADT<Word> wDLL2;
+        wDLL2 = wDLL;
+       
+        wDLL2.quickSort();
        wDLL2.displaySwapCount();
         String y = "";
         Node<Word> currentNode = wDLL2.getFirstNode();

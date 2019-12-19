@@ -9,7 +9,7 @@ package Class;
  *
  * @author user
  */
-public class Node<T> {
+public class Node<T extends Comparable<?super T>> {
 
     public T getCurrent() {
         return current;

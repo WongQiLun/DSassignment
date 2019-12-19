@@ -59,6 +59,14 @@ public interface DoublyLinkedListADT<T> {
     public boolean isEmpty();
 
     public void add(T[] items);
+
+    public void displaySwapCount();
+
+    public int getNodeNumber();
+
+    public Node<Word> getFirstNode();
+
+     public void quickSort();
     
 
   

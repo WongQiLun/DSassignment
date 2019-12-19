@@ -9,7 +9,7 @@ package Class;
  *
  * @author ongchunheng
  */
-public class Word {
+public class Word implements Comparable<Word>{
     private String data;
     private int row;
     private int paragraph;
@@ -59,6 +59,11 @@ public class Word {
             higher= true;
         }
        return higher; 
+    }
+
+    @Override
+    public int compareTo(Word o) {
+        return this.data.compareToIgnoreCase(o.data);
     }
     
 }
