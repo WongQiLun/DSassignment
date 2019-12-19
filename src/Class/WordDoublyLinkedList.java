@@ -222,7 +222,7 @@ public class WordDoublyLinkedList<T extends Comparable<? super T>>  implements D
         // Similar to "for (int j = l; j <= h- 1; j++)" 
         for(Node<T> j=l; j!=h; j=j.next) 
         { 
-            if(x.compareTo(j.getCurrent())<0) 
+            if(x.compareTo(j.getCurrent())>0) 
             { 
                 // Similar to i++ for array 
                 i = (i==null) ? l : i.next; 
