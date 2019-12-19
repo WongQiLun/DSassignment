@@ -37,7 +37,7 @@ public interface DoublyLinkedListADT<T> {
    Description : remove and return the last item
    Precondition: the Deque exists and has items in it 
    postcondition: last item is removed 
-   returns: first item of th queue
+   returns: last item of th queue
    */
     T getItem(int i);
            /*
@@ -54,18 +54,37 @@ public interface DoublyLinkedListADT<T> {
     
     */
     public T remove(int i);
-
+       /*
+   Description : remove and return the item in the index
+   Precondition: the Deque exists and has items in it 
+   postcondition: indexed item is removed 
+   returns:  item of th queue
+   */
     
     public boolean isEmpty();
+    
 
     public void add(T[] items);
-
+    /*
+           
+   Description : adds all items in an array into nodes
+   Precondition: array isnt null
+   postcondition: doublylinkedlist is generator
+ 
+   */
+    
     public void displaySwapCount();
+    /*
+    Displys the number of swaps that occur in the list in a dialog
+    */
 
     public int getNodeNumber();
-
-    public Node<Word> getFirstNode();
-
+    /*
+    Description : returns the last index of the Doubly linked list
+    */
+    
+    public Node getFirstNode();
+    
      public void quickSort();
     
 
