@@ -115,7 +115,7 @@ public class WordList<T> implements WordListADT<T> {
         
         for (int i = 0; i < wArray.size(); i++) {
 
-            if (wArray.get(i).getData().contains(word)) {
+            if (wArray.get(i).getData().toLowerCase().contains(word.toLowerCase())) {
                 
                 count++;
                 found = true;
@@ -134,7 +134,7 @@ public class WordList<T> implements WordListADT<T> {
                     for (int j = 0; j < wArray.size(); j++) {
 
                         if (wArray.get(j).getParagraph() == para) {
-                            if (wArray.get(j).getData().contains(word)) {
+                            if (wArray.get(j).getData().toLowerCase().contains(word.toLowerCase())) {
                                 stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
                             } else {
                                 stringresult += wArray.get(j).getData() + " ";
@@ -169,7 +169,7 @@ public class WordList<T> implements WordListADT<T> {
 
         for (int i = 0; i < wArray.size(); i++) {
 
-            if (word.equals(wArray.get(i).getData())) {
+            if (word.toLowerCase().equals(wArray.get(i).getData().toLowerCase())) {
                 count++;
                 found = true;
                 int para = wArray.get(i).getParagraph();
@@ -184,7 +184,7 @@ public class WordList<T> implements WordListADT<T> {
                     for (int j = 0; j < wArray.size(); j++) {
 
                         if (wArray.get(j).getParagraph() == para) {
-                            if (wArray.get(j).getData().equals(word)) {
+                            if (wArray.get(j).getData().toLowerCase().equals(word.toLowerCase())) {
                                 stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
                             } else {
                                 stringresult += wArray.get(j).getData() + " ";
@@ -218,7 +218,7 @@ public class WordList<T> implements WordListADT<T> {
 
         for (int i = 0; i < wArray.size(); i++) {
 
-            if (wArray.get(i).getData().charAt(0) == word.charAt(0)) {
+            if (wArray.get(i).getData().toLowerCase().charAt(0) == word.toLowerCase().charAt(0)) {
                 count++;
                 found = true;
                 int para = wArray.get(i).getParagraph();
@@ -232,7 +232,7 @@ public class WordList<T> implements WordListADT<T> {
                     for (int j = 0; j < wArray.size(); j++) {
 
                         if (wArray.get(j).getParagraph() == para) {
-                            if (wArray.get(j).getData().charAt(0) == word.charAt(0)) {
+                            if (wArray.get(j).getData().toLowerCase().charAt(0) == word.toLowerCase().charAt(0)) {
                                 stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
                             } else {
                                 stringresult += wArray.get(j).getData() + " ";
@@ -266,7 +266,8 @@ public class WordList<T> implements WordListADT<T> {
 
         for (int i = 0; i < wArray.size(); i++) {
 
-            if (wArray.get(i).getData().charAt(wArray.get(i).getData().length() - 1) == word.charAt(0)) {
+            if (wArray.get(i).getData().toLowerCase().charAt(wArray.get(i).getData().length() - 1) == 
+                    word.toLowerCase().charAt(0)) {
                 count++;
                 found = true;
                 int para = wArray.get(i).getParagraph();
@@ -280,7 +281,8 @@ public class WordList<T> implements WordListADT<T> {
                     for (int j = 0; j < wArray.size(); j++) {
 
                         if (wArray.get(j).getParagraph() == para) {
-                            if (wArray.get(j).getData().charAt(wArray.get(j).getData().length() - 1) == word.charAt(0)) {
+                            if (wArray.get(j).getData().toLowerCase().charAt(wArray.get(j).getData().length() - 1) == 
+                                    word.toLowerCase().charAt(0)) {
                                 stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
                             } else {
                                 stringresult += wArray.get(j).getData() + " ";

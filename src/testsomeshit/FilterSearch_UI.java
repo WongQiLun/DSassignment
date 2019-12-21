@@ -309,7 +309,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-        // TODO add your handling code here:
+        //search even for capital letters // search for specific paragraphs
         if (!txtSearch.getText().equals("")) {
             stringresult = "";
 
