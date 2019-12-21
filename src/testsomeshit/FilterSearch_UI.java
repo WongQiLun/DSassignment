@@ -6,6 +6,8 @@
 package testsomeshit;
 
 import Class.DoublyLinkedListADT;
+import Class.DuplicateWord;
+import Class.DuplicateWordADT;
 import Class.Node;
 import Class.QuickSort;
 import java.io.File;
@@ -46,6 +48,8 @@ public class FilterSearch_UI extends javax.swing.JFrame {
     public static WordListADT<Word> wArray = new WordList();
 
     DoublyLinkedListADT<Word> wDLL = new WordDoublyLinkedList();
+    
+    public static DuplicateWordADT<Word> wDuplicate = new DuplicateWord();
 
     String stringresult = "";
 
@@ -444,6 +448,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         int paragraph = 1;
         wArray.clear();
         wDLL = new WordDoublyLinkedList();
+        wDuplicate = new DuplicateWord(); 
         for (String e : stringArray) {        //Insert into WordList ADT
             if (e.contains("\n") && !e.isEmpty()) {
                 paragraph++;
@@ -454,6 +459,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                     items[xxx] = w;
                     xxx++;
                     wDLL.append(w);
+                    wDuplicate.add(w);
                     //System.out.println(w);
                 }
             } else {
@@ -464,6 +470,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                     items[xxx] = w;
                     xxx++;
                     wDLL.append(w);
+                    wDuplicate.add(w);
                     //System.out.println(w);
                 }
             }
@@ -504,43 +511,11 @@ public class FilterSearch_UI extends javax.swing.JFrame {
     private void btnDuplicateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDuplicateActionPerformed
         // TODO add your handling code here:
         //
-        String search = txtSearch.getText();
-        boolean found = false;
-        int count = 0;
-
-        for (int i = 0; i < wArray.size(); i++) {
-
-           if (wArray.get(i).getData().contains(search)) {
-                count++;
-                found = true;
-                int para = wArray.get(i).getParagraph();
-
-                stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
-
-                for (int j = 0; j < wArray.size(); j++) {
-
-                    if (wArray.get(j).getParagraph() == para) {
-                        if (wArray.get(j).getData().contains(search)) {
-                            stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
-                        } else {
-                            stringresult += wArray.get(j).getData() + " ";
-                        }
-
-                    }
-
-                }
-            }
-
-        } // end for
-
-        if (found == false) {
-            JOptionPane.showMessageDialog(null, "No words found!");
-            txtResult.setText("");
-        } else {
-            stringresult += "<br /> <br/>Total number of duplicate : " + count;
-            JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
-            txtResult.setText(stringresult);
-        }
+        String result = wDuplicate.searchDuplicate(txtSearch.getText());
+        
+        txtResult.setText(result);
+        
+        
     }//GEN-LAST:event_btnDuplicateActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed

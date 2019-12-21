@@ -9,46 +9,53 @@ package Class;
  *
  * @author Forge-15 1650
  */
-public interface DuplicateWordADT {
+public interface DuplicateWordADT<T> {
     
-    public String sContains(String word, int para);
+   public void add(T item);
     /*
-    Description: To search any duplicate words contains in paragrah
+    Description: To add item into the list
+    Precondition: The item is not null
+    Postcondition: The item is added to the list
+    Return: None
+    */
+   
+   public void clear();
+    /*
+    Description: To clear add items in the list
+    Precondition: None
+    Postcondition: The list is cleared
+    Return: None
+    */
+   
+   public T get(int i);
+    /*
+    Description: 
+    Precondition: 
+    Postcondition: 
+    Return: 
+    */
+   
+   public boolean isEmpty();
+    /*
+    Description: 
     Precondition: None
     Postcondition: None
-    Return: The search of duplicate words.
+    Return: 
     */
-    
-    public String sWhole(String word, int para);
+   
+   public int size();
     /*
-    Description: To search the the whole string word in paragraph
+    Description: 
     Precondition: None
     Postcondition: None
-    Return: The search of string
+    Return: 
     */
-    
-    public String sStart(String word, int para);
-    /*
-    Description: To search the first character from paragraph  match the word
+   
+   public String searchDuplicate(String word);
+   /*
+    Description: 
     Precondition: None
     Postcondition: None
-    Return: The search result
+    Return: 
     */
-    
-    public String sEnd(String word, int para);
-    /*
-    Description: To search the last character from paragraph match the word
-    Precondition: None
-    Postcondition: None
-    Return: The search result
-    */
-    
-    public int sInt(String word, int para);
-    /*
-    Description: To search the integer from paragraph match the word
-    Precondition: None
-    Postcondition: None
-    Return: The search result
-    */
-    
 }
