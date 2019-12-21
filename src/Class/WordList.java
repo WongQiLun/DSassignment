@@ -117,6 +117,20 @@ public class WordList<T> implements WordListADT<T> {
         int para = 0;
         int lastpara = 0;
         String stringresult = "";
+        String wPara = "";
+        long startTime1 = System.nanoTime();
+        
+        if(spara == 0){
+            wPara = "All";
+        }
+        else{
+            wPara = Integer.toString(spara);
+        }
+        
+        System.out.println("Filter Algorithm for Contains");
+        System.out.println("=============================");
+        System.out.println("Word to search : " + word);
+        System.out.println("Paragraph : " + wPara);
         
         if(spara == 0){
             for (int i = 0; i < wArray.size(); i++) {
@@ -198,13 +212,25 @@ public class WordList<T> implements WordListADT<T> {
         }
         
          // end for
+        long endTime1 = System.nanoTime();
+        long elapsedTime1 = endTime1 - startTime1;
         
+        if(found == false){            
+            System.out.println("Result : Not found");
+        }
+        
+        else{            
+            System.out.println("Result : Found");
+        }
+        
+        System.out.println("\nExecution time for Searching Algorithm (Contains) : " + elapsedTime1 + " ns\n\n");
+                
         if(found == false){
-            JOptionPane.showMessageDialog(null, "No words found!");
+            JOptionPane.showMessageDialog(null, "No words found!");   
         }
         
         else{
-            JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
+            JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");          
         }
         
         return stringresult;
@@ -215,8 +241,23 @@ public class WordList<T> implements WordListADT<T> {
         int count = 0;
         int lastpara = 0;
         String stringresult = "";
+        String wPara = "";
+        long startTime1 = System.nanoTime();
+        
+        if(spara == 0){
+            wPara = "All";
+        }
+        else{
+            wPara = Integer.toString(spara);
+        }
+        
+        System.out.println("Filter Algorithm for Whole");
+        System.out.println("=============================");
+        System.out.println("Word to search : " + word);
+        System.out.println("Paragraph : " + wPara);
         
         if (spara == 0) {
+                       
             for (int i = 0; i < wArray.size(); i++) {
 
                 if (word.toLowerCase().equals(wArray.get(i).getData().toLowerCase())) {
@@ -253,6 +294,7 @@ public class WordList<T> implements WordListADT<T> {
         }
         
         else{
+            
             for (int i = 0; i < wArray.size(); i++) {
 
                 if (word.toLowerCase().equals(wArray.get(i).getData().toLowerCase())
@@ -295,14 +337,27 @@ public class WordList<T> implements WordListADT<T> {
 
          // end for
 
-        if (found == false) {
-            JOptionPane.showMessageDialog(null, "No words found!");
-
-        } else {
-            JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
-
+        long endTime1 = System.nanoTime();
+        long elapsedTime1 = endTime1 - startTime1;
+        
+        if(found == false){            
+            System.out.println("Result : Not found");
         }
-
+        
+        else{            
+            System.out.println("Result : Found");
+        }
+        
+        System.out.println("\nExecution time for Searching Algorithm (Contains) : " + elapsedTime1 + " ns\n\n");
+        
+        if(found == false){
+            JOptionPane.showMessageDialog(null, "No words found!");            
+        }
+        
+        else{
+            JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
+        }
+        
         return stringresult;
     }
     
@@ -311,11 +366,25 @@ public class WordList<T> implements WordListADT<T> {
         int count = 0;
         int lastpara = 0;
         String stringresult = "";
+        String wPara = "";
+        long startTime1 = System.nanoTime();
+        
+        if(spara == 0){
+            wPara = "All";
+        }
+        else{
+            wPara = Integer.toString(spara);
+        }
+        
+        System.out.println("Filter Algorithm for First Characters");
+        System.out.println("=============================");
+        System.out.println("Word to search : " + word);
+        System.out.println("Paragraph : " + wPara);
         
         if(spara == 0){
             for (int i = 0; i < wArray.size(); i++) {
 
-                if (wArray.get(i).getData().toLowerCase().charAt(0) == word.toLowerCase().charAt(0)) {
+                if (wArray.get(i).getData().toLowerCase().startsWith(word.toLowerCase())) {
                     count++;
                     found = true;
                     int para = wArray.get(i).getParagraph();
@@ -329,7 +398,7 @@ public class WordList<T> implements WordListADT<T> {
                         for (int j = 0; j < wArray.size(); j++) {
 
                             if (wArray.get(j).getParagraph() == para) {
-                                if (wArray.get(j).getData().toLowerCase().charAt(0) == word.toLowerCase().charAt(0)) {
+                                if (wArray.get(j).getData().toLowerCase().startsWith(word.toLowerCase())) {
                                     stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
                                 } else {
                                     stringresult += wArray.get(j).getData() + " ";
@@ -351,7 +420,7 @@ public class WordList<T> implements WordListADT<T> {
             
             for (int i = 0; i < wArray.size(); i++) {
 
-                if (wArray.get(i).getData().toLowerCase().charAt(0) == word.toLowerCase().charAt(0)
+                if (wArray.get(i).getData().toLowerCase().startsWith(word.toLowerCase())
                         && wArray.get(i).getParagraph() == spara) {
                     
                     count++;
@@ -367,7 +436,7 @@ public class WordList<T> implements WordListADT<T> {
                         for (int j = 0; j < wArray.size(); j++) {
 
                             if (wArray.get(j).getParagraph() == para) {
-                                if (wArray.get(j).getData().toLowerCase().charAt(0) == word.toLowerCase().charAt(0)
+                                if (wArray.get(j).getData().toLowerCase().startsWith(word.toLowerCase())
                                         && wArray.get(i).getParagraph() == spara) {
                                     
                                     stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
@@ -388,16 +457,27 @@ public class WordList<T> implements WordListADT<T> {
 
         }
 
+        long endTime1 = System.nanoTime();
+        long elapsedTime1 = endTime1 - startTime1;
         
-
-        if (found == false) {
-            JOptionPane.showMessageDialog(null, "No words found!");
-
-        } else {
-            JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
-
+        if(found == false){            
+            System.out.println("Result : Not found");
         }
-
+        
+        else{            
+            System.out.println("Result : Found");
+        }
+        
+        System.out.println("\nExecution time for Searching Algorithm (Contains) : " + elapsedTime1 + " ns\n\n");
+        
+        if(found == false){
+            JOptionPane.showMessageDialog(null, "No words found!");
+        }
+        
+        else{
+            JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
+        }
+        
         return stringresult;
     }
     
@@ -406,13 +486,27 @@ public class WordList<T> implements WordListADT<T> {
         boolean found = false;
         int count = 0;
         int lastpara = 0;
+        String wPara = "";
+        long startTime1 = System.nanoTime();
+        
+        if(spara == 0){
+            wPara = "All";
+        }
+        else{
+            wPara = Integer.toString(spara);
+        }
+        
+        System.out.println("Filter Algorithm for Last Character");
+        System.out.println("=============================");
+        System.out.println("Word to search : " + word);
+        System.out.println("Paragraph : " + wPara);
         
         if(spara == 0){
             
             for (int i = 0; i < wArray.size(); i++) {
 
-                if (wArray.get(i).getData().toLowerCase().charAt(wArray.get(i).getData().length() - 1)
-                        == word.toLowerCase().charAt(0)) {
+                if (wArray.get(i).getData().toLowerCase().endsWith(word.toLowerCase())
+                       ) {
                     count++;
                     found = true;
                     int para = wArray.get(i).getParagraph();
@@ -426,8 +520,7 @@ public class WordList<T> implements WordListADT<T> {
                         for (int j = 0; j < wArray.size(); j++) {
 
                             if (wArray.get(j).getParagraph() == para) {
-                                if (wArray.get(j).getData().toLowerCase().charAt(wArray.get(j).getData().length() - 1)
-                                        == word.toLowerCase().charAt(0)) {
+                                if (wArray.get(j).getData().toLowerCase().endsWith(word.toLowerCase())) {
                                     stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
                                 } else {
                                     stringresult += wArray.get(j).getData() + " ";
@@ -449,8 +542,8 @@ public class WordList<T> implements WordListADT<T> {
             
             for (int i = 0; i < wArray.size(); i++) {
 
-                if (wArray.get(i).getData().toLowerCase().charAt(wArray.get(i).getData().length() - 1)
-                        == word.toLowerCase().charAt(0) && wArray.get(i).getParagraph() == 0) {
+                if (wArray.get(i).getData().toLowerCase().endsWith(word.toLowerCase())
+                        && wArray.get(i).getParagraph() == spara) {
                     count++;
                     found = true;
                     int para = wArray.get(i).getParagraph();
@@ -464,8 +557,8 @@ public class WordList<T> implements WordListADT<T> {
                         for (int j = 0; j < wArray.size(); j++) {
 
                             if (wArray.get(j).getParagraph() == para) {
-                                if (wArray.get(j).getData().toLowerCase().charAt(wArray.get(j).getData().length() - 1)
-                                        == word.toLowerCase().charAt(0) && wArray.get(i).getParagraph() == 0) {
+                                if (wArray.get(j).getData().toLowerCase().endsWith(word.toLowerCase())
+                                        && wArray.get(j).getParagraph() == spara) {
                                     
                                     stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
                                     
@@ -485,13 +578,27 @@ public class WordList<T> implements WordListADT<T> {
             
         }
 
-        if (found == false) {
-            JOptionPane.showMessageDialog(null, "No words found!");
-
-        } else {
-            JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
-
+        long endTime1 = System.nanoTime();
+        long elapsedTime1 = endTime1 - startTime1;
+        
+        if(found == false){            
+            System.out.println("Result : Not found");
         }
+        
+        else{            
+            System.out.println("Result : Found");
+        }
+        
+        System.out.println("\nExecution time for Searching Algorithm (Contains) : " + elapsedTime1 + " ns\n\n");
+        
+        if(found == false){
+            JOptionPane.showMessageDialog(null, "No words found!");
+        }
+        
+        else{
+            JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
+        }        
+        
         return stringresult;
     }
     
@@ -500,6 +607,20 @@ public class WordList<T> implements WordListADT<T> {
         boolean found = false;
         int lastpara = 0;
         int para, count = 0;
+        String wPara = "";
+        long startTime1 = System.nanoTime();
+        
+        if(spara == 0){
+            wPara = "All";
+        }
+        else{
+            wPara = Integer.toString(spara);
+        }
+        
+        System.out.println("Filter Algorithm for Interger");
+        System.out.println("=============================");
+        System.out.println("Word to search : " + word);
+        System.out.println("Paragraph : " + wPara);
 
         try {
             int search1 = Integer.parseInt(word);
@@ -593,13 +714,21 @@ public class WordList<T> implements WordListADT<T> {
 
             }
 
-            
-            if (found == false) {
-                JOptionPane.showMessageDialog(null, "No integers found!");
+            long endTime1 = System.nanoTime();
+            long elapsedTime1 = endTime1 - startTime1;
 
+            if (found == false) {
+                System.out.println("Result : Not found");
+            } else {
+                System.out.println("Result : Found");
+            }
+
+            System.out.println("\nExecution time for Searching Algorithm (Contains) : " + elapsedTime1 + " ns\n\n");
+
+            if (found == false) {
+                JOptionPane.showMessageDialog(null, "No words found!");
             } else {
                 JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
-
             }
 
         } catch (NumberFormatException e) {

@@ -454,7 +454,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                     items[xxx] = w;
                     xxx++;
                     wDLL.append(w);
-                    System.out.println(w);
+                    //System.out.println(w);
                 }
             } else {
                 Word w = new Word(e.trim(), paragraph, paragraph);
@@ -464,7 +464,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                     items[xxx] = w;
                     xxx++;
                     wDLL.append(w);
-                    System.out.println(w);
+                    //System.out.println(w);
                 }
             }
 
