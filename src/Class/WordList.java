@@ -5,6 +5,9 @@
  */
 package Class;
 
+import javax.swing.JOptionPane;
+import static testsomeshit.FilterSearch_UI.wArray;
+
 /**
  *
  * @author ongchunheng
@@ -71,7 +74,7 @@ public class WordList<T> implements WordListADT<T> {
         
         return item;
     }
-
+    
     private void shiftItemtoLeft(int currentIndex) {
         for (int i = currentIndex; i < size - 1; i++) {
             array[i] = array[i + 1];
@@ -103,5 +106,278 @@ public class WordList<T> implements WordListADT<T> {
         return result; 
     }
     
+    public String sContains(String word) {
+        boolean found = false;
+        int count = 0;
+        int para = 0;
+        int lastpara = 0;
+        String stringresult = "";
+        
+        for (int i = 0; i < wArray.size(); i++) {
+
+            if (wArray.get(i).getData().contains(word)) {
+                
+                count++;
+                found = true;
+                para = wArray.get(i).getParagraph();
+                
+               
+                if (lastpara == para) {
+                    
+                } else {
+                    
+
+                    lastpara = para;
+
+                    stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
+
+                    for (int j = 0; j < wArray.size(); j++) {
+
+                        if (wArray.get(j).getParagraph() == para) {
+                            if (wArray.get(j).getData().contains(word)) {
+                                stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
+                            } else {
+                                stringresult += wArray.get(j).getData() + " ";
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        } // end for
+        
+        if(found == false){
+            JOptionPane.showMessageDialog(null, "No words found!");
+        }
+        
+        else{
+            JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
+        }
+        
+        return stringresult;
+    }
+    
+    public String sWhole(String word){
+        boolean found = false;
+        int count = 0;
+        int lastpara = 0;
+        String stringresult = "";
+
+        for (int i = 0; i < wArray.size(); i++) {
+
+            if (word.equals(wArray.get(i).getData())) {
+                count++;
+                found = true;
+                int para = wArray.get(i).getParagraph();
+
+                if (lastpara == para) {
+
+                } else {
+                    lastpara = para;
+
+                    stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
+
+                    for (int j = 0; j < wArray.size(); j++) {
+
+                        if (wArray.get(j).getParagraph() == para) {
+                            if (wArray.get(j).getData().equals(word)) {
+                                stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
+                            } else {
+                                stringresult += wArray.get(j).getData() + " ";
+                            }
+
+                        }
+
+                    }
+                }
+
+            }
+
+        } // end for
+
+        if (found == false) {
+            JOptionPane.showMessageDialog(null, "No words found!");
+
+        } else {
+            JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
+
+        }
+
+        return stringresult;
+    }
+    
+    public String sStart(String word){
+        boolean found = false;
+        int count = 0;
+        int lastpara = 0;
+        String stringresult = "";
+
+        for (int i = 0; i < wArray.size(); i++) {
+
+            if (wArray.get(i).getData().charAt(0) == word.charAt(0)) {
+                count++;
+                found = true;
+                int para = wArray.get(i).getParagraph();
+
+                if (lastpara == para) {
+
+                } else {
+                    lastpara = para;
+                    stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
+
+                    for (int j = 0; j < wArray.size(); j++) {
+
+                        if (wArray.get(j).getParagraph() == para) {
+                            if (wArray.get(j).getData().charAt(0) == word.charAt(0)) {
+                                stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
+                            } else {
+                                stringresult += wArray.get(j).getData() + " ";
+                            }
+
+                        }
+
+                    }
+                }
+
+            }
+
+        } // end for
+
+        if (found == false) {
+            JOptionPane.showMessageDialog(null, "No words found!");
+
+        } else {
+            JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
+
+        }
+
+        return stringresult;
+    }
+    
+    public String sEnd(String word){
+        String stringresult = "";
+        boolean found = false;
+        int count = 0;
+        int lastpara = 0;
+
+        for (int i = 0; i < wArray.size(); i++) {
+
+            if (wArray.get(i).getData().charAt(wArray.get(i).getData().length() - 1) == word.charAt(0)) {
+                count++;
+                found = true;
+                int para = wArray.get(i).getParagraph();
+
+                if (lastpara == para) {
+
+                } else {
+                    lastpara = para;
+                    stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
+
+                    for (int j = 0; j < wArray.size(); j++) {
+
+                        if (wArray.get(j).getParagraph() == para) {
+                            if (wArray.get(j).getData().charAt(wArray.get(j).getData().length() - 1) == word.charAt(0)) {
+                                stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
+                            } else {
+                                stringresult += wArray.get(j).getData() + " ";
+                            }
+
+                        }
+
+                    }
+                }
+            }
+
+        } // end for
+
+        if (found == false) {
+            JOptionPane.showMessageDialog(null, "No words found!");
+
+        } else {
+            JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
+
+        }
+        return stringresult;
+    }
+    
+    public String sInt(String word){
+        String stringresult = "";
+        boolean found = false;
+        int lastpara = 0;
+        int para, count = 0;
+
+        try {
+            int search1 = Integer.parseInt(word);
+
+            for (int i = 0; i < wArray.size(); i++) {
+                if (tryConvert(wArray.get(i).getData().trim())) {
+
+                    if (Integer.parseInt(wArray.get(i).getData()) == search1) {
+                        count++;
+                        found = true;
+                        para = wArray.get(i).getParagraph();
+
+                        if (lastpara == para) {
+
+                        } else {
+
+                            lastpara = para;
+
+                            stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
+
+                            String search2 = Integer.toString(search1);
+                            for (int j = 0; j < wArray.size(); j++) {
+
+                                if (wArray.get(j).getParagraph() == para) {
+                                    if (wArray.get(j).getData().equals(search2)) {
+                                        stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
+                                    } else {
+                                        stringresult += wArray.get(j).getData() + " ";
+                                    }
+
+                                }
+
+                            }
+
+                        }
+                    }
+
+                } else {
+
+                }
+            }
+
+            if (found == false) {
+                JOptionPane.showMessageDialog(null, "No integers found!");
+
+            } else {
+                JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
+
+            }
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Please enter only digits!");
+        }
+
+
+        return stringresult;
+        
+    }
+    
+    public static boolean tryConvert(String a) {
+        boolean result = false;
+        try {
+            Integer.parseInt(a.trim());
+            result = true;
+        } catch (NumberFormatException e) {
+            result = false;
+        }
+        //System.out.println(result);
+        return result;
+    }
 
 }

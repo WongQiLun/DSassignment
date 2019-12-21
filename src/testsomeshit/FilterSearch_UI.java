@@ -42,7 +42,8 @@ public class FilterSearch_UI extends javax.swing.JFrame {
 
     File file = null;
     String[] x;
-    WordListADT<Word> wArray = new WordList();
+    
+    public static WordListADT<Word> wArray = new WordList();
 
     DoublyLinkedListADT<Word> wDLL = new WordDoublyLinkedList();
 
@@ -308,240 +309,47 @@ public class FilterSearch_UI extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-        if (txtSearch.getText() != "") {
+        // TODO add your handling code here:
+        if (!txtSearch.getText().equals("")) {
             stringresult = "";
-
-            String result;
-            WordListADT<Word> intArray = new WordList();
 
             String search = txtSearch.getText();
 
-            if (btnInt.isSelected()) {
-
-                try {
-                    int search1 = Integer.parseInt(search);
-
-                    for (int i = 0; i < wArray.size(); i++) {
-                        if (tryConvert(wArray.get(i).getData().trim())) {
-                            //System.out.println("YES!");
-                            Word w = new Word(wArray.get(i).getData(), wArray.get(i).getParagraph(), wArray.get(i).getRow());
-                            intArray.add(w);
-
-                        } else {
-
-                        }
-                    }
-
-                    result = "";
-                    for (int i = 0; i < intArray.size(); i++) {
-                        if (search1 == Integer.parseInt(intArray.get(i).getData())) {
-                            result += "\nParagraph " + intArray.get(i).getParagraph() + ": " + search1;
-                        }
-                    }
-
-                    txtResult.setText(result);
-
-//                    for (int j = 0; j < count; j++) {
-//                        System.out.println(intArray[j]);
-//                    }
-                } catch (NumberFormatException e) {
-                    JOptionPane.showMessageDialog(null, "Please enter only digits!");
-                }
-
+            if (btnInt.isSelected()) {  //btnInt
+                String stringresult = wArray.sInt(search);
+                
+                txtResult.setText(stringresult);
+                
             } else {          //btnString.isSelected
 
-                if (btnWhole.isSelected()) {
-                    boolean found = false;
-                    int count = 0;
-                    int lastpara = 0;
+                if (btnWhole.isSelected()) {      //btnWhole
+                    String stringresult = wArray.sWhole(search);
 
-                    for (int i = 0; i < wArray.size(); i++) {
+                    txtResult.setText(stringresult);
 
-                        if (search.equals(wArray.get(i).getData())) {
-                            count++;
-                            found = true;
-                            int para = wArray.get(i).getParagraph();
-
-                            if(lastpara == para){
-                                
-                            }
-                            
-                            else{
-                                lastpara = para;
-                                
-                                stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
-
-                                for (int j = 0; j < wArray.size(); j++) {
-
-                                    if (wArray.get(j).getParagraph() == para) {
-                                        if (wArray.get(j).getData().equals(search)) {
-                                            stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
-                                        } else {
-                                            stringresult += wArray.get(j).getData() + " ";
-                                        }
-
-                                    }
-
-                                }
-                            }
-                            
-                        }
-
-                    } // end for
-
-                    if (found == false) {
-                        JOptionPane.showMessageDialog(null, "No words found!");
-                        txtResult.setText("");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
-                        txtResult.setText(stringresult);
-                    }
                 } else if (btnContains.isSelected()) {    //btnContains
-                    boolean found = false;
-                    int count = 0;
-                    int lastpara = 0;
+                    String stringresult = wArray.sContains(search);
 
-                    for (int i = 0; i < wArray.size(); i++) {
+                    txtResult.setText(stringresult);
 
-                        if (wArray.get(i).getData().contains(search)) {
-                            count++;
-                            found = true;
-                            int para = wArray.get(i).getParagraph();
-                            
-                            if(lastpara == para){
-                                
-                            }
-                            else{
-                                lastpara = para;
+                } else if (btnStart.isSelected()) {     //btnStart
+                    String stringresult = wArray.sStart(search);
 
-                                stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
+                    txtResult.setText(stringresult);
 
-                                for (int j = 0; j < wArray.size(); j++) {
-
-                                    if (wArray.get(j).getParagraph() == para) {
-                                        if (wArray.get(j).getData().contains(search)) {
-                                            stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
-                                        } else {
-                                            stringresult += wArray.get(j).getData() + " ";
-                                        }
-
-                                    }
-
-                                }
-                            }
-                            
-                        }
-
-                    } // end for
-
-                    if (found == false) {
-                        JOptionPane.showMessageDialog(null, "No words found!");
-                        txtResult.setText("");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
-                        txtResult.setText(stringresult);
-                    }
-
-                } else if (btnStart.isSelected()) {
-                    boolean found = false;
-                    int count = 0;
-                    int lastpara = 0;
-
-                    System.out.println(wArray.get(0).getData().charAt(0));
-                    System.out.println(search.charAt(0));
-                    for (int i = 0; i < wArray.size(); i++) {
-
-                        if (wArray.get(i).getData().charAt(0) == search.charAt(0)) {
-                            count++;
-                            found = true;
-                            int para = wArray.get(i).getParagraph();
-                            
-                            if(lastpara == para){
-                                
-                            }
-                            
-                            else{
-                                lastpara = para;
-                                stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
-
-                                for (int j = 0; j < wArray.size(); j++) {
-
-                                    if (wArray.get(j).getParagraph() == para) {
-                                        if (wArray.get(j).getData().charAt(0) == search.charAt(0)) {
-                                            stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
-                                        } else {
-                                            stringresult += wArray.get(j).getData() + " ";
-                                        }
-
-                                    }
-
-                                }
-                            }
-
-                            
-                        }
-
-                    } // end for
-
-                    if (found == false) {
-                        JOptionPane.showMessageDialog(null, "No words found!");
-                        txtResult.setText("");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
-                        txtResult.setText(stringresult);
-                    }
                 } else {
-                    boolean found = false;
-                    int count = 0;
-                    int lastpara = 0;
+                    String stringresult = wArray.sEnd(search);
 
-                    System.out.println(wArray.get(1).getData().charAt(wArray.get(1).getData().length() - 1));
-                    System.out.println(search.charAt(0));
-                    for (int i = 0; i < wArray.size(); i++) {
-
-                        if (wArray.get(i).getData().charAt(wArray.get(i).getData().length() - 1) == search.charAt(0)) {
-                            count++;
-                            found = true;
-                            int para = wArray.get(i).getParagraph();
-                            
-                            if(lastpara == para){
-                                
-                            }
-                            
-                            else{
-                                lastpara = para;
-                                stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
-
-                                for (int j = 0; j < wArray.size(); j++) {
-
-                                    if (wArray.get(j).getParagraph() == para) {
-                                        if (wArray.get(j).getData().charAt(wArray.get(j).getData().length() - 1) == search.charAt(0)) {
-                                            stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
-                                        } else {
-                                            stringresult += wArray.get(j).getData() + " ";
-                                        }
-
-                                    }
-
-                                }
-                            }
-                        }
-
-                    } // end for
-
-                    if (found == false) {
-                        JOptionPane.showMessageDialog(null, "No words found!");
-                        txtResult.setText("");
-                    } else {
-                        JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
-                        txtResult.setText(stringresult);
-                    }
+                    txtResult.setText(stringresult);
 
                 }
-
             }//end else
-        } else {
+        }
+        
+        else {
             JOptionPane.showMessageDialog(null, "No words were entered!");
+            txtSearch.setText("");
+            txtResult.setText("");
         }
 
     }//GEN-LAST:event_btnSearchActionPerformed
@@ -750,17 +558,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 
-    public static boolean tryConvert(String a) {
-        boolean result = false;
-        try {
-            Integer.parseInt(a.trim());
-            result = true;
-        } catch (NumberFormatException e) {
-            result = false;
-        }
-        //System.out.println(result);
-        return result;
-    }
+   
 
 
    private void SaveOutput() {

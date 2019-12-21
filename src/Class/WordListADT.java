@@ -21,5 +21,15 @@ public interface WordListADT<T> {
     public boolean isEmpty();
     
     public int size();
+    
+    public String sContains(String w);
+    
+    public String sWhole(String w);
+    
+    public String sStart(String w);
+    
+    public String sEnd(String w);
+    
+    public String sInt(String w);
    
 }
