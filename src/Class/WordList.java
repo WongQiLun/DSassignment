@@ -57,36 +57,6 @@ public class WordList<T> implements WordListADT<T> {
         oldArray = null;
     }
 
-    public T remove(int i) {
-        T item = null;
-        
-        item = array[i];
-        
-        shiftItemtoLeft(i);
-        size--;
-        
-        return item;
-    }
-
-    public T remove() {
-        T item = null;
-        
-        item = array[size];
-        array[size] = null;
-        
-        size--;
-        
-        
-        return item;
-    }
-    
-    private void shiftItemtoLeft(int currentIndex) {
-        for (int i = currentIndex; i < size - 1; i++) {
-            array[i] = array[i + 1];
-        }
-        array[size - 1] = null;
-    }
-
     public boolean isEmpty() {
         if (size == 0) {
             return true;
