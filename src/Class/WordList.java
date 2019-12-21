@@ -31,6 +31,11 @@ public class WordList<T> implements WordListADT<T> {
             size++;
         }
     }
+    
+    public void clear(){
+        array = (T[]) new Object[100];
+        size = 0;
+    }
 
     private boolean isFull() {
         if (size == array.length) {

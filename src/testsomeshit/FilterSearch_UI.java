@@ -442,7 +442,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         Word[] items = new Word[1000];
         int xxx = 0;
         int paragraph = 1;
-        wArray = new WordList();
+        wArray.clear();
         wDLL = new WordDoublyLinkedList();
         for (String e : stringArray) {        //Insert into WordList ADT
             if (e.contains("\n") && !e.isEmpty()) {
