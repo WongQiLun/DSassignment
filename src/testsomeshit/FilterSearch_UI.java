@@ -67,6 +67,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         btnBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -91,6 +92,10 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         btnStart = new javax.swing.JRadioButton();
         btnEnd = new javax.swing.JRadioButton();
         btnDuplicate = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        radAll = new javax.swing.JRadioButton();
+        radOthers = new javax.swing.JRadioButton();
+        txtPara = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -179,6 +184,27 @@ public class FilterSearch_UI extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setText("Paragraph :");
+
+        buttonGroup3.add(radAll);
+        radAll.setSelected(true);
+        radAll.setText("All");
+        radAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radAllActionPerformed(evt);
+            }
+        });
+
+        buttonGroup3.add(radOthers);
+        radOthers.setText("Others");
+        radOthers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radOthersActionPerformed(evt);
+            }
+        });
+
+        txtPara.setEnabled(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -196,44 +222,54 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(btnSearch)
-                                    .addGap(63, 63, 63))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(btnWhole)
-                                        .addComponent(btnContains))
-                                    .addGap(43, 43, 43)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(btnEnd)
-                                        .addComponent(btnStart)))
-                                .addComponent(jLabel2)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(btnBack)
-                                    .addGap(130, 130, 130)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnOpen))
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 669, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnDuplicate))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btnContains)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnDuplicate))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(114, 114, 114)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jbtnSort)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(58, 58, 58))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(155, 155, 155)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jbtnSort)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(58, 58, 58)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                            .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(btnSearch)
+                                            .addGap(63, 63, 63))
+                                        .addComponent(jLabel2)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel4)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(radAll)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(radOthers)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtPara, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addGap(189, 189, 189)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(btnEnd)
+                                                .addComponent(btnStart))))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(btnBack)
+                                            .addGap(130, 130, 130)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(btnOpen))
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 669, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnWhole))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -264,16 +300,21 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                     .addComponent(btnInt))
                 .addGap(3, 3, 3)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(radAll)
+                    .addComponent(radOthers)
+                    .addComponent(txtPara, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnWhole)
                     .addComponent(btnStart))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDuplicate)
                     .addComponent(btnContains)
                     .addComponent(btnEnd))
-                .addGap(1, 1, 1)
-                .addComponent(btnDuplicate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -282,7 +323,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                         .addComponent(jbtnSort)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -310,40 +351,53 @@ public class FilterSearch_UI extends javax.swing.JFrame {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
         //search even for capital letters // search for specific paragraphs
-        if (!txtSearch.getText().equals("")) {
+        if ((radAll.isSelected() || !txtPara.getText().equals("")) && !txtSearch.getText().equals("")) {
+            
             stringresult = "";
-
-            String search = txtSearch.getText();
-
-            if (btnInt.isSelected()) {  //btnInt
-                String stringresult = wArray.sInt(search);
+            int search_para = 0;
+                    
+            if (txtPara.getText().equals("0") || txtPara.getText().matches(".*[a-zA-Z]+.*")) {
+                JOptionPane.showMessageDialog(null, "Invalid paragraph input! Paragraph starts from 1.");
+            } else {
                 
-                txtResult.setText(stringresult);
-                
-            } else {          //btnString.isSelected
-
-                if (btnWhole.isSelected()) {      //btnWhole
-                    String stringresult = wArray.sWhole(search);
-
-                    txtResult.setText(stringresult);
-
-                } else if (btnContains.isSelected()) {    //btnContains
-                    String stringresult = wArray.sContains(search);
-
-                    txtResult.setText(stringresult);
-
-                } else if (btnStart.isSelected()) {     //btnStart
-                    String stringresult = wArray.sStart(search);
-
-                    txtResult.setText(stringresult);
-
+                if (radAll.isSelected()) {   // Search all
+                    search_para = 0;
                 } else {
-                    String stringresult = wArray.sEnd(search);
+                    search_para = Integer.parseInt(txtPara.getText());                   
+                }
+                
+                String search = txtSearch.getText();
+
+                if (btnInt.isSelected()) {  //btnInt
+                    String stringresult = wArray.sInt(search, search_para);
 
                     txtResult.setText(stringresult);
 
-                }
-            }//end else
+                } else {          //btnString.isSelected
+
+                    if (btnWhole.isSelected()) {      //btnWhole
+                        String stringresult = wArray.sWhole(search, search_para);
+
+                        txtResult.setText(stringresult);
+
+                    } else if (btnContains.isSelected()) {    //btnContains
+                        String stringresult = wArray.sContains(search, search_para);
+
+                        txtResult.setText(stringresult);
+
+                    } else if (btnStart.isSelected()) {     //btnStart
+                        String stringresult = wArray.sStart(search, search_para);
+
+                        txtResult.setText(stringresult);
+
+                    } else {    //btnEnd
+                        String stringresult = wArray.sEnd(search, search_para);
+
+                        txtResult.setText(stringresult);
+
+                    }
+                }//end else btnString.isSelected
+            }
         }
         
         else {
@@ -494,6 +548,17 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         SaveOutput();
     }//GEN-LAST:event_btnSaveActionPerformed
 
+    private void radOthersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radOthersActionPerformed
+        // TODO add your handling code here:
+        txtPara.setEnabled(true);
+    }//GEN-LAST:event_radOthersActionPerformed
+
+    private void radAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radAllActionPerformed
+        // TODO add your handling code here:
+        txtPara.setText("");
+        txtPara.setEnabled(false);
+    }//GEN-LAST:event_radAllActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -543,9 +608,11 @@ public class FilterSearch_UI extends javax.swing.JFrame {
     private javax.swing.JRadioButton btnWhole;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -553,7 +620,10 @@ public class FilterSearch_UI extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton jbtnSort;
     private javax.swing.JTextPane jtpFileName;
+    private javax.swing.JRadioButton radAll;
+    private javax.swing.JRadioButton radOthers;
     public javax.swing.JTextPane txtContent;
+    private javax.swing.JTextField txtPara;
     public javax.swing.JTextPane txtResult;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables

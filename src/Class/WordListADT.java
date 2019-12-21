@@ -22,14 +22,14 @@ public interface WordListADT<T> {
     
     public int size();
     
-    public String sContains(String w);
+    public String sContains(String w, int para);
     
-    public String sWhole(String w);
+    public String sWhole(String w, int para);
     
-    public String sStart(String w);
+    public String sStart(String w, int para);
     
-    public String sEnd(String w);
+    public String sEnd(String w, int para);
     
-    public String sInt(String w);
+    public String sInt(String w, int para);
    
 }
