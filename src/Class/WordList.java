@@ -209,6 +209,7 @@ public class WordList<T> implements WordListADT<T> {
     public String sWhole(String word, int spara){
         boolean found = false;
         int count = 0;
+        int count1 = 0;
         int lastpara = 0;
         String stringresult = "";
         String wPara = "";
@@ -227,81 +228,248 @@ public class WordList<T> implements WordListADT<T> {
         System.out.println("Paragraph : " + wPara);
         
         if (spara == 0) {
-                       
-            for (int i = 0; i < wArray.size(); i++) {
+            
+            if(word.contains(" ")){
+                String[] word1 = word.split(" ");
+                
+                for(int i = 0 ; i < wArray.size(); i++) {
+                    count1 = 0;
+                    int k1 = i;
+                    for(int k = 0 ; k < word1.length ; k++){
+                        
+                        if(wArray.get(k1).getData().toLowerCase().equals(word1[k])){
+                            count1++;
+                                                     
+                        }
+                        else{                            
+                            break;
+                        }
+                        k1++; 
+                        
+                    }
+                    
+                    if(count1 == word1.length){
+                        found = true;
+                        count ++;
+                        
+                        int para = wArray.get(i).getParagraph();
+                        
+                        if (lastpara == para) {
 
-                if (word.toLowerCase().equals(wArray.get(i).getData().toLowerCase())) {
-                    count++;
-                    found = true;
-                    int para = wArray.get(i).getParagraph();
+                        }
+                        
+                         else{
+                            lastpara = para;
+                            
+                            stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
+                            
+                            for (int j = 0; j < wArray.size(); j++) {
+                                
+                                //int k2 = j;
 
-                    if (lastpara == para) {
+                                if (wArray.get(j).getParagraph() == para) {
+                                    
+                                    try {
+                                        for (int k = 0; k < word1.length; k++) {
 
-                    } else {
-                        lastpara = para;
+                                            if (wArray.get(j).getData().toLowerCase().equals(word1[k])) {
 
-                        stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
+                                                stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
+                                                j++;
 
-                        for (int j = 0; j < wArray.size(); j++) {
+                                            }
 
-                            if (wArray.get(j).getParagraph() == para) {
-                                if (wArray.get(j).getData().toLowerCase().equals(word.toLowerCase())) {
-                                    stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
-                                } else {
-                                    stringresult += wArray.get(j).getData() + " ";
+                                            //k2++;
+
+                                        }
+                                    } catch (NullPointerException e) {
+ 
+                                    }
+                                    
+                                    try {
+                                        if (wArray.get(j).getParagraph() != lastpara) {
+
+                                        } else {
+                                            stringresult += wArray.get(j).getData() + " ";
+                                        }
+                                    } catch (NullPointerException e) {
+
+                                    }
+
+                                }
+
+                            }
+                            
+                        }
+                        
+                    }
+                   
+                }
+                
+            }
+            
+            else{
+                for (int i = 0; i < wArray.size(); i++) {
+
+                    if (word.toLowerCase().equals(wArray.get(i).getData().toLowerCase())) {
+                        count++;
+                        found = true;
+                        int para = wArray.get(i).getParagraph();
+
+                        if (lastpara == para) {
+
+                        } else {
+                            lastpara = para;
+
+                            stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
+
+                            for (int j = 0; j < wArray.size(); j++) {
+
+                                if (wArray.get(j).getParagraph() == para) {
+                                    if (wArray.get(j).getData().toLowerCase().equals(word.toLowerCase())) {
+                                        stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
+                                    } else {
+                                        stringresult += wArray.get(j).getData() + " ";
+                                    }
+
                                 }
 
                             }
 
                         }
-                        
+
                     }
 
                 }
-
             }
-            
+
         }
         
         else{
             
-            for (int i = 0; i < wArray.size(); i++) {
-
-                if (word.toLowerCase().equals(wArray.get(i).getData().toLowerCase())
-                        && wArray.get(i).getParagraph() == spara) {
+            if(word.contains(" ")){
+                String[] word1 = word.split(" ");
+                
+                for(int i = 0 ; i < wArray.size(); i++) {
+                    count1 = 0;
+                    int k1 = i;
+                    for(int k = 0 ; k < word1.length ; k++){
+                        
+                        if(wArray.get(k1).getData().toLowerCase().equals(word1[k]) && 
+                                wArray.get(k1).getParagraph() == spara){
+                            count1++;
+                                                     
+                        }
+                        else{                            
+                            break;
+                        }
+                        k1++; 
+                        
+                    }
                     
-                    count++;
-                    found = true;
-                    int para = wArray.get(i).getParagraph();
+                    if(count1 == word1.length){
+                        found = true;
+                        count ++;
+                        
+                        int para = wArray.get(i).getParagraph();
+                        
+                        if (lastpara == para) {
 
-                    if (lastpara == para) {
+                        }
+                        
+                         else{
+                            lastpara = para;
+                            
+                            stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
+                            
+                            for (int j = 0; j < wArray.size(); j++) {
+                                
+                                //int k2 = j;
 
-                    } else {
-                        lastpara = para;
-
-                        stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
-
-                        for (int j = 0; j < wArray.size(); j++) {
-
-                            if (wArray.get(j).getParagraph() == para) {
-                                if (wArray.get(j).getData().toLowerCase().equals(word.toLowerCase())
-                                        && wArray.get(i).getParagraph() == spara) {
+                                if (wArray.get(j).getParagraph() == para) {
                                     
-                                    stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
-                                    
-                                } else {
-                                    stringresult += wArray.get(j).getData() + " ";
+                                    try {
+                                        for (int k = 0; k < word1.length; k++) {
+
+                                            if (wArray.get(j).getData().toLowerCase().equals(word1[k])
+                                                    && wArray.get(j).getParagraph() == spara) {
+
+                                                stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
+                                                j++;
+
+                                            }
+
+                                            //k2++;
+
+                                        }
+                                    } catch (NullPointerException e) {
+
+                                    }
+
+                                    try {
+                                        if (wArray.get(j).getParagraph() != lastpara) {
+
+                                        } else {
+                                            stringresult += wArray.get(j).getData() + " ";
+                                        }
+                                    } catch (NullPointerException e) {
+
+                                    }
+
+                                }
+
+                            }
+                            
+                        }
+                        
+                    }
+                   
+                }
+                
+            }
+            
+            else
+            {
+                for (int i = 0; i < wArray.size(); i++) {
+
+                    if (word.toLowerCase().equals(wArray.get(i).getData().toLowerCase())
+                            && wArray.get(i).getParagraph() == spara) {
+
+                        count++;
+                        found = true;
+                        int para = wArray.get(i).getParagraph();
+
+                        if (lastpara == para) {
+
+                        } else {
+                            lastpara = para;
+
+                            stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
+
+                            for (int j = 0; j < wArray.size(); j++) {
+
+                                if (wArray.get(j).getParagraph() == para) {
+                                    if (wArray.get(j).getData().toLowerCase().equals(word.toLowerCase())
+                                            && wArray.get(i).getParagraph() == spara) {
+
+                                        stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
+
+                                    } else {
+                                        stringresult += wArray.get(j).getData() + " ";
+                                    }
+
                                 }
 
                             }
 
                         }
-                        
+
                     }
 
                 }
-
             }
+            
+            
             
         }
 
@@ -438,7 +606,7 @@ public class WordList<T> implements WordListADT<T> {
             System.out.println("Result : Found");
         }
         
-        System.out.println("\nExecution time for Searching Algorithm (Contains) : " + elapsedTime1 + " ns\n\n");
+        System.out.println("\nExecution time for Searching Algorithm (Start) : " + elapsedTime1 + " ns\n\n");
         
         if(found == false){
             JOptionPane.showMessageDialog(null, "No words found!");
@@ -559,7 +727,7 @@ public class WordList<T> implements WordListADT<T> {
             System.out.println("Result : Found");
         }
         
-        System.out.println("\nExecution time for Searching Algorithm (Contains) : " + elapsedTime1 + " ns\n\n");
+        System.out.println("\nExecution time for Searching Algorithm (End) : " + elapsedTime1 + " ns\n\n");
         
         if(found == false){
             JOptionPane.showMessageDialog(null, "No words found!");
@@ -693,7 +861,7 @@ public class WordList<T> implements WordListADT<T> {
                 System.out.println("Result : Found");
             }
 
-            System.out.println("\nExecution time for Searching Algorithm (Contains) : " + elapsedTime1 + " ns\n\n");
+            System.out.println("\nExecution time for Searching Algorithm (Int) : " + elapsedTime1 + " ns\n\n");
 
             if (found == false) {
                 JOptionPane.showMessageDialog(null, "No words found!");
