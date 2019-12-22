@@ -260,7 +260,7 @@ public class WordList<T> implements WordListADT<T> {
                         
                          else{
                             lastpara = para;
-                            
+                           
                             stringresult += "<br /><br />Paragraph " + wArray.get(i).getParagraph() + ": ";
                             
                             for (int j = 0; j < wArray.size(); j++) {
@@ -278,6 +278,9 @@ public class WordList<T> implements WordListADT<T> {
                                                 j++;
 
                                             }
+                                            else{
+                                                break;
+                                            }
 
                                             //k2++;
 
@@ -285,6 +288,7 @@ public class WordList<T> implements WordListADT<T> {
                                     } catch (NullPointerException e) {
  
                                     }
+                                    
                                     
                                     try {
                                         if (wArray.get(j).getParagraph() != lastpara) {
@@ -397,6 +401,10 @@ public class WordList<T> implements WordListADT<T> {
                                                 stringresult += "<b>" + wArray.get(j).getData() + "</b> ";
                                                 j++;
 
+                                            }
+                                            
+                                            else{
+                                                break;
                                             }
 
                                             //k2++;
