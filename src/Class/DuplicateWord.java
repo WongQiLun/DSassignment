@@ -88,20 +88,22 @@ public class DuplicateWord<T> implements DuplicateWordADT<T>{
         int count = 0;
 
         for (int i = 0; i < wDuplicate.size(); i++) {
-
-           if (wDuplicate.get(i).getData().equals(word)) {
+            
+            //check for first time
+           if (wDuplicate.get(i).getData().toLowerCase().equals(word.toLowerCase())) {
                 
                 System.out.println(count);
                 found = true;
                 int para = wDuplicate.get(i).getParagraph();
 
                 result += "<br /><br />Paragraph " + wDuplicate.get(i).getParagraph() + ": ";
-
-                for (int j = 0; j < wDuplicate.size(); j++) {
+                // loop agn
+                for (int j = i; j < wDuplicate.size(); j++) {
 
                     if (wDuplicate.get(j).getParagraph() == para) {
-                        if (wDuplicate.get(j).getData().equals(word)) {
+                        if (wDuplicate.get(j).getData().toLowerCase().equals(word.toLowerCase())) {
                             count++;
+                            
                             result += "<b>" + wDuplicate.get(j).getData() + "</b> ";
                         } else {
                             result += wDuplicate.get(j).getData() + " ";

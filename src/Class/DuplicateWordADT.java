@@ -29,33 +29,33 @@ public interface DuplicateWordADT<T> {
    
    public T get(int i);
     /*
-    Description: 
-    Precondition: 
-    Postcondition: 
-    Return: 
+    Description: To get the specific item without removing
+    Precondition: None
+    Postcondition: None
+    Return: The item get
     */
    
    public boolean isEmpty();
     /*
-    Description: 
+    Description: To check is it empty
     Precondition: None
     Postcondition: None
-    Return: 
+    Return: if empty then true, else false
     */
    
    public int size();
     /*
-    Description: 
+    Description: To check the size
     Precondition: None
     Postcondition: None
-    Return: 
+    Return: Return the size
     */
    
    public String searchDuplicate(String word);
    /*
-    Description: 
+    Description: To searh the duplicate word in text
     Precondition: None
     Postcondition: None
-    Return: 
+    Return: The search result
     */
 }
