@@ -289,7 +289,6 @@ public class WordList<T> implements WordListADT<T> {
  
                                     }
                                     
-                                    
                                     try {
                                         if (wArray.get(j).getParagraph() != lastpara) {
 
