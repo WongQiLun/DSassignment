@@ -410,6 +410,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
 
                     } else if (btnContains.isSelected()) {    //btnContains
                         
+                        
                         displayed = false;
                         String stringresult = "";
                         for (int i = 0; i < 10; i++) {

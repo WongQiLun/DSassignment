@@ -17,6 +17,9 @@ public class WordList<T> implements WordListADT<T> {
     private T[] array;
     private int size;
 
+    long average;
+    int countaverage = 0;
+    
     public WordList() {
         array = (T[]) new Object[100];
         size = 0;
@@ -82,6 +85,7 @@ public class WordList<T> implements WordListADT<T> {
     }
     
     public String sContains(String word, int spara) {
+        
         boolean found = false;
         int count = 0;
         int para = 0;
@@ -204,6 +208,18 @@ public class WordList<T> implements WordListADT<T> {
                 displayed = true;
             }
         }
+        
+        countaverage++;
+        
+        if (countaverage == 10) {
+            average += elapsedTime1;
+            System.out.println("Average Execution Time: " + (average / 10));
+            average = 0;
+            countaverage = 0;
+        } else {
+            average += elapsedTime1;
+        }
+        
         
         return stringresult;
     }
@@ -509,6 +525,19 @@ public class WordList<T> implements WordListADT<T> {
             }
         }
         
+        countaverage++;
+        
+        if(countaverage == 10){
+            average  += elapsedTime1;
+            System.out.println("Average Execution Time: " + (average / 10));
+            average = 0;
+            countaverage = 0;
+        }
+        else{
+            average  += elapsedTime1;
+        }
+        
+        
         return stringresult;
     }
     
@@ -629,6 +658,18 @@ public class WordList<T> implements WordListADT<T> {
                 JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
                 displayed = true;
             }
+        }
+        
+        countaverage++;
+        
+        if(countaverage == 10){
+            average  += elapsedTime1;
+            System.out.println("Average Execution Time: " + (average / 10));
+            average = 0;
+            countaverage = 0;
+        }
+        else{
+            average  += elapsedTime1;
         }
         
         return stringresult;
@@ -753,6 +794,19 @@ public class WordList<T> implements WordListADT<T> {
                 displayed = true;
             }
         }    
+        
+        countaverage++;
+        
+        if(countaverage == 10){
+            average  += elapsedTime1;
+            System.out.println("Average Execution Time: " + (average / 10));
+            average = 0;
+            countaverage = 0;
+        }
+        else{
+            average  += elapsedTime1;
+        }
+        
         
         return stringresult;
     }
@@ -889,11 +943,25 @@ public class WordList<T> implements WordListADT<T> {
                     displayed = true;
                 }
             }
+            
+            countaverage++;
+
+            if (countaverage == 10) {
+                average += elapsedTime1;
+                System.out.println("Average Execution Time: " + (average / 10));
+                average = 0;
+                countaverage = 0;
+            } else {
+                average += elapsedTime1;
+            }
+        
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Please enter only digits!");
             displayed = true;
         }
+        
+        
 
         return stringresult;
         
