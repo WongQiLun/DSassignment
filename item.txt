@@ -1,0 +1,8 @@
+<html>
+  <head>
+    
+  </head>
+  <body>
+    #weas<br>amount<br>applaud<br>bewildered<br>bill<br>blonde<br>bomb<br>brick<br>cast<br>cell<br>channel<br>chase<br>chip<br>choice<br>chorus<br>civilian<br>coincide<br>color-blind<br>command<br>creep<br>cut<br>deep<br>deep<br>depression<br>different<br>dismissal<br>distance<br>dress<br>executrix<br>explain<br>fabulous<br>fat<br>flower<br>format<br>frozen<br>grandmother<br>hunter<br>hut<br>identity<br>integration<br>introduce<br>invention<br>knowledge<br>legislation<br>level<br>limit<br>magnitude<br>mine<br>mislead<br>monkey<br>nerve<br>nugget<br>pan<br>phone<br>possibility<br>precede<br>prick<br>protective<br>proud<br>quaint<br>raw<br>realism<br>rigid<br>sleet<br>spurious<br>stage<br>teacher<br>tearful<br>tender<br>tooth<br>trainer<br>unnatural<br>upset<br>vague<br>violation<br>violet<br>worried<br>
+  </body>
+</html>

@@ -449,7 +449,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
 
     private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
         // TODO add your handling code here:
-        JFileChooser chooser = new JFileChooser("C:\\Users\\user\\Documents\\NetBeansProjects\\DSAssignment\\DSassignment");
+        JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
 
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Text file", "txt");
         chooser.setFileFilter(filter);
@@ -674,7 +674,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
 
 
    private void SaveOutput() {
-        JFileChooser chooser = new JFileChooser();
+        JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
 
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Text file", "txt");
         chooser.setFileFilter(filter);
@@ -688,7 +688,9 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         } catch (Exception e) {
             infoBox("error: file not found \n Please select a file to write to", "File not found");
         }
-        String line = txtResult.getText();
+        String line = txtResult.getText().replaceAll("(?s)<[^>]*>(\\s*<[^>]*>)*", " ");
+        line = line.replaceAll(" ","\n");
+        line =  line.replaceAll("(?m)^[ \t]*\r?\n", "");
         if (!file.getName().contains(".txt")) {
             file = new File(chooser.getSelectedFile() + ".txt");
         }
@@ -698,19 +700,17 @@ public class FilterSearch_UI extends javax.swing.JFrame {
             x = new FileWriter(file);
         } catch (IOException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                x.close();
-            } catch (IOException ex) {
-                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
-
         try {
             x.write(line);
         } catch (IOException ex) {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
 
         }
+                 try {
+                x.close();
+            } catch (IOException ex) {
+                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
    }
 }

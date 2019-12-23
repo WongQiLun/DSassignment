@@ -230,7 +230,7 @@ public class GUI extends javax.swing.JFrame {
     
     private void OpenFile() {
         // TODO add your handling code here:
-        JFileChooser chooser = new JFileChooser("C:\\Users\\user\\Documents\\NetBeansProjects\\DSAssignment\\DSassignment");
+        JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
 
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Text file", "txt");
         chooser.setFileFilter(filter);
@@ -272,7 +272,7 @@ public class GUI extends javax.swing.JFrame {
     }
 
     private void SaveOutput() {
-        JFileChooser chooser = new JFileChooser();
+        JFileChooser chooser = new JFileChooser(System.getProperty("user.dir"));
 
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Text file", "txt");
         chooser.setFileFilter(filter);
@@ -298,6 +298,7 @@ public class GUI extends javax.swing.JFrame {
             Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
+                  x.write(line);
                 x.close();
             } catch (IOException ex) {
                 Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
