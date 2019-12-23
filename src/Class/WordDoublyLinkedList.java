@@ -262,5 +262,16 @@ public class WordDoublyLinkedList<T extends Comparable<? super T>>  implements D
         long timeNeeded = endTime - startTime;
           System.out.println(" SORTING TIME "+ timeNeeded+"ns");
     } 
-
+    public DuplicateWordADT ConvertToDuplicate(){
+        DuplicateWord item = new DuplicateWord();
+        Node current= this.firstNode;
+        for(int i = 1; i <= nodeNumber ; i++)
+        {
+            item.add(current.current);
+            current = current.next;
+        }
+        return item;
+        
+    }
+    
 }

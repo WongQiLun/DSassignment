@@ -87,6 +87,7 @@ public interface DoublyLinkedListADT<T> {
     
      public void quickSort();
     
-
+ public DuplicateWordADT ConvertToDuplicate();
+ 
   
 }

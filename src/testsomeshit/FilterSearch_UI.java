@@ -540,9 +540,16 @@ public class FilterSearch_UI extends javax.swing.JFrame {
     private void btnDuplicateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDuplicateActionPerformed
         // TODO add your handling code here:
         //
-        String result = wDuplicate.searchDuplicate(txtSearch.getText());
+                DoublyLinkedListADT<Word> wDLL2;
+        wDLL2 = wDLL;
+       
+       
+        wDLL2.quickSort();
+        DuplicateWordADT<Word> item = (DuplicateWord<Word>)wDLL2.ConvertToDuplicate();
+        DuplicateWordADT<Word> itemDup = (DuplicateWord<Word>)item.getDuplicates();
         
-        txtResult.setText(result);
+        
+        txtResult.setText(itemDup.toString());
         
         
     }//GEN-LAST:event_btnDuplicateActionPerformed

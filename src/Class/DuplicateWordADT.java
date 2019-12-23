@@ -58,4 +58,6 @@ public interface DuplicateWordADT<T> {
     Postcondition: None
     Return: The search result
     */
+   public DuplicateWordADT removeDuplicates();
+      public DuplicateWord getDuplicates();     
 }
