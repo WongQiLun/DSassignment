@@ -50,6 +50,8 @@ public class FilterSearch_UI extends javax.swing.JFrame {
     DoublyLinkedListADT<Word> wDLL = new WordDoublyLinkedList();
     
     public static DuplicateWordADT<Word> wDuplicate = new DuplicateWord();
+    
+    public static boolean displayed = false;
 
     String stringresult = "";
 
@@ -373,30 +375,51 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                 String search = txtSearch.getText();
 
                 if (btnInt.isSelected()) {  //btnInt
-                    String stringresult = wArray.sInt(search, search_para);
-
+                    displayed = false;
+                    String stringresult = "";
+                    for (int i = 0; i < 10; i++) {
+                        stringresult = wArray.sInt(search, search_para);
+                    }
                     txtResult.setText(stringresult);
 
                 } else {          //btnString.isSelected
 
                     if (btnWhole.isSelected()) {      //btnWhole
-                        String stringresult = wArray.sWhole(search, search_para);
-
+                        
+                        displayed = false;
+                        String stringresult="";
+                        
+                        for(int i=0 ; i<10 ; i++){    //Big O
+                             stringresult = wArray.sWhole(search, search_para);
+                        }
+                        
                         txtResult.setText(stringresult);
+                        
 
                     } else if (btnContains.isSelected()) {    //btnContains
-                        String stringresult = wArray.sContains(search, search_para);
-
+                        
+                        displayed = false;
+                        String stringresult = "";
+                        for (int i = 0; i < 10; i++) {
+                            stringresult = wArray.sContains(search, search_para);
+                        }
+                        
                         txtResult.setText(stringresult);
 
                     } else if (btnStart.isSelected()) {     //btnStart
-                        String stringresult = wArray.sStart(search, search_para);
-
+                        displayed = false;
+                        String stringresult = "";
+                        for (int i = 0; i < 10; i++) {
+                            stringresult  = wArray.sStart(search, search_para);
+                        }
                         txtResult.setText(stringresult);
 
                     } else {    //btnEnd
-                        String stringresult = wArray.sEnd(search, search_para);
-
+                        displayed = false;
+                        String stringresult = "";
+                        for (int i = 0; i < 10; i++) {
+                            stringresult  = wArray.sEnd(search, search_para);
+                        }
                         txtResult.setText(stringresult);
 
                     }

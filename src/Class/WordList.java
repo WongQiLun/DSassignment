@@ -7,7 +7,7 @@ package Class;
 
 import javax.swing.JOptionPane;
 import static testsomeshit.FilterSearch_UI.wArray;
-
+import static testsomeshit.FilterSearch_UI.displayed;
 /**
  *
  * @author ongchunheng
@@ -195,18 +195,21 @@ public class WordList<T> implements WordListADT<T> {
         
         System.out.println("\nExecution time for Searching Algorithm (Contains) : " + elapsedTime1 + " ns\n\n");
                 
-        if(found == false){
-            JOptionPane.showMessageDialog(null, "No words found!");   
-        }
-        
-        else{
-            JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");          
+        if (displayed == false) {
+            if (found == false) {
+                JOptionPane.showMessageDialog(null, "No words found!");
+                displayed = true;
+            } else {
+                JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
+                displayed = true;
+            }
         }
         
         return stringresult;
     }
     
     public String sWhole(String word, int spara){
+        
         boolean found = false;
         int count = 0;
         int count1 = 0;
@@ -493,14 +496,17 @@ public class WordList<T> implements WordListADT<T> {
             System.out.println("Result : Found");
         }
         
-        System.out.println("\nExecution time for Searching Algorithm (Contains) : " + elapsedTime1 + " ns\n\n");
+        System.out.println("\nExecution time for Searching Algorithm (Whole) : " + elapsedTime1 + " ns\n\n");
         
-        if(found == false){
-            JOptionPane.showMessageDialog(null, "No words found!");            
-        }
         
-        else{
-            JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
+        if (displayed == false) {
+            if (found == false) {
+                JOptionPane.showMessageDialog(null, "No words found!");
+                displayed = true;
+            } else {
+                JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
+                displayed = true;
+            }
         }
         
         return stringresult;
@@ -615,12 +621,14 @@ public class WordList<T> implements WordListADT<T> {
         
         System.out.println("\nExecution time for Searching Algorithm (Start) : " + elapsedTime1 + " ns\n\n");
         
-        if(found == false){
-            JOptionPane.showMessageDialog(null, "No words found!");
-        }
-        
-        else{
-            JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
+        if (displayed == false) {
+            if (found == false) {
+                JOptionPane.showMessageDialog(null, "No words found!");
+                displayed = true;
+            } else {
+                JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
+                displayed = true;
+            }
         }
         
         return stringresult;
@@ -736,13 +744,15 @@ public class WordList<T> implements WordListADT<T> {
         
         System.out.println("\nExecution time for Searching Algorithm (End) : " + elapsedTime1 + " ns\n\n");
         
-        if(found == false){
-            JOptionPane.showMessageDialog(null, "No words found!");
-        }
-        
-        else{
-            JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
-        }        
+        if (displayed == false) {
+            if (found == false) {
+                JOptionPane.showMessageDialog(null, "No words found!");
+                displayed = true;
+            } else {
+                JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
+                displayed = true;
+            }
+        }    
         
         return stringresult;
     }
@@ -870,14 +880,19 @@ public class WordList<T> implements WordListADT<T> {
 
             System.out.println("\nExecution time for Searching Algorithm (Int) : " + elapsedTime1 + " ns\n\n");
 
-            if (found == false) {
-                JOptionPane.showMessageDialog(null, "No words found!");
-            } else {
-                JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
+            if (displayed == false) {
+                if (found == false) {
+                    JOptionPane.showMessageDialog(null, "No words found!");
+                    displayed = true;
+                } else {
+                    JOptionPane.showMessageDialog(null, "We have found " + count + " results for you.");
+                    displayed = true;
+                }
             }
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Please enter only digits!");
+            displayed = true;
         }
 
         return stringresult;
