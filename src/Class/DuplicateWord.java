@@ -128,14 +128,14 @@ public class DuplicateWord<T extends Comparable<? super T>> implements Duplicate
         T bufferWord = null;
         DuplicateWord item = new DuplicateWord();
         int counter = 0;
-        for (int x = 0; x < size; x++) {
-            if (  bufferWord == null||array[x].compareTo(bufferWord) != 0) {
-                bufferWord = array[x];
+        for (int i = 0; i < size; i++) {
+            if (  bufferWord == null||array[i].compareTo(bufferWord) != 0) {
+                bufferWord = array[i];
                 counter = 1;
-            } else if (array[x].compareTo(bufferWord) == 0) {
+            } else if (array[i].compareTo(bufferWord) == 0) {
                 counter++;
                 if (counter == 2) {
-                    item.add(array[x]);
+                    item.add(array[i]);
                 }
             }
         }
@@ -146,12 +146,12 @@ public class DuplicateWord<T extends Comparable<? super T>> implements Duplicate
         T bufferWord = null;
         DuplicateWord item = new DuplicateWord();
         int counter = 0;
-        for (int x = 0; x < size; x++) {
-            if (bufferWord== null ||array[x].compareTo(bufferWord) != 0) {
-                bufferWord = array[x];
-                item.add(array[x]);
+        for (int i = 0; i < size; i++) {
+            if (bufferWord== null ||array[i].compareTo(bufferWord) != 0) {
+                bufferWord = array[i];
+                item.add(array[i]);
                 counter = 1;
-            } else if (array[x].compareTo(bufferWord) == 0) {
+            } else if (array[i].compareTo(bufferWord) == 0) {
                 counter++;
             }
         }
