@@ -102,6 +102,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         radAll = new javax.swing.JRadioButton();
         radOthers = new javax.swing.JRadioButton();
         txtPara = new javax.swing.JTextField();
+        jbtnRemoveDup = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -211,6 +212,13 @@ public class FilterSearch_UI extends javax.swing.JFrame {
 
         txtPara.setEnabled(false);
 
+        jbtnRemoveDup.setText("Remove Duplicate");
+        jbtnRemoveDup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnRemoveDupActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -229,15 +237,18 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(114, 114, 114)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnContains))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(btnContains)
+                                        .addComponent(jbtnRemoveDup)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(btnDuplicate))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(114, 114, 114)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jbtnSort)
                                         .addGap(18, 18, 18)
                                         .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -320,7 +331,8 @@ public class FilterSearch_UI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDuplicate)
                     .addComponent(btnContains)
-                    .addComponent(btnEnd))
+                    .addComponent(btnEnd)
+                    .addComponent(jbtnRemoveDup))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -570,6 +582,24 @@ public class FilterSearch_UI extends javax.swing.JFrame {
         txtPara.setEnabled(false);
     }//GEN-LAST:event_radAllActionPerformed
 
+    private void jbtnRemoveDupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnRemoveDupActionPerformed
+        // TODO add your handling code here:
+                //
+                DoublyLinkedListADT<Word> wDLL2;
+        wDLL2 = wDLL;
+       
+       
+        wDLL2.quickSort();
+        DuplicateWordADT<Word> item = (DuplicateWord<Word>)wDLL2.ConvertToDuplicate();
+        DuplicateWordADT<Word> itemDup = (DuplicateWord<Word>)item.removeDuplicates();
+        
+        
+        txtResult.setText(itemDup.toString());
+        
+        
+    
+    }//GEN-LAST:event_jbtnRemoveDupActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -629,6 +659,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton jbtnRemoveDup;
     private javax.swing.JButton jbtnSort;
     private javax.swing.JTextPane jtpFileName;
     private javax.swing.JRadioButton radAll;

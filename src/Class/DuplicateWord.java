@@ -142,12 +142,12 @@ public class DuplicateWord<T extends Comparable<? super T>> implements Duplicate
         return item;
     }
 
-    public DuplicateWordADT removeDuplicates() {
+    public DuplicateWord removeDuplicates() {
         T bufferWord = null;
-        DuplicateWordADT item = new DuplicateWord();
+        DuplicateWord item = new DuplicateWord();
         int counter = 0;
         for (int x = 0; x < size; x++) {
-            if (array[x].compareTo(bufferWord) != 0 || bufferWord == null) {
+            if (bufferWord== null ||array[x].compareTo(bufferWord) != 0) {
                 bufferWord = array[x];
                 item.add(array[x]);
                 counter = 1;
