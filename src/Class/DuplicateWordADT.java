@@ -59,5 +59,18 @@ public interface DuplicateWordADT<T> {
     Return: The search result
     */
    public DuplicateWordADT removeDuplicates();
-      public DuplicateWord getDuplicates();     
+   /*
+    Description: 
+    Precondition: 
+    Postcondition: 
+    Return: 
+    */
+      
+   public DuplicateWord getDuplicates();
+   /*
+    Description: To get the duplicate word in text
+    Precondition: Null
+    Postcondition: Null
+    Return: The search result
+    */
 }
