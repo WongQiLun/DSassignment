@@ -525,7 +525,7 @@ public class FilterSearch_UI extends javax.swing.JFrame {
        wDLL2.displaySwapCount();
         long endTime = System.currentTimeMillis();
         long timeNeeded = endTime- startTime;
-        System.out.println(" SORTING TIME "+ timeNeeded);
+        System.out.println(" SORTING TIME "+ timeNeeded+"ns");
         
         String y = "";
         Node<Word> currentNode = wDLL2.getFirstNode();
