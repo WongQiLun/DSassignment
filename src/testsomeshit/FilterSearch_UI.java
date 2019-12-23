@@ -530,15 +530,9 @@ public class FilterSearch_UI extends javax.swing.JFrame {
     private void jbtnSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSortActionPerformed
         
         DoublyLinkedListADT<Word> wDLL2;
-        wDLL2 = wDLL;
-       long startTime = System.currentTimeMillis();
-       
-        wDLL2.quickSort();
-       wDLL2.displaySwapCount();
-        long endTime = System.currentTimeMillis();
-        long timeNeeded = endTime- startTime;
-        System.out.println(" SORTING TIME "+ timeNeeded+"ns");
-        
+        wDLL2 = wDLL;     
+        wDLL2.quickSort();    
+         wDLL2.displaySwapCount();       
         String y = "";
         Node<Word> currentNode = wDLL2.getFirstNode();
         int nodeNumber = wDLL2.getNodeNumber();
