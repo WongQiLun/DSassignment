@@ -76,7 +76,7 @@ public class DuplicateWord<T extends Comparable<? super T>> implements Duplicate
     public String toString() {
         String result = "";
         for (int i = 0; i < size; i++) {
-            result += array[i] + "\n";
+            result += array[i] + "<br />";
         }
         return result;
     }
