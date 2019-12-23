@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Class;
-
+/* Author Wong Qi Lun*/
 import javax.swing.JOptionPane;
 
 /**
