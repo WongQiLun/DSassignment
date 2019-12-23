@@ -252,11 +252,15 @@ public class WordDoublyLinkedList<T extends Comparable<? super T>>  implements D
     // The main function to sort a linked list. It mainly calls _quickSort() 
     public void quickSort() 
     { 
+        long startTime = System.currentTimeMillis();
         // Find last node 
         Node head = getLastNode(); 
         Node node = getFirstNode();
         // Call the recursive QuickSort 
         _quickSort(node,head); 
+        long endTime=System.currentTimeMillis();
+        long timeNeeded = endTime - startTime;
+          System.out.println(" SORTING TIME "+ timeNeeded+"ns");
     } 
 
 }
